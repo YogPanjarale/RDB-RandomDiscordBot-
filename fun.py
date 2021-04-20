@@ -9,12 +9,12 @@ class Fun(commands.Cog):
     @commands.command(name='how')
     async def how(context):
 
-        myEmbed6 = discord.Embed(
+        myEmbed = discord.Embed(
             title="how am i?", description="im doing great , thank u for asking :))", color=0x00ff00)
-        myEmbed6.add_field(name="what about you sir/ma'am?",
+        myEmbed.add_field(name="what about you sir/ma'am?",
                            value="how are u today ?", inline=False)
 
-        await context.message.reply(embed=myEmbed6)
+        await context.message.reply(embed=myEmbed)
     # pfp
 
     @commands.command('pfp')
@@ -29,15 +29,14 @@ class Fun(commands.Cog):
 
     @commands.command('sad')
     async def sad(context):
-
-        myEmbed1 = discord.Embed(
+        myEmbed = discord.Embed(
             title="sad?", description="dont be , ur bots here for you ", color=0x00ff00)
-        myEmbed1.add_field(
+        myEmbed.add_field(
             name="what caused it?", value="r u actually crying or crying internally?", inline=False)
-        myEmbed1.add_field(name="friends or family?",
+        myEmbed.add_field(name="friends or family?",
                            value="doesnt matter , go vibe to some music!!", inline=False)
 
-        await context.message.reply(embed=myEmbed1)
+        await context.message.reply(embed=myEmbed)
 
 
 def setup(client):

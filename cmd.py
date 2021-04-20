@@ -102,7 +102,7 @@ class Cmd(commands.Cog):
         myEmbed3.add_field(
             name="wikp", value="searches for a specific topic on wikipedia", inline=True)
         myEmbed3.add_field(
-            name="git", value="searches for a specific topic on github", inline=True)
+            name="gh", value="searches for a specific user on github", inline=True)
         myEmbed3.add_field(
             name="yt", value="searches for a specific video on youtube", inline=True)
         myEmbed3.add_field(

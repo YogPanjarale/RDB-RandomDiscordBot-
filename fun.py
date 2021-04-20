@@ -7,7 +7,7 @@ from discord.member import Member
 class Fun(commands.Cog):
 
     @commands.command(name='how')
-    async def how(context):
+    async def how(self,context):
 
         myEmbed = discord.Embed(
             title="how am i?", description="im doing great , thank u for asking :))", color=0x00ff00)
@@ -18,17 +18,17 @@ class Fun(commands.Cog):
     # pfp
 
     @commands.command('pfp')
-    async def pfp(ctx, member: Member = None):
+    async def pfp(self,ctx, member: Member = None):
         if not member:
             member = ctx.author
 
     @commands.command(name='say')
-    async def say(ctx, *, term: str = ''):
+    async def say(self,ctx, *, term: str = ''):
 
         await ctx.message.reply(term)
 
     @commands.command('sad')
-    async def sad(context):
+    async def sad(self,context):
         myEmbed = discord.Embed(
             title="sad?", description="dont be , ur bots here for you ", color=0x00ff00)
         myEmbed.add_field(
@@ -37,7 +37,6 @@ class Fun(commands.Cog):
                            value="doesnt matter , go vibe to some music!!", inline=False)
 
         await context.message.reply(embed=myEmbed)
-
 
 def setup(client):
     client.add_cog(Fun(client))

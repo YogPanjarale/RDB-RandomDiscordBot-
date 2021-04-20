@@ -40,7 +40,7 @@ class Info(commands.Cog):
     # help
 
     @commands.command(name='mg')
-    async def mg(context):
+    async def mg(self,context):
 
         myEmbed = discord.Embed(
             title="mgsb help commands", description="these r the primary cmds", color=0x00ff00)

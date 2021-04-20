@@ -81,12 +81,42 @@ class Cmd(commands.Cog):
 
     @commands.command('yt')
     async def youtube(self, ctx, *, term: str = ''):
-        l=searchYT(term)
-        l=l[:5]
-        for i in range(1,len(l)):
-            id=l[i]
-            await ctx.message.channel.send(f'**{i}** https://www.youtube.com/watch?v={id}')  
-        
+        l = searchYT(term)
+        l = l[:5]
+        for i in range(1, len(l)):
+            id = l[i]
+            await ctx.message.channel.send(f'**{i}** https://www.youtube.com/watch?v={id}')
+    # commands to use
+
+    @commands.command(name='cmd')
+    async def cmd(self, context):
+
+        myEmbed3 = discord.Embed(
+            title="Help", description=">>>these r the search commands , all require u to use prefix 'mg.' to search", color=0xff0000)
+        myEmbed3.add_field(
+            name="insta", value="searches for a particular instagram acc", inline=True)
+        myEmbed3.add_field(
+            name="fb", value="searches for a particular acc on facebook", inline=True)
+        myEmbed3.add_field(
+            name="ggl", value="searches for a specific topic on the google search engine", inline=True)
+        myEmbed3.add_field(
+            name="wikp", value="searches for a specific topic on wikipedia", inline=True)
+        myEmbed3.add_field(
+            name="git", value="searches for a specific topic on github", inline=True)
+        myEmbed3.add_field(
+            name="yt", value="searches for a specific video on youtube", inline=True)
+        myEmbed3.add_field(
+            name="spotify", value="searches for a specific song on spotify", inline=True)
+        myEmbed3.add_field(
+            name="amzn", value="searches for a specific item on amazon", inline=True)
+        myEmbed3.add_field(
+            name="fk", value="searches for a specific item on flipkart", inline=True)
+        myEmbed3.add_field(
+            name="ps", value="searches for a specific application/game on the google playstore", inline=True)
+        myEmbed3.add_field(
+            name="twit", value="searches for a particular twitter acc", inline=True)
+
+        await context.message.reply(embed=myEmbed3)
 
 
 def setup(client):

@@ -1,16 +1,6 @@
-from discord import embeds
-from discord.ext.commands.core import command
-import instatools3
-
-from discord.ext.commands import Bot, Context
-from gsearch.googlesearch import search
-from googlesearch.googlesearch import GoogleSearch, SearchResponse, SearchResult
-from urllib.parse import quote
-import discord
-import requests
-from requests.models import Response
+from discord.ext.commands import Bot
 client = Bot('!')
-client.load_extension('cmd')
+client.load_extension('cmd','info','fun')
 
 
 

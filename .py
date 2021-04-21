@@ -1,4 +1,8 @@
 from discord.ext.commands import Bot
+from dotenv import load_dotenv
+load_dotenv()
+import os
+BOT_TOKEN= os.getenv('BOT_TOKEN')
 client = Bot('!')
 
 if __name__ == '__main__':
@@ -12,4 +16,4 @@ if __name__ == '__main__':
     print('Bot ready')
 
     
-client.run('Nzg2MDY1MzM0Mjg0NTgyOTIy.X9A-ZA.ChnwF16KZN9jHTp2KXsx4nLqAAs')
+client.run(BOT_TOKEN)

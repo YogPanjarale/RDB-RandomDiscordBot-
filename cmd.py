@@ -1,3 +1,4 @@
+from utils.my_youtube_search import YoutubeResult, searchYT
 import discord
 from discord.ext import commands
 from discord.ext.commands.context import Context
@@ -6,8 +7,6 @@ import requests
 from googlesearch.googlesearch import GoogleSearch, SearchResponse, SearchResult
 from urllib.parse import quote
 import instatools3
-from utils.youtube_search import YotubeResult, searchYTnew
-from utils.youtube_search import searchYTnew,YotubeResult
 
 class Cmd(commands.Cog):
     @commands.command('gh')
@@ -81,11 +80,13 @@ class Cmd(commands.Cog):
 
     @commands.command('yt')
     async def youtube(self, ctx, *, term: str = ''):
-        l = searchYTnew(term)
+        l = searchYT(term)
         l = l[:5]
-        i:YotubeResult = YotubeResult("","","","")
+        i:YoutubeResult
         for i in l:
             embed = discord.Embed(title=i.title,description=i.description,color=0x00ff00, url=i.url )
+            embed.set_thumbnail(url=i.thumbnail)
+            embed.add_field(name="Views",value=i.views)
             await ctx.message.channel.send(embed=embed)
     # commands to use
     @commands.command(name='cmd')

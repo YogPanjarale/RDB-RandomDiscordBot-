@@ -1,33 +1,63 @@
 import json
 from youtube_search import YoutubeSearch
 
+'''
+ {
+        "channel": "Samuel Miller",
+        "duration": "1:00",
+        "id": "dthvgrxVh5Y",
+        "long_desc": "#Shorts #YouTubeShorts.",
+        "publish_time": "5 days ago",
+        "thumbnails": [
+            "https://i.ytimg.com/vi/dthvgrxVh5Y/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLBkFp3YSvtn5or9Ov3Llpzh_hrb8w",
+            "https://i.ytimg.com/vi/dthvgrxVh5Y/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCYPFWn81O5fHM5QXMiJKgfBGkSRw"   
+        ],
+        "title": "When programming languages print \"Hello World\"",
+        "url_suffix": "/watch?v=dthvgrxVh5Y",
+        "views": "39,131 views"
+    },
+'''
+
 class YoutubeResult(object):
-    def __init__(self,title:str,description:str,thumbnail:str,url:str,views:int) -> None:
+    def __init__(self,title:str,description:str,thumbnail:str,url:str,views:int,item,publish_time:str,duration:str,channel:str) -> None:
+        title=item['title'],
+        description=item['long_desc'],
+        thumbnail=item['thumbnails'][0],
+        url="https://youtube.com"+item['url_suffix'],
+        views=item['views']
+        publish_time=item['publish_time']
+        duration=item['duration']
+        channel=item['channel']
+        channel_id= item['id']
         super().__init__()
         self.title=title
         self.description=description
         self.thumbnail = thumbnail
         self.url = url
         self.views= views
+        self.publish_time=publish_time
+        self.duration=duration
+        self.channel=channel
+        self.id=channel_id
     def to_dict(self,):
         return {
             "title": self.title,
             "description":self.description,
             "thumbnail":self.thumbnail,
             "url":self.url,
-            "views":self.views
+            "id":self.id,
+            "views":self.views,
+            "publish_time":self.publish_time,
+            "duration":self.duration,
+            "channel":self.channel
         }
 
-def searchYT(term:str):
-    results = YoutubeSearch(term,max_results=5).to_dict();
+def searchYT(term:str,max_result:int=3):
+    results = YoutubeSearch(term,max_results=max_result).to_dict();
     result_list=[]
     for item in results:
         ys = YoutubeResult(
-            title=item['title'],
-            description=item['long_desc'],
-            thumbnail=item['thumbnails'][0],
-            url="https://youtube.com"+item['url_suffix'],
-            views=item['views']
+            item=item
         )
         result_list.append(ys)
     return result_list

@@ -19,7 +19,7 @@ from youtube_search import YoutubeSearch
 '''
 
 class YoutubeResult(object):
-    def __init__(self,title:str,description:str,thumbnail:str,url:str,views:int,item,publish_time:str,duration:str,channel:str) -> None:
+    def __init__(self,item,title:str='',description:str='',thumbnail:str='',url:str='',views:int='',publish_time:str='',duration:str='',channel:str='') -> None:
         title=item['title'],
         description=item['long_desc'],
         thumbnail=item['thumbnails'][0],

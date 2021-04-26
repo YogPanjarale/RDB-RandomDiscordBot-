@@ -1,4 +1,4 @@
-from utils.my_youtube_search import YoutubeResult, searchYT
+from my_utils.my_youtube_search import YoutubeResult, searchYT
 import discord
 from discord.ext import commands
 from discord.ext.commands.context import Context

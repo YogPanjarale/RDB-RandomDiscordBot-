@@ -81,7 +81,7 @@ class Cmd(commands.Cog):
     @commands.command('yt')
     async def youtube(self, ctx, *, term: str = ''):
         l = searchYT(term)
-        print(l)
+        # print(l)
         l = l[:5]
         i:YoutubeResult
         for i in l:

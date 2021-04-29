@@ -1,4 +1,5 @@
 import json
+from discord import raw_models
 from youtube_search import YoutubeSearch
 
 '''
@@ -59,6 +60,8 @@ def searchYT(term:str,max_result:int=3):
         ys = YoutubeResult(
             item=item
         )
+        r=json.dumps(ys.to_dict(), indent=4, sort_keys=True)
+        print(r)
         result_list.append(ys)
     return result_list
 if __name__=="__main__":

@@ -81,11 +81,12 @@ class Cmd(commands.Cog):
     @commands.command('yt')
     async def youtube(self, ctx, *, term: str = ''):
         l = searchYT(term)
+        print(l)
         l = l[:5]
         i:YoutubeResult
         for i in l:
-            embed = discord.Embed(title=i.title,description=i.description,color=0x00ff00, url=i.url )
-            embed.set_thumbnail(url=i.thumbnail)
+            embed = discord.Embed(title=i.title[0],description=i.description[0],color=0x00ff00, url=i.url[0] )
+            embed.set_thumbnail(url=i.thumbnail[0])
             embed.add_field(name="Views",value=i.views)
             await ctx.message.channel.send(embed=embed)
     # commands to use

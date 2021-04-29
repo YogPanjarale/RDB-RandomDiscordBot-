@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 load_dotenv()
 import os
 BOT_TOKEN= os.getenv('BOT_TOKEN')
-client = Bot('!')
+client = Bot('mg.')
 
 if __name__ == '__main__':
     extensions = ['cmd', 'info', 'fun']

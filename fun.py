@@ -7,14 +7,14 @@ from discord.member import Member
 class Fun(commands.Cog):
 
     @commands.command(name='how')
-    async def how(self,context):
 
-        myEmbed = discord.Embed(
-            title="how am i?", description="im doing great , thank u for asking :))", color=0x00ff00)
-        myEmbed.add_field(name="what about you sir/ma'am?",
-                           value="how are u today ?", inline=False)
-
-        await context.message.reply(embed=myEmbed)
+    async def how(context):
+    
+        myEmbed7 = discord.Embed(title="how am i?", description="im doing great , thank u for asking :))",color=0x00ff00)
+        myEmbed7.add_field(name="what about you sir/ma'am?",value="how are u today ?",inline=False)
+        myEmbed7.set_image(url="https://media.giphy.com/media/Xfbugf2U4rC1Db4NSq/giphy.gif")
+        
+        await context.message.reply(embed=myEmbed7)
     # pfp
 
     @commands.command('pfp')
@@ -27,6 +27,17 @@ class Fun(commands.Cog):
 
         await ctx.message.reply(term)
 
+    @commands.command(name='hello')
+    async def hello(self,ctx):
+        
+        embed = discord.Embed(
+            title="",
+            color=discord.Colour.purple()
+        )
+        embed.set_image(url="https://media.giphy.com/media/djRJNZqj508sE/giphy.gif")
+        
+        await ctx.message.reply(embed=embed)
+    
     @commands.command('sad')
     async def sad(self,context):
         myEmbed = discord.Embed(

@@ -6,7 +6,7 @@ from discord.member import Member
 
 class Fun(commands.Cog):
 
-@commands.command(name='how')
+    @commands.command(name='how')
 
     async def how(context):
 

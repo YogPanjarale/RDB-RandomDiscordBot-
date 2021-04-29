@@ -23,6 +23,8 @@ class YoutubeResult(object):
     def __init__(self,item,title:str='',description:str='',thumbnail:str='',url:str='',views:int='',publish_time:str='',duration:str='',channel:str='') -> None:
         title=item['title'],
         description=item['long_desc'],
+        if description == None:
+            description="None"
         thumbnail=item['thumbnails'][0],
         url="https://youtube.com"+item['url_suffix'],
         views=item['views']
@@ -61,7 +63,7 @@ def searchYT(term:str,max_result:int=3):
             item=item
         )
         r=json.dumps(ys.to_dict(), indent=4, sort_keys=True)
-        print(r)
+        # print(r)
         result_list.append(ys)
     return result_list
 if __name__=="__main__":

@@ -3,6 +3,7 @@ import discord
 from discord.ext import commands
 from discord.ext.commands.context import Context
 
+from dpymenus import Page,PaginatedMenu
 import requests
 from googlesearch.googlesearch import GoogleSearch, SearchResponse, SearchResult
 from urllib.parse import quote
@@ -83,12 +84,21 @@ class Cmd(commands.Cog):
         l = searchYT(term)
         # print(l)
         l = l[:5]
+
+        menu=PaginatedMenu(ctx)
         i:YoutubeResult
+        pages = []
         for i in l:
-            embed = discord.Embed(title=i.title[0],description=i.description[0],color=0x00ff00, url=i.url[0] )
-            embed.set_thumbnail(url=i.thumbnail[0])
-            embed.add_field(name="Views",value=i.views)
-            await ctx.message.channel.send(embed=embed)
+            # embed = discord.Embed( )
+            # embed.set_thumbnail(url=i.thumbnail[0])
+            # embed.add_field(name="Views",value=i.views)
+            page = Page(title=i.title[0],description=i.description[0],color=0x00ff00, url=i.url[0])
+            page.set_thumbnail(url=i.thumbnail[0])
+            page.add_field(name="Views",value=i.views)
+            pages.append(page)
+            # await ctx.message.channel.send(embed=embed)
+        menu.add_pages(pages)
+        await menu.open()
     # commands to use
     @commands.command(name='cmd')
     async def cmd(self, context):

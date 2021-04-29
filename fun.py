@@ -8,7 +8,7 @@ class Fun(commands.Cog):
 
     @commands.command(name='how')
 
-    async def how(context):
+    async def how(self,context):
     
         myEmbed7 = discord.Embed(title="how am i?", description="im doing great , thank u for asking :))",color=0x00ff00)
         myEmbed7.add_field(name="what about you sir/ma'am?",value="how are u today ?",inline=False)

@@ -10,7 +10,7 @@ class Info(commands.Cog):
             title="Current Version", description="Version 1.0", color=0x00ff00)
         myEmbed.add_field(name="Version Code", value="v1.1.0", inline=False)
         myEmbed.add_field(name="Date Released",
-                           value="March 29th ,2021", inline=False)
+                          value="March 29th ,2021", inline=False)
         await context.message.reply(embed=myEmbed)
     # info abt the bot
 
@@ -22,9 +22,11 @@ class Info(commands.Cog):
         myEmbed.add_field(
             name="name", value="the name given to me was 'MGs Search Bot' , MGSB for short ", inline=False)
         myEmbed.add_field(name="Created By",
-                           value="Mg (Mg#9916)", inline=False)
+                          value="Mg (Mg#9916)", inline=False)
+        myEmbed.add_field(name="Made By",
+                          value="Yog @.Yog#7840", inline=False)
         myEmbed.add_field(name="Languages used",
-                           value="Python only", inline=False)
+                          value="Python only", inline=False)
 
         await context.message.reply(embed=myEmbed)
     # ping
@@ -40,14 +42,14 @@ class Info(commands.Cog):
     # help
 
     @commands.command(name='mg')
-    async def mg(self,context):
+    async def mg(self, context):
 
         myEmbed = discord.Embed(
             title="mgsb help commands", description="these r the primary cmds", color=0x00ff00)
         myEmbed.add_field(name="1) mg - ",
-                           value="brings up this page", inline=True)
+                          value="brings up this page", inline=True)
         myEmbed.add_field(name="2) who - ",
-                           value="tells you about the bot", inline=True)
+                          value="tells you about the bot", inline=True)
         myEmbed.add_field(
             name="3) cmd - ", value="shows u all the search commands that u can use", inline=True)
         myEmbed.add_field(
@@ -56,7 +58,7 @@ class Info(commands.Cog):
         myEmbed.add_field(name="6) how - ", value="fun cmd2", inline=True)
         myEmbed.add_field(name="7) say - ", value="fun cmd3", inline=True)
         myEmbed.add_field(name="8) ping - ",
-                           value="know your latency", inline=True)
+                          value="know your latency", inline=True)
 
         await context.message.reply(embed=myEmbed)
 

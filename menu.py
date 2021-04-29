@@ -4,7 +4,7 @@ from discord.ext.commands.context import Context
 from discord.member import Member
 
 class menu(commands.Cog):
-    @commands.command(name='mg')
+    @commands.command(name='mg2')
 
     async def mg(self,context):
         

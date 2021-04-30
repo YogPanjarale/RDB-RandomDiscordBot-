@@ -11,7 +11,7 @@ import instatools3
 
 
 class Cmd(commands.Cog):
-    @commands.command('gh')
+    @commands.command('git')
     async def github(self, ctx: Context, *, term: str = ''):
         r = requests.get(f'https://api.github.com/users/{term}').json()
         try:
@@ -32,7 +32,7 @@ class Cmd(commands.Cog):
 
     @commands.command('ggl')
     async def ggl(self, ctx, *, term: str = ''):
-        # result = search(query=term,num_results=10)
+        result = search(query=term,num_results=10)
         result: SearchResponse = GoogleSearch().search(query=term, num_results=5)
         print(term)
         myEmbed = discord.Embed(title="Google search", description=">>>this is     what i found",

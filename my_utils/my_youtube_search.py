@@ -58,7 +58,7 @@ class YoutubeResult(object):
         }
 
 
-def searchYT(term: str, max_result: int = 3):
+def searchYT(term: str, max_result: int = 10):
     results = YoutubeSearch(term, max_results=max_result).to_dict()
     result_list = []
     for item in results:

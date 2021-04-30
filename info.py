@@ -41,26 +41,6 @@ class Info(commands.Cog):
         await context.message.reply(embed=myEmbed)
     # help
 
-    @commands.command(name='mg')
-    async def mg(self, context):
-
-        myEmbed = discord.Embed(
-            title="mgsb help commands", description="these r the primary cmds", color=0x00ff00)
-        myEmbed.add_field(name="1) mg - ",
-                          value="brings up this page", inline=True)
-        myEmbed.add_field(name="2) who - ",
-                          value="tells you about the bot", inline=True)
-        myEmbed.add_field(
-            name="3) cmd - ", value="shows u all the search commands that u can use", inline=True)
-        myEmbed.add_field(
-            name="4) ver - ", value="tells you about the current version of the bot", inline=True)
-        myEmbed.add_field(name="5) sad - ", value="fun cmd1", inline=True)
-        myEmbed.add_field(name="6) how - ", value="fun cmd2", inline=True)
-        myEmbed.add_field(name="7) say - ", value="fun cmd3", inline=True)
-        myEmbed.add_field(name="8) ping - ",
-                          value="know your latency", inline=True)
-
-        await context.message.reply(embed=myEmbed)
 
 
 def setup(client):

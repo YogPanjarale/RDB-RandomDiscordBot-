@@ -22,11 +22,11 @@ class Info(commands.Cog):
         myEmbed.add_field(
             name="name", value="the name given to me was 'MGs Search Bot' , MGSB for short ", inline=False)
         myEmbed.add_field(name="Created By",
-                          value="Mg [Mg#9916](www.github.com/omegamg05111101)", inline=False)
-        myEmbed.add_field(name="Made By",
-                          value="Yog [.Yog#7840](www.github.com/YogPanjarale", inline=False)
+                          value="Mg - (Mg#9916)[https://github.com/omegamg05111101]", inline=False)
+        myEmbed.add_field(name="Heavily Contributed by",
+                          value="Yog - (.Yog#7840)[https://github.com/yoganjarale]", inline=False)
         myEmbed.add_field(name="Languages used",
-                          value="Python only", inline=False)
+                          value="Python", inline=False)
 
         await context.message.reply(embed=myEmbed)
     # ping

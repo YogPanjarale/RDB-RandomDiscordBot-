@@ -95,7 +95,7 @@ class Cmd(commands.Cog):
             # embed.add_field(name="Views",value=i.views)
             page = Page(
                 title=i.title[0], description=i.description[0], color=0x00ff00, url=i.url[0])
-            page.set_thumbnail(url=i.thumbnail[0])
+            page.set_image(url=i.thumbnail[0])
             page.add_field(name="Views", value=i.views)
             page.add_field(name="duration", value=i.duration)
             page.add_field(name="channel", value=i.channel)
@@ -103,6 +103,7 @@ class Cmd(commands.Cog):
             pages.append(page)
             # await ctx.message.channel.send(embed=embed)
         menu.add_pages(pages)
+        menu.show_command_message()
         await menu.open()
     # commands to use
 

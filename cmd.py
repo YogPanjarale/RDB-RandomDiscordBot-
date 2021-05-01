@@ -11,7 +11,7 @@ import instatools3
 
 
 class Cmd(commands.Cog):
-    @commands.command('gh')
+    @commands.command('git')
     async def github(self, ctx: Context, *, term: str = ''):
         r = requests.get(f'https://api.github.com/users/{term}').json()
         try:
@@ -32,7 +32,7 @@ class Cmd(commands.Cog):
 
     @commands.command('ggl')
     async def ggl(self, ctx, *, term: str = ''):
-        # result = search(query=term,num_results=10)
+        result = SearchResult(query=term,num_results=10)
         result: SearchResponse = GoogleSearch().search(query=term, num_results=5)
         print(term)
         myEmbed = discord.Embed(title="Google search", description=">>>this is     what i found",
@@ -97,6 +97,9 @@ class Cmd(commands.Cog):
                 title=i.title[0], description=i.description[0], color=0x00ff00, url=i.url[0])
             page.set_thumbnail(url=i.thumbnail[0])
             page.add_field(name="Views", value=i.views)
+            page.add_field(name="duration", value=i.duration)
+            page.add_field(name="channel", value=i.channel)
+            page.add_field(name="publish time", value=i.publish_time)
             pages.append(page)
             # await ctx.message.channel.send(embed=embed)
         menu.add_pages(pages)

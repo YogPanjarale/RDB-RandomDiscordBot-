@@ -5,7 +5,7 @@ from discord.member import Member
 
 
 class menu(commands.Cog):
-    @commands.command(name='mg2')
+    @commands.command(name='mg')
     async def mg(self, context):
 
         myEmbed = discord.Embed(

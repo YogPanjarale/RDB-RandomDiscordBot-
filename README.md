@@ -12,4 +12,8 @@ BOT_TOKEN= Nzg2MTg3NTkzNjc0OTE1ODYx.X9CwQA.mGEAASomething_like_this_l0
 
 4.Change the Bot Prefix if you want in `main.py`
 
-5.Run `main.py` file
+5.Run in terminal `pip install requirements.txt`
+
+6.Run `main.py` file
+
+7.For Mod to work do `python -m spacy download en`  administator terminal

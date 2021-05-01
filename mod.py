@@ -1,20 +1,20 @@
 import discord
+<<<<<<< HEAD
 from discord.ext import commands ,tasks
 from discord.ext.commands import Context
 from discord import Member
-
-class mod(commands.Cog):
-
-    filtered_words = ["nibba","nibbi","bc","ass","bitch","fuck"]
-
+from profanity_filter import ProfanityFilter
+import spacy
+nlp = spacy.load('en_core_web_sm')
+pf = ProfanityFilter()
+class Mod(commands.Cog):
     @commands.Cog.listener()
 
-    async def on_message(msg):
-        for word in filtered_words:
-            if word in msg.content:
-                await msg.delete()
-
-        await commands.process_commands(msg)
+    async def on_message(self,msg):
+        r= pf.censor(msg.content)
+        if r != msg.content:
+            await msg.delete()
+        # await msg.edit(content = r)
 
 #clear messages acc to amt
 
@@ -33,3 +33,5 @@ class mod(commands.Cog):
 
 def setup(client):
     client.add_cog(mod(client))
+
+

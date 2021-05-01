@@ -9,14 +9,14 @@ class Fun(commands.Cog):
     @commands.command(name='how')
     async def how(self, ctx):
 
-        myEmbed7 = discord.Embed(
+        myEmbed = discord.Embed(
             title="how am i?", description="im doing great , thank u for asking :))", color=0x00ff00)
-        myEmbed7.add_field(name="what about you sir/ma'am?",
+        myEmbed.add_field(name="what about you sir/ma'am?",
                            value="how are u today ?", inline=False)
-        myEmbed7.set_image(
+        myEmbed.set_image(
             url="https://media.giphy.com/media/Xfbugf2U4rC1Db4NSq/giphy.gif")
 
-        await ctx.message.reply(embed=myEmbed7)
+        await ctx.message.reply(embed=myEmbed)
     # pfp
 
     @commands.command('pfp')
@@ -34,14 +34,14 @@ class Fun(commands.Cog):
     @commands.command(name='hello')
     async def hello(self, ctx):
 
-        embed = discord.Embed(
+        myEmbed = discord.Embed(
             title="",
             color=discord.Colour.purple()
         )
-        embed.set_image(
+        myEmbed.set_image(
             url="https://media.giphy.com/media/djRJNZqj508sE/giphy.gif")
 
-        await ctx.message.reply(embed=embed)
+        await ctx.message.reply(embed=myEmbed)
 
     @commands.command('sad')
     async def sad(self, ctx):

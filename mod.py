@@ -4,10 +4,6 @@ from discord.ext.commands import Context
 from discord import Member
 
 class Mod(commands.Cog):
-    
-
-    
-
     #clear messages acc to amt
     @commands.command('d')
     @commands.has_permissions(manage_messages = True)
@@ -17,6 +13,7 @@ class Mod(commands.Cog):
         myEmbed.set_footer(text="asked By ".title(
             )+str(ctx.author), icon_url=str(ctx.message.author.avatar_url))
         await ctx.message.channel.send(embed=myEmbed)
+
     #kick members
     @commands.command('k')
     @commands.has_permissions(kick_members = True)

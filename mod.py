@@ -15,15 +15,13 @@ class Mod(commands.Cog):
             await msg.delete()
         # await msg.edit(content = r)
 
-#clear messages acc to amt
-
+    #clear messages acc to amt
     @commands.command('d')
     @commands.has_permissions(manage_messages = True)
     async def d(self,ctx,amount=10):
         await ctx.channel.purge(limit = amount)
 
-#kick members
-
+    #kick members
     @commands.command('k')
     @commands.has_permissions(kick_members = True)
     async def k(self,ctx,member : discord.Member,*,reason = "no reason provided"):

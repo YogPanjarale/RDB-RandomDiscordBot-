@@ -20,7 +20,7 @@ class Mod(commands.Cog):
     @commands.has_permissions(manage_messages = True)
     async def d(self,ctx,amount=10):
         await ctx.channel.purge(limit = amount)
-        myEmbed = discord.Embed(title = 'messages deleted succesfully',description='msgs = '+limit)
+        myEmbed = discord.Embed(title = 'messages deleted succesfully',description='msgs = '+amount-1)
         await ctx.message.reply(embed=myEmbed)
     #kick members
     @commands.command('k')

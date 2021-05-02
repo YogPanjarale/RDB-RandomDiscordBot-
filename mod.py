@@ -13,7 +13,6 @@ class Mod(commands.Cog):
         myEmbed.set_footer(text="asked By ".title(
             )+str(ctx.author), icon_url=str(ctx.message.author.avatar_url))
         await ctx.message.channel.send(embed=myEmbed)
-
     #kick members
     @commands.command('k')
     @commands.has_permissions(kick_members = True)

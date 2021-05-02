@@ -2,26 +2,21 @@ import discord
 from discord.ext import commands ,tasks
 from discord.ext.commands import Context
 from discord import Member
-from profanity_filter import ProfanityFilter
-import spacy
-nlp = spacy.load('en_core_web_sm')
-pf = ProfanityFilter()
-class Mod(commands.Cog):
-    @commands.Cog.listener()
 
-    async def on_message(self,msg):
-        r= pf.censor(msg.content)
-        if r != msg.content:
-            await msg.delete()
-        # await msg.edit(content = r)
+class Mod(commands.Cog):
+    
+
+    
 
     #clear messages acc to amt
     @commands.command('d')
     @commands.has_permissions(manage_messages = True)
     async def d(self,ctx,amount=10):
-        await ctx.channel.purge(limit = amount)
-        myEmbed = discord.Embed(title = 'messages deleted succesfully',description='msgs = '+limit)
-        await ctx.message.reply(embed=myEmbed)
+        await ctx.channel.purge(limit = amount+1)
+        myEmbed = discord.Embed(title = 'messages deleted succesfully - ',description=amount)
+        myEmbed.set_footer(text="asked By ".title(
+            )+str(ctx.author), icon_url=str(ctx.message.author.avatar_url))
+        await ctx.message.channel.send(embed=myEmbed)
     #kick members
     @commands.command('k')
     @commands.has_permissions(kick_members = True)

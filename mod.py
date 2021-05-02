@@ -20,13 +20,21 @@ class Mod(commands.Cog):
     @commands.has_permissions(manage_messages = True)
     async def d(self,ctx,amount=10):
         await ctx.channel.purge(limit = amount)
-
+        myEmbed = discord.Embed(title = 'messages deleted succesfully',description='msgs = '+limit)
+        await ctx.message.reply(embed=myEmbed)
     #kick members
     @commands.command('k')
     @commands.has_permissions(kick_members = True)
     async def k(self,ctx,member : discord.Member,*,reason = "no reason provided"):
-        await member.send("you have been kicked from the server, Because:"+reason)
+        await member.send("you have been kicked from the server,because: "+reason)
         await member.kick(reason = reason)
+
+    #ban members
+    @commands.command('b')
+    @commands.has_permissions(ban_members = True)
+    async def b(self,ctx,member : discord.Member,*,reason = "no reason provided"):
+        await member.send("you have been banned from the server,because: "+reason)
+        await member.ban(reason = reason)
 
 def setup(client):
     client.add_cog(Mod(client))

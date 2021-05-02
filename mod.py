@@ -1,5 +1,4 @@
 import discord
-<<<<<<< HEAD
 from discord.ext import commands ,tasks
 from discord.ext.commands import Context
 from discord import Member
@@ -32,6 +31,6 @@ class Mod(commands.Cog):
         await member.kick(reason = reason)
 
 def setup(client):
-    client.add_cog(mod(client))
+    client.add_cog(Mod(client))
 
 

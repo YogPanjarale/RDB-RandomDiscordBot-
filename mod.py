@@ -19,9 +19,11 @@ class Mod(commands.Cog):
     @commands.command('d')
     @commands.has_permissions(manage_messages = True)
     async def d(self,ctx,amount=10):
-        await ctx.channel.purge(limit = amount)
-        myEmbed = discord.Embed(title = 'messages deleted succesfully',description='msgs = '+amount-1)
-        await ctx.message.reply(embed=myEmbed)
+        await ctx.channel.purge(limit = amount+1)
+        myEmbed = discord.Embed(title = 'messages deleted succesfully - ',description=amount)
+        myEmbed.set_footer(text="asked By ".title(
+            )+str(ctx.author), icon_url=str(ctx.message.author.avatar_url))
+        await ctx.message.channel.send(embed=myEmbed)
     #kick members
     @commands.command('k')
     @commands.has_permissions(kick_members = True)

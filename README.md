@@ -2,7 +2,7 @@
 
 1.Make a `.env` file in base directory
 
-2.Get a Discord Bot Token from [Discord Devpoler Portal](https://discord.com/developers/applications/)
+2.Get a Discord Bot Token from [Discord Developer Portal](https://discord.com/developers/applications/)
 
 3.Put that Token in `.env` file like this
 

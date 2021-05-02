@@ -7,7 +7,7 @@ class Mod(commands.Cog):
     #clear messages acc to amt
     @commands.command('d')
     @commands.has_permissions(manage_messages = True)
-    async def d(self,ctx,amount=10):
+    async def d(self,ctx,amount=0):
         await ctx.channel.purge(limit = amount+1)
         myEmbed = discord.Embed(title = 'messages deleted succesfully - ',description=amount)
         myEmbed.set_footer(text="asked By ".title(

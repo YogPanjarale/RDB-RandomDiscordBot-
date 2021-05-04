@@ -54,6 +54,20 @@ class Fun(commands.Cog):
 
         await ctx.message.reply(embed=myEmbed)
 
+    @commands.command('spam')
+    async def spam(self,ctx:Context,n:str='',*terms):
+        term =''
+        if not( n.isnumeric()):
+            await ctx.channel.send("You did not provide the number")
+            term+=n
+            n=1
+        for t in terms:
+            term+=' '+str(t)
+        n:int=int(n)
+        for i in range(n):
+            await ctx.channel.send(f"{int(n)-i} remain")
+            await ctx.channel.send(term)
+        
 
 def setup(client):
     client.add_cog(Fun(client))

@@ -24,7 +24,7 @@ class Info(commands.Cog):
         myEmbed.add_field(name="Created By",
                           value="**[Mg](https://github.com/omegamg05111101)** - **<@!518118892317442059>**", inline=False)
         myEmbed.add_field(name="Heavily Contributed by",
-                          value="**[Yog](https://github.com/yogpanjarale)** - **<@!705463601011490907>**", inline=False)
+                          value="**[Yog](https://github.com/YogPanjarale)** - **<@!705463601011490907>**", inline=False)
         myEmbed.add_field(name="Languages used",
                           value="Python", inline=False)
 

@@ -65,7 +65,7 @@ class Fun(commands.Cog):
             term+=' '+str(t)
         n:int=int(n)
         for i in range(n):
-            
+            # await ctx.channel.send(f"{int(n)-i} remain")
             await ctx.channel.send(term)
         #8ball cmd
 

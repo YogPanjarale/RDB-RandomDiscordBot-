@@ -9,7 +9,6 @@ from googlesearch.googlesearch import GoogleSearch, SearchResponse, SearchResult
 from urllib.parse import quote
 import instatools3
 
-
 class Cmd(commands.Cog):
     @commands.command('git')
     async def github(self, ctx: Context, *, term: str = ''):
@@ -134,7 +133,10 @@ class Cmd(commands.Cog):
             name="twit", value="searches for a particular twitter acc", inline=True)
 
         await context.message.reply(embed=myEmbed3)
-
+   
+    @commands.command(name="corona")
+    async def corona(self,ctx:Context):
+        await ctx.channel.send("WIP")
 
 def setup(client):
     client.add_cog(Cmd(client))

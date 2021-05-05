@@ -22,9 +22,9 @@ class Info(commands.Cog):
         myEmbed.add_field(
             name="name", value="the name given to me was 'MGs Search Bot' , MGSB for short ", inline=False)
         myEmbed.add_field(name="Created By",
-                          value="**<@!518118892317442059>** **[MG](https://github.com/omegamg05111101)**", inline=False)
+                          value="**[Mg](https://github.com/omegamg05111101)** - **<@!518118892317442059>**", inline=False)
         myEmbed.add_field(name="Heavily Contributed by",
-                          value="**<@!705463601011490907>** **[YOG](https://github.com/yogpanjarale)**", inline=False)
+                          value="**[Yog](https://github.com/yogpanjarale)** - **<@!705463601011490907>**", inline=False)
         myEmbed.add_field(name="Languages used",
                           value="Python", inline=False)
 

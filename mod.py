@@ -4,7 +4,9 @@ from discord.ext.commands import Context
 from discord import Member
 
 class Mod(commands.Cog):
+    
     #clear messages acc to amt
+    
     @commands.command('d')
     @commands.has_permissions(manage_messages = True)
     async def d(self,ctx,amount=0):
@@ -15,26 +17,80 @@ class Mod(commands.Cog):
         await ctx.message.channel.send(embed=myEmbed,delete_after = 2)
     
     #kick members
+    
     @commands.command('k')
     @commands.has_permissions(kick_members = True)
     async def k(self,ctx,member : discord.Member,*,reason = "no reason provided"):
-        await member.send("you have been kicked from the server,because: "+reason)
+        
         await member.kick(reason = reason)
     
     #ban members
+    
     @commands.command('b')
     @commands.has_permissions(ban_members = True)
     async def b(self,ctx,member : discord.Member,*,reason = "no reason provided"):
         await member.send("you have been banned from the server,because: "+reason)
         await member.ban(reason = reason)
     
+    #unban members
+    
+    @commands.command('ub')
+    @commands.has_permissions(ban_members=True)
+    async def unban(self,ctx,*,member):
+        banned_users = await ctx.guild.bans()
+        member_name , member_disc = member.split('#')
+        for banned_entry in banned_users:
+            user = banned_entry.user
+            if(user.name,user.discriminator)==(member_name,member_disc):
+                await ctx.guild.unban(user)
+                await ctx.send(member_name+" has been succesfully unbanned")
+                return
+
+        await ctx.send(member+" was not found")
+
     #delete channels
+    
     @commands.command('dc')
     @commands.has_permissions(manage_channels = True)
     async def dc(self,ctx,channel : discord.TextChannel):
         await ctx.send("the channel was deleted succesfully")
         await channel.delete()
+    
+    #mute members
 
+    @commands.command('m')
+    @commands.has_permissions(kick_members = True)
+    async def m(self,ctx,member : discord.Member):
+        muted_role = ctx.guild.get_role(839003264992935947)
+        await member.add_roles(muted_role)
+        await ctx.send(member.mention+" has been muted")
+
+    #unmute members
+
+    @commands.command('um')
+    @commands.has_permissions(kick_members = True)
+    async def m(self,ctx,member : discord.Member):
+        muted_role = ctx.guild.get_role(839003264992935947)
+        await member.remove_roles(muted_role)
+        await ctx.send(member.mention+" has been unmuted")
+
+    #lockdown cmd
+
+    @commands.command('ld')
+    @commands.has_permissions(kick_members = True)
+    async def ld(self,ctx,member : discord.Member):
+        lockdown = ctx.guild.get_role(839409585706237973)
+        await member.add_roles(lockdown)
+        await ctx.send(member.mention+" is/are going thru a temporary lockdown")
+
+    #remove lockdown
+
+    @commands.command('rld')
+    @commands.has_permissions(kick_members = True)
+    async def rld(self,ctx,member : discord.Member):
+        rlockdown = ctx.guild.get_role(839409585706237973)
+        await member.remove_roles(rlockdown)
+        await ctx.send(member.mention+" the lockdown is over , sorry for the inconvenience")
 
 def setup(client):
     client.add_cog(Mod(client))

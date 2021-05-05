@@ -53,7 +53,21 @@ class Fun(commands.Cog):
                           value="doesnt matter , go vibe to some music!!", inline=False)
 
         await ctx.message.reply(embed=myEmbed)
-    #8ball cmd
+
+    @commands.command('spam')
+    async def spam(self,ctx:Context,n:str='',*terms):
+        term =''
+        if not( n.isnumeric()):
+            await ctx.channel.send("You did not provide the number")
+            term+=n
+            n=1
+        for t in terms:
+            term+=' '+str(t)
+        n:int=int(n)
+        for i in range(n):
+            await ctx.channel.send(f"{int(n)-i} remain")
+            await ctx.channel.send(term)
+        #8ball cmd
 
     @commands.command(name='8b', help='Replies to a question')
     async def eightball(self, ctx, *, question):
@@ -83,7 +97,7 @@ class Fun(commands.Cog):
         embed1.add_field(name=f'Question:', value=f'{question}')
         embed1.add_field(name=f'Answer:', value=f'{random.choice(responses)}')
         embed1.set_footer(text=f'Requested by {ctx.author}')
-        await ctx.send(embed=embed1)
+        await ctx.send(embed=embed1)   
 
 def setup(client):
     client.add_cog(Fun(client))

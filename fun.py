@@ -20,9 +20,9 @@ class Fun(commands.Cog):
             return await ctx.channel.send("You did not provide the command description!")
         if name in self.bot.all_commands:
             return await ctx.channel.send(f"{name} command already exists!")
-
-        addCC(name=name,description=' '.join(description))
-        await ctx.channel.send(f"Command with name : {name}, and description : {description} Added by {ctx.author}")
+        description=' '.join(description)
+        addCC(name=name,description=description)
+        await ctx.channel.send(f"Command with name : `{name}`, and description : `{description}` Added by {ctx.author.mention}")
     @commands.Cog.listener()
     async def on_command_error(self,ctx:Context,error):
         if isinstance(error, CommandNotFound):

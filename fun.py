@@ -1,11 +1,47 @@
+from my_utils.my_cc import addCC, searchCC
 import discord
 from discord.ext import commands
+from discord.ext.commands.bot import Bot
 from discord.ext.commands.context import Context
+from discord.ext.commands.errors import CommandNotFound
 from discord.member import Member
 import random
 
-class Fun(commands.Cog):
+from discord.message import Message
 
+class Fun(commands.Cog):
+    def __init__(self, bot):
+        self.bot:Bot     = bot
+    @commands.command(name="cc")
+    async def cc(self,ctx:Context,name:str=" ",*description):
+        if name == " ":
+            return await ctx.channel.send("You did not provide the command name!")
+        if not description :
+            return await ctx.channel.send("You did not provide the command description!")
+        if name in self.bot.all_commands:
+            return await ctx.channel.send(f"{name} command already exists!")
+
+        addCC(name=name,description=' '.join(description))
+    @commands.Cog.listener()
+    async def on_command_error(self,ctx:Context,error):
+        if isinstance(error, CommandNotFound):
+            msg:str=ctx.message.content
+            
+            r=searchCC(msg.removeprefix(self.bot.command_prefix))
+            # print(r)
+            if r:
+                return await ctx.channel.send(r['description'])
+                
+            return await ctx.channel.send(":bruh:")
+        raise error
+         
+    @commands.command(name="count")
+    async def count(self,ctx:Context,n:str):
+        if n.isnumeric():
+            for i in range(int(n)):
+                await ctx.channel.send(str(i+1))
+        else:
+            await ctx.channel.send("Not a valid number to count")
     @commands.command(name='how')
     async def how(self, ctx):
 
@@ -18,7 +54,6 @@ class Fun(commands.Cog):
 
         await ctx.message.reply(embed=myEmbed)
     # pfp
-
     @commands.command('pfp')
     async def pfp(self, ctx, member: Member = None):
         if not member:
@@ -98,6 +133,7 @@ class Fun(commands.Cog):
         embed1.add_field(name=f'Answer:', value=f'{random.choice(responses)}')
         embed1.set_footer(text=f'Requested by {ctx.author}')
         await ctx.send(embed=embed1)   
+
 
 def setup(client):
     client.add_cog(Fun(client))

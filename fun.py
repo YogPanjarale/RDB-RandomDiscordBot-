@@ -1,16 +1,30 @@
+from my_utils.my_cc import addCC
 import discord
 from discord.ext import commands
+from discord.ext.commands.bot import Bot
 from discord.ext.commands.context import Context
+from discord.ext.commands.errors import CommandNotFound
 from discord.member import Member
 import random
 
+from discord.message import Message
+
 class Fun(commands.Cog):
+    def __init__(self, bot):
+        self.bot:Bot     = bot
     @commands.command(name="cc")
     async def cc(self,ctx:Context,name:str=" ",*description):
         if name == " ":
             return await ctx.channel.send("You did not provide the command name!")
         if not description :
             return await ctx.channel.send("You did not provide the command description!")
+        addCC(name=name,description=description)
+    @commands.Cog.listener()
+    async def on_command_error(self,ctx:Context,error):
+        if isinstance(error, CommandNotFound):
+            await ctx.channel.send(":bruh:")
+            return
+        raise error
          
     @commands.command(name="count")
     async def count(self,ctx:Context,n:str):

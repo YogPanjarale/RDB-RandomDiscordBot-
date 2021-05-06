@@ -16,7 +16,8 @@ class menu(commands.Cog):
         myEmbed.add_field(name="3) fun - ", value="Fun cmds", inline=True)
         myEmbed.add_field(
             name="4) cmd - ", value="shows u all the search commands that u can use", inline=True)
-
+        myEmbed.add_field(
+            name="5) mod - ", value="Creator and Moderation commands", inline=True)
         await context.message.reply(embed=myEmbed)
 
     @commands.command(name='utils')

@@ -1,5 +1,8 @@
 import os
 from discord.ext.commands import Bot
+from discord.ext import commands ,tasks
+from discord.ext.commands import Context
+from discord import Member
 from dotenv import load_dotenv
 load_dotenv()
 BOT_TOKEN = os.getenv('BOT_TOKEN')
@@ -16,6 +19,8 @@ if __name__ == '__main__':
             print(f'Failed to load Cog {extension}. Reason: {error}')
     print('Bot ready')
 
+@commands.has_permissions(ban_members = True)
+@commands.has_role('mgsb admin')
 @client.command(name='re') 
 async def reload(ctx, extension):
     if extension == '':
@@ -27,6 +32,7 @@ async def reload(ctx, extension):
     except Exception as error:
         await ctx.send(f'Failed to reload Cog {extension}. Reason: {error}')
 
+@commands.has_role('mgsb admin')
 @client.command(name='sd') 
 async def reload(ctx, extension):
     if extension == '':
@@ -37,6 +43,8 @@ async def reload(ctx, extension):
     except Exception as error:
         await ctx.send(f'Failed to shutdown Cog {extension}. Reason: {error}')
 
+
+@commands.has_role('mgsb admin')
 @client.command(name='su') 
 async def reload(ctx, extension):
     if extension == '':

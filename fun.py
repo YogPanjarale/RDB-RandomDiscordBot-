@@ -18,7 +18,7 @@ class Fun(commands.Cog):
             return await ctx.channel.send("You did not provide the command name!")
         if not description :
             return await ctx.channel.send("You did not provide the command description!")
-        addCC(name=name,description=description)
+        addCC(name=name,description=' '.join(description))
     @commands.Cog.listener()
     async def on_command_error(self,ctx:Context,error):
         if isinstance(error, CommandNotFound):

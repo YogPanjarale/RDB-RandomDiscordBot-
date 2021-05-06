@@ -1,4 +1,3 @@
-from my_utils.my_db import initDB
 import os
 from discord.ext.commands import Bot
 from dotenv import load_dotenv
@@ -15,8 +14,6 @@ if __name__ == '__main__':
             print(f'Loaded Cog {extension} successfully')
         except Exception as error:
             print(f'Failed to load Cog {extension}. Reason: {error}')
-    initDB("../db.json")
-    print("DB initialized")
     print('Bot ready')
 
 @client.command(name='re')

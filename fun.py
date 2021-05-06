@@ -6,7 +6,7 @@ from discord.ext.commands.context import Context
 from discord.ext.commands.errors import CommandNotFound
 from discord.member import Member
 import random
-
+import tinydb
 from discord.message import Message
 
 class Fun(commands.Cog):

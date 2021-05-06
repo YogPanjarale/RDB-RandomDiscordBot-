@@ -16,8 +16,7 @@ if __name__ == '__main__':
             print(f'Failed to load Cog {extension}. Reason: {error}')
     print('Bot ready')
 
-@client.command(name='re')
-
+@client.command(name='re') 
 async def reload(ctx, extension):
     if extension == '':
         await ctx.send("Please enter a valid cog.")

@@ -1,4 +1,4 @@
-from my_utils.my_cc import addCC
+from my_utils.my_cc import addCC, searchCC
 import discord
 from discord.ext import commands
 from discord.ext.commands.bot import Bot
@@ -18,12 +18,21 @@ class Fun(commands.Cog):
             return await ctx.channel.send("You did not provide the command name!")
         if not description :
             return await ctx.channel.send("You did not provide the command description!")
+        if name in self.bot.all_commands:
+            return await ctx.channel.send(f"{name} command already exists!")
+
         addCC(name=name,description=' '.join(description))
     @commands.Cog.listener()
     async def on_command_error(self,ctx:Context,error):
         if isinstance(error, CommandNotFound):
-            await ctx.channel.send(":bruh:")
-            return
+            msg:str=ctx.message.content
+            
+            r=searchCC(msg.removeprefix(self.bot.command_prefix))
+            print(r)
+            if r:
+                return await ctx.channel.send(r['description'])
+                
+            return await ctx.channel.send(":bruh:")
         raise error
          
     @commands.command(name="count")

@@ -5,7 +5,13 @@ from discord.member import Member
 import random
 
 class Fun(commands.Cog):
-
+    @commands.command(name="cc")
+    async def cc(self,ctx:Context,name:str=" ",*description):
+        if name == " ":
+            return await ctx.channel.send("You did not provide the command name!")
+        if not description :
+            return await ctx.channel.send("You did not provide the command description!")
+         
     @commands.command(name="count")
     async def count(self,ctx:Context,n:str):
         if n.isnumeric():

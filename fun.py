@@ -6,6 +6,13 @@ import random
 
 class Fun(commands.Cog):
 
+    @commands.command(name="count")
+    async def count(self,ctx:Context,n:str):
+        if n.isnumeric():
+            for i in range(int(n)):
+                await ctx.channel.send(str(i+1))
+        else:
+            await ctx.channel.send("Not a valid number to count")
     @commands.command(name='how')
     async def how(self, ctx):
 
@@ -18,7 +25,6 @@ class Fun(commands.Cog):
 
         await ctx.message.reply(embed=myEmbed)
     # pfp
-
     @commands.command('pfp')
     async def pfp(self, ctx, member: Member = None):
         if not member:
@@ -98,6 +104,7 @@ class Fun(commands.Cog):
         embed1.add_field(name=f'Answer:', value=f'{random.choice(responses)}')
         embed1.set_footer(text=f'Requested by {ctx.author}')
         await ctx.send(embed=embed1)   
+
 
 def setup(client):
     client.add_cog(Fun(client))

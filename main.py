@@ -27,4 +27,24 @@ async def reload(ctx, extension):
     except Exception as error:
         await ctx.send(f'Failed to reload Cog {extension}. Reason: {error}')
 
+@client.command(name='sd') 
+async def reload(ctx, extension):
+    if extension == '':
+        await ctx.send("Please enter a valid cog.")
+    try:
+        client.unload_extension(extension)
+        await ctx.send(f'shutting down {extension}.py temporarily')
+    except Exception as error:
+        await ctx.send(f'Failed to shutdown Cog {extension}. Reason: {error}')
+
+@client.command(name='su') 
+async def reload(ctx, extension):
+    if extension == '':
+        await ctx.send("Please enter a valid cog.")
+    try:
+        client.load_extension(extension)
+        await ctx.send(f'starting up {extension}.py now')
+    except Exception as error:
+        await ctx.send(f'Failed to startup Cog {extension}. Reason: {error}')
+
 client.run(BOT_TOKEN)

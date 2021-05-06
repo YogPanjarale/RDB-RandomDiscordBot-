@@ -135,7 +135,7 @@ class Cmd(commands.Cog):
         await context.message.reply(embed=myEmbed3)
     
     @commands.command(name='uu')
-    async def cmd(self, context):
+    async def uu(self, context):
 
         myEmbed3 = discord.Embed(
             title="Upcoming Updates", description=">>>these r the upcoming updates , coming as update 1.5 ", color=0xff0000)
@@ -147,6 +147,8 @@ class Cmd(commands.Cog):
             name="ps", value="searches for a specific game or application on the google playstore", inline=True)
         myEmbed3.add_field(
             name="amzn", value="searches for a specific item on amazon", inline=True)
+
+        await context.message.reply(embed=myEmbed3)
     @commands.command(name="corona")
     async def corona(self,ctx:Context):
         await ctx.channel.send("WIP")

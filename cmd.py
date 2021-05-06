@@ -134,18 +134,19 @@ class Cmd(commands.Cog):
 
         await context.message.reply(embed=myEmbed3)
     
-        @commands.command(name='uu')
-        async def cmd(self, context):
+    @commands.command(name='uu')
+    async def cmd(self, context):
 
         myEmbed3 = discord.Embed(
-            title="Upcoming Updates", description=">>>these r the upcoming updates , coming as ", color=0xff0000)
+            title="Upcoming Updates", description=">>>these r the upcoming updates , coming as update 1.5 ", color=0xff0000)
         myEmbed3.add_field(
-            name="insta", value="searches for a particular instagram acc", inline=True)
-        #myEmbed3.add_field(
-            #name="fb", value="searches for a particular acc on facebook", inline=True)
+            name="spotify cmd", value="searches for info abt a specific song", inline=True)
         myEmbed3.add_field(
-            name="ggl", value="searches for a specific topic on the google search engine", inline=True)
-
+            name="fb", value="searches for a particular acc on facebook", inline=True)
+        myEmbed3.add_field(
+            name="ps", value="searches for a specific game or application on the google playstore", inline=True)
+        myEmbed3.add_field(
+            name="amzn", value="searches for a specific item on amazon", inline=True)
     @commands.command(name="corona")
     async def corona(self,ctx:Context):
         await ctx.channel.send("WIP")

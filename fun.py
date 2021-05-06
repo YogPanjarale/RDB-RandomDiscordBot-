@@ -27,7 +27,7 @@ class Fun(commands.Cog):
         if isinstance(error, CommandNotFound):
             msg:str=ctx.message.content
             
-            r=searchCC(msg.removeprefix(self.bot.command_prefix))
+            r=searchCC(msg[len(self.bot.command_prefix):])
             # print(r)
             if r:
                 return await ctx.channel.send(r['description'])

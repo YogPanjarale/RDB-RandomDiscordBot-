@@ -33,7 +33,7 @@ class Fun(commands.Cog):
             if r:
                 return await ctx.channel.send(r['description'])
                 
-            return await ctx.channel.send(":bruh:")
+            return await ctx.channel.send("<:bruh:839886556667838484>")
         raise error
          
     @commands.command(name="count")

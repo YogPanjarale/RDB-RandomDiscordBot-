@@ -19,8 +19,8 @@ class menu(commands.Cog):
 
         await context.message.reply(embed=myEmbed)
 
-    @commands.command(name='util')
-    async def util(self, context):
+    @commands.command(name='utils')
+    async def utils(self, context):
 
         myEmbed = discord.Embed(
             title="Utility Commands", description="these r one of the secondary cmds,dont forget to put prefix mg. before each of them", color=0x00ff00)

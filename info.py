@@ -7,8 +7,8 @@ class Info(commands.Cog):
     @commands.command(name='ver')
     async def ver(self, context):
         myEmbed = discord.Embed(
-            title="Current Version", description="Version 1.3", color=0x00ff00)
-        myEmbed.add_field(name="Version Code", value="v1.3.0", inline=False)
+            title="Current Version", description="Version 1.4", color=0x00ff00)
+        myEmbed.add_field(name="Version Code", value="v1.4.1", inline=False)
         myEmbed.add_field(name="Date Released",
                           value="March 29th ,2021", inline=False)
         await context.message.reply(embed=myEmbed)

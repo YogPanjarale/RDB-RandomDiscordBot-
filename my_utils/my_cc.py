@@ -3,7 +3,7 @@ db = TinyDB('./db.json')
 q=Query()
 def addCC(name:str,description:str):
     db.insert({"name":name,"description":description})
-    print(db.all())
+    # print(db.all())
     print(f"Command with name : {name}, and description : {description} Added")
     pass
 def searchCC(name:str):

@@ -1,1 +1,8 @@
-{"_default": {"1": {"name": "no", "description": "one"}, "2": {"name": "no", "description": "one"}, "3": {"name": "no", "description": "one"}}}
+{
+    "_default": {
+        "1": {
+            "name": "no",
+            "description": "one"
+        }
+    }
+}

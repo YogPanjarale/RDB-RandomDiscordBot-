@@ -65,16 +65,15 @@ class menu(commands.Cog):
 
         myEmbed = discord.Embed(
             title="Fun commands", description="these r one of the secondary cmds,dont forget to put the prefix before each of them", color=0x00ff00)
-        myEmbed.add_field(name="1) sad - ", value="fun cmd1", inline=True)
-        myEmbed.add_field(name="2) hello - ", value="fun cmd2", inline=True)
-        myEmbed.add_field(name="3) say - ", value="fun cmd3", inline=True)
-        myEmbed.add_field(name="4) how - ", value="fun cmd4", inline=True)
-        myEmbed.add_field(name="5) pfp - ", value="fun cmd5", inline=True)
-        myEmbed.add_field(name="6) fight - ", value="fun cmd6", inline=True)
-        myEmbed.add_field(name="7) 8b - ", value="fun cmd6", inline=True)
-        myEmbed.add_field(name="8) spam - ", value="fun cmd6", inline=True)
-        myEmbed.add_field(name="9) count - ", value="fun cmd6", inline=True)
-        myEmbed.add_field(name="10) custom command (cc) - ", value="fun cmd6", inline=True)
+        myEmbed.add_field(name="1) hello - ", value="fun cmd1", inline=True)
+        myEmbed.add_field(name="2) say - ", value="fun cmd2", inline=True)
+        myEmbed.add_field(name="3) how - ", value="fun cmd3", inline=True)
+        myEmbed.add_field(name="4) pfp - ", value="fun cmd4", inline=True)
+        myEmbed.add_field(name="5) fight - ", value="fun cmd5", inline=True)
+        myEmbed.add_field(name="6) 8b - ", value="fun cmd6", inline=True)
+        myEmbed.add_field(name="7) spam - ", value="fun cmd7", inline=True)
+        myEmbed.add_field(name="8) count - ", value="fun cmd8", inline=True)
+        myEmbed.add_field(name="9) custom command (cc) - ", value="fun cmd9", inline=True)
 
         await context.message.reply(embed=myEmbed)
 

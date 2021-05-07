@@ -16,6 +16,16 @@ class Mod(commands.Cog):
             )+str(ctx.author), icon_url=str(ctx.message.author.avatar_url))
         await ctx.message.channel.send(embed=myEmbed,delete_after = 2)
     
+    
+
+    #@commands.Cog.listener()
+    #filtered_words = []
+    #async def on_message(self,msg):
+       #for word in filtered_words:
+            #if word in msg.content:
+                #await msg.delete()
+        
+
     #kick members
     
     @commands.command('k')

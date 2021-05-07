@@ -78,18 +78,8 @@ class Fun(commands.Cog):
             url="https://media.giphy.com/media/djRJNZqj508sE/giphy.gif")
 
         await ctx.message.reply(embed=myEmbed)
-
-    @commands.command('sad')
-    async def sad(self, ctx):
-        myEmbed = discord.Embed(
-            title="sad?", description="dont be , ur bots here for you ", color=0x00ff00)
-        myEmbed.add_field(name="what caused it?",
-                          value="r u actually crying or crying internally?", inline=False)
-        myEmbed.add_field(name="friends or family?",
-                          value="doesnt matter , go vibe to some music!!", inline=False)
-
-        await ctx.message.reply(embed=myEmbed)
-
+         
+    @commands.has_role('mgsb admin')
     @commands.command('spam')
     async def spam(self,ctx:Context,n:str='',*terms):
         term =''

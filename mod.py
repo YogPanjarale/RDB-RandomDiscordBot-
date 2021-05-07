@@ -81,7 +81,7 @@ class Mod(commands.Cog):
     async def ld(self,ctx,member : discord.Member):
         lockdown = ctx.guild.get_role(839409585706237973)
         await member.add_roles(lockdown)
-        await ctx.send(member.mention+" is/are going thru a temporary lockdown")
+        await ctx.send(member.mention+" is going thru a temporary lockdown")
 
     #remove lockdown
 

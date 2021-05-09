@@ -10,7 +10,7 @@ def addCC(name:str,description:str,user:str):
 def searchCC(name:str):
     print(f"Searching for {name}")
     result=db.search(q.name ==name)
-    print(result)
+    # print(result)
     if len(result)>0:
         return result[0]
     pass
@@ -18,5 +18,5 @@ v = list[dict]
 def serchCCByUser(user:str)->v:
     print(f"Searching for CC made by user {user}")
     result=db.search(q.user ==user)
-    print(result)
+    # print(result)
     return result

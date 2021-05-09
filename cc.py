@@ -4,7 +4,7 @@ from discord.ext import commands
 from discord.ext.commands.context import Context
 from discord import Embed
 
-class CC():
+class CC(commands.Cog):
     @commands.command(name="cc")
     async def cc(self,ctx:Context,name:str=" ",*description):
         if name.startswith("<@"):
@@ -46,4 +46,5 @@ class CC():
                 
             return await ctx.channel.send("<:bruh:839886556667838484>")
         raise error
-     
+def setup(client):
+    client.add_cog(CC(client))

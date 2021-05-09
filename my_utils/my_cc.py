@@ -16,13 +16,13 @@ def searchCC(name:str):
     if len(result)>0:
         return result[0]
     pass
-v = list[dict]
-def searchCCByUser(user:str)->v:
+# v = list[dict]
+def searchCCByUser(user:str):
     print(f"Searching for CC made by user {user}")
     result=db.search(q.user ==user)
     # print(result)
     return result
-def getAllCC()->v:
+def getAllCC():
     result = db.all()
     print(f"Getting all CC ", f"total {len(result)+1}")
     return result

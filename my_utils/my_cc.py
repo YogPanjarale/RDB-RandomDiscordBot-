@@ -3,7 +3,9 @@ import datetime;
 db = TinyDB('./db.json')
 q=Query()
 def addCC(name:str,description:str,user:str):
-    db.insert({"name":name,"description":description,"user":user,"time-created":f"{datetime.datetime.now()}"})
+    d = datetime.datetime.now()
+    timeCreated = d.ctime()
+    db.insert({"name":name,"description":description,"user":user,"time-created":timeCreated})
     # print(db.all())
     print(f"Command with name : {name}, and description : {description} Added, by user {user}")
     pass

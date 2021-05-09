@@ -18,13 +18,16 @@ class CC(commands.Cog):
                 # print(r)
                 # print("====================")
                 myEmbed = Embed(name=f"All Commands Created Since last reset ",description=f"Total of {len(r)+1} Commands")
+                j=0
                 for i in r:
+                    j+=1
                     # print("====================")
                     # print("i=")
                     # print(i)
                     # print("====================")
                     des = i['description'] + "\nC*reated At " + i["time-created"]+"*"
-                    myEmbed.add_field(name=i["name"],value=des,inline=False)
+                    n=f"{j}."+ i["name"] 
+                    myEmbed.add_field(name=n,value=des,inline=False)
                 return await ctx.channel.send(embed = myEmbed)
         if user.startswith("<@"):
             name = user
@@ -35,13 +38,16 @@ class CC(commands.Cog):
                 # print(r)
                 # print("====================")
                 myEmbed = Embed(name=f"Commands Created By {name}",description=f"{name} has created {len(r)+1} Commands ")
+                j=0
                 for i in r:
+                    j+=1
                     # print("====================")
-                    # print("i=")
                     # print(i)
                     # print("====================")
+                    # print("i=")
                     des = i['description'] + "\n**Created At " + i["time-created"]+"**"
-                    myEmbed.add_field(name=i["name"],value=des,inline=False)
+                    n=f"{j}."+ i["name"] 
+                    myEmbed.add_field(name=n,value=des,inline=False)
                 return await ctx.channel.send(embed = myEmbed)
             else:
                 myEmbed = Embed(name=f"Commands Created By {name}",description=f"{name} has not created any Commands")

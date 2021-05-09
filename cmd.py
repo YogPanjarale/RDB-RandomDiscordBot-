@@ -1,3 +1,4 @@
+from my_utils.get_covid_data import getCovidData
 from my_utils.my_youtube_search import YoutubeResult, searchYT
 import discord
 from discord.ext import commands
@@ -10,6 +11,19 @@ from urllib.parse import quote
 import instatools3
 
 class Cmd(commands.Cog):
+
+    @commands.command('cov')
+    async def covid(self,ctx:Context,*,term:str=""):
+        r = getCovidData()
+        if "india" in term:
+            r = getCovidData("india")
+        myEmbed = discord.Embed(title="Covid 19 - World data")
+        myEmbed.add_field(name="Total Cases",value=r.cases)
+        myEmbed.add_field(name="Total Active",value=r.active)
+        myEmbed.add_field(name="Total Recovered",value=r.recovered)
+        myEmbed.add_field(name="Total Deaths",value=r.deaths)
+        await ctx.message.channel.send(embed=myEmbed)
+
     @commands.command('git')
     async def github(self, ctx: Context, *, term: str = ''):
         r = requests.get(f'https://api.github.com/users/{term}').json()

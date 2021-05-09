@@ -21,6 +21,6 @@ def searchCCByUser(user:str)->v:
     # print(result)
     return result
 def getAllCC()->v:
-    result = db.search(q.exists("name")and q.exists("description"))
+    result = db.all()
     print(f"Getting all CC ", f"total {len(result)+1}")
     return result

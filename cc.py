@@ -25,7 +25,7 @@ class CC(commands.Cog):
                     # print("i=")
                     # print(i)
                     # print("====================")
-                    des = i['description'] + "\nC*reated At " + i["time-created"]+"*"
+                    des = i['description'] + "\n**Created At " + i["time-created"]+"**"
                     n=f"{j}."+ i["name"] 
                     myEmbed.add_field(name=n,value=des,inline=False)
                 return await ctx.channel.send(embed = myEmbed)

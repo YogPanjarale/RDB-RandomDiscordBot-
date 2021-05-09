@@ -69,13 +69,16 @@ class Fun(commands.Cog):
 
     @commands.command(name='hello')
     async def hello(self, ctx):
-
+        hellogifs = ["https://media.giphy.com/media/djRJNZqj508sE/giphy.gif",
+        "https://giphy.com/gifs/mW05nwEyXLP0Y",
+        "https://giphy.com/gifs/hello-adam-demamp-television-6yU7IF9L3950A",
+        "https://giphy.com/gifs/hello-hi-dzaUX7CAG0Ihi"]
         myEmbed = discord.Embed(
             title="",
             color=discord.Colour.purple()
         )
         myEmbed.set_image(
-            url="https://media.giphy.com/media/djRJNZqj508sE/giphy.gif")
+            url=random.choice(hellogifs))
 
         await ctx.message.reply(embed=myEmbed)
          

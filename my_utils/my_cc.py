@@ -15,7 +15,7 @@ def searchCC(name:str):
         return result[0]
     pass
 v = list[dict]
-def serchCCByUser(user:str)->v:
+def searchCCByUser(user:str)->v:
     print(f"Searching for CC made by user {user}")
     result=db.search(q.user ==user)
     # print(result)

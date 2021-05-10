@@ -8,7 +8,7 @@ from discord import Embed
 class CC(commands.Cog):
     def __init__(self, bot):
         self.bot:Bot     = bot
-    @commands.command(name="ccl")
+    @commands.command(name="cca")
     async def ccl(self,ctx:Context,user:str=""):
         if user =="":
             r = getAllCC()
@@ -17,7 +17,7 @@ class CC(commands.Cog):
                 # print("r=")
                 # print(r)
                 # print("====================")
-                myEmbed = Embed(name=f"All Commands Created Since last reset ",description=f"Total of {len(r)+1} Commands")
+                myEmbed = Embed(title=f"All Commands Created Since last reset ",description=f"Total of {len(r)+1} Commands")
                 j=0
                 for i in r:
                     j+=1
@@ -25,7 +25,7 @@ class CC(commands.Cog):
                     # print("i=")
                     # print(i)
                     # print("====================")
-                    des = i['description'] + "\n**Created At " + i["time-created"]+"**"
+                    des = i['description'] + "\n**Created At " + i['time-created']+"**"
                     n=f"{j}."+ i["name"] 
                     myEmbed.add_field(name=n,value=des,inline=False)
                 return await ctx.channel.send(embed = myEmbed)
@@ -37,7 +37,7 @@ class CC(commands.Cog):
                 # print("r=")
                 # print(r)
                 # print("====================")
-                myEmbed = Embed(name=f"Commands Created By {name}",description=f"{name} has created {len(r)+1} Commands ")
+                myEmbed = Embed(name=f"Commands Created By {name}",description=f"{name} has created {len(r)} Commands ")
                 j=0
                 for i in r:
                     j+=1
@@ -69,7 +69,7 @@ class CC(commands.Cog):
                     # print("i=")
                     # print(i)
                     # print("====================")
-                    des = i['description'] + "\nC*reated At " + i["time-created"]+"*"
+                    des = i['description'] + "\n**Created At " + i["time-created"]+"**"
                     myEmbed.add_field(name=i["name"],value=des,inline=False)
                 return await ctx.channel.send(embed = myEmbed)
             else:

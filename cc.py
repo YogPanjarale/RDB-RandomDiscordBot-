@@ -1,4 +1,4 @@
-from discord.ext.commands.errors import CommandNotFound
+from discord.ext.commands.errors import BotMissingPermissions, CommandInvokeError, CommandNotFound
 from my_utils.my_cc import addCC, getAllCC, searchCC, searchCCByUser
 from discord.ext import commands
 from discord.ext.commands.bot import Bot
@@ -61,7 +61,7 @@ class CC(commands.Cog):
         await ctx.channel.send(f"Command with name : `{name}` , and description : `{description}` has been added by {ctx.author.mention}")
     @commands.Cog.listener()
     async def on_command_error(self,ctx:Context,error):
-        if isinstance(error, CommandNotFound):
+        if isinstance(error, CommandNotFound) or isinstance(error,BotMissingPermissions) or isinstance(error,CommandInvokeError):
             msg:str=ctx.message.content
             r=searchCC(msg[len(self.bot.command_prefix):])
             if r:

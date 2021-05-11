@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 from discord.ext.commands.bot import Bot
 from discord.ext.commands.context import Context
+from discord.ext.commands.errors import CommandInvokeError, CommandNotFound, MissingPermissions
 from discord.member import Member
 import random
 
@@ -58,6 +59,11 @@ class Fun(commands.Cog):
     async def chnick(self,ctx, member: discord.Member, nick):
         await member.edit(nick=nick)
         await ctx.send(f'Nickname was changed for {member.mention} ')
+    @commands.Cog.listener()
+    async def on_command_error(self,ctx:Context,error):
+        if isinstance(error,MissingPermissions) or isinstance(error,CommandInvokeError) or isinstance(error, CommandNotFound):
+            return await ctx.channel.send("You dont have permissions to do that")
+        raise error
     @commands.has_role('mgsb admin')
     @commands.command('spam')
     async def spam(self,ctx:Context,n:str='',*terms):

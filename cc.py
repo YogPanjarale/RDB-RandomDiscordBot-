@@ -13,18 +13,10 @@ class CC(commands.Cog):
         if user =="":
             r = getAllCC()
             if r:
-                # print("====================")
-                # print("r=")
-                # print(r)
-                # print("====================")
                 myEmbed = Embed(title=f"All Commands Created Since last reset ",description=f"Total of {len(r)+1} Commands")
                 j=0
                 for i in r:
                     j+=1
-                    # print("====================")
-                    # print("i=")
-                    # print(i)
-                    # print("====================")
                     des = i['description'] + "\n**Created At " + i['time-created']+"**"
                     n=f"{j}."+ i["name"] 
                     myEmbed.add_field(name=n,value=des,inline=False)
@@ -33,18 +25,10 @@ class CC(commands.Cog):
             name = user
             r = searchCCByUser(name.replace("!",""))
             if r:
-                # print("====================")
-                # print("r=")
-                # print(r)
-                # print("====================")
                 myEmbed = Embed(name=f"Commands Created By {name}",description=f"{name} has created {len(r)} Commands ")
                 j=0
                 for i in r:
                     j+=1
-                    # print("====================")
-                    # print(i)
-                    # print("====================")
-                    # print("i=")
                     des = i['description'] + "\n**Created At " + i["time-created"]+"**"
                     n=f"{j}."+ i["name"] 
                     myEmbed.add_field(name=n,value=des,inline=False)
@@ -59,16 +43,8 @@ class CC(commands.Cog):
         if name.startswith("<@"):
             r = searchCCByUser(name.replace("!",""))
             if r:
-                # print("====================")
-                # print("r=")
-                # print(r)
-                # print("====================")
                 myEmbed = Embed(name=f"Commands Created By {name}",description=f"{name} has created{len(r)+1} Commands ")
                 for i in r:
-                    # print("====================")
-                    # print("i=")
-                    # print(i)
-                    # print("====================")
                     des = i['description'] + "\n**Created At " + i["time-created"]+"**"
                     myEmbed.add_field(name=i["name"],value=des,inline=False)
                 return await ctx.channel.send(embed = myEmbed)
@@ -87,9 +63,7 @@ class CC(commands.Cog):
     async def on_command_error(self,ctx:Context,error):
         if isinstance(error, CommandNotFound):
             msg:str=ctx.message.content
-            
             r=searchCC(msg[len(self.bot.command_prefix):])
-            # print(r)
             if r:
                 return await ctx.channel.send(r['description'])
                 

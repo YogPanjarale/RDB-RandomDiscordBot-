@@ -53,7 +53,11 @@ class Fun(commands.Cog):
             url=random.choice(hellogifs))
 
         await ctx.message.reply(embed=myEmbed)
-         
+    @commands.command("nick",pass_context=True)
+    @commands.has_permissions(manage_nicknames=True)
+    async def chnick(self,ctx, member: discord.Member, nick):
+        await member.edit(nick=nick)
+        await ctx.send(f'Nickname was changed for {member.mention} ')
     @commands.has_role('mgsb admin')
     @commands.command('spam')
     async def spam(self,ctx:Context,n:str='',*terms):

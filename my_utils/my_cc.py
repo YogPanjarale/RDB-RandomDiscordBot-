@@ -28,7 +28,7 @@ def searchCC(name:str)->Union[ResponseCC,None]:
         return result[0]
     pass
 # v = list[dict]
-def searchCCByUser(user:str)->List(Union[ResponseCC,None]):
+def searchCCByUser(user:str)->list(Union[ResponseCC,None]):
     print(f"Searching for CC made by user {user}")
     result=db.search(q.user ==user)
     # print(result)
@@ -62,7 +62,7 @@ def updateCCdescriptionByName(name:str,newDescription:str,user:str)->str:
         return f"CC {name} was not created by {user} not same"
     return "CC not found"
     # if ( )
-def getAllCC()->List(Union[ResponseCC,None]):
+def getAllCC()->list(Union[ResponseCC,None]):
     result = db.all()
     print(f"Getting all CC ", f"total {len(result)+1}")
     return result

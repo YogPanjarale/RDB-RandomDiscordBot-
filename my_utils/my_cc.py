@@ -1,3 +1,4 @@
+from os import name
 from typing import List, Union
 from tinydb import TinyDB,Query
 import datetime;
@@ -12,7 +13,7 @@ class ResponseCC():
     user:str
     time_created:str
 
-
+listOfResponse = [ResponseCC(name="",description="",user="",time_created="")]
 def addCC(name:str,description:str,user:str):
     d = datetime.datetime.now()
     timeCreated = d.ctime()
@@ -28,7 +29,7 @@ def searchCC(name:str)->Union[ResponseCC,None]:
         return result[0]
     pass
 # v = list[dict]
-def searchCCByUser(user:str)->list(Union[ResponseCC,None]):
+def searchCCByUser(user:str)->listOfResponse:
     print(f"Searching for CC made by user {user}")
     result=db.search(q.user ==user)
     # print(result)
@@ -62,7 +63,8 @@ def updateCCdescriptionByName(name:str,newDescription:str,user:str)->str:
         return f"CC {name} was not created by {user} not same"
     return "CC not found"
     # if ( )
-def getAllCC()->list(Union[ResponseCC,None]):
+
+def getAllCC()->listOfResponse:
     result = db.all()
     print(f"Getting all CC ", f"total {len(result)+1}")
     return result

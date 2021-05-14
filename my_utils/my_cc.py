@@ -3,7 +3,7 @@ from typing import List, Union
 from tinydb import TinyDB,Query
 import datetime;
 from dataclasses import dataclass
-db:TinyDB = TinyDB('./db.json')
+db:TinyDB = TinyDB('./cc_db.json')
 q=Query()
 
 @dataclass()

@@ -1,6 +1,6 @@
 import os
 from discord.ext.commands import Bot
-from discord.ext import commands ,tasks
+from discord.ext import commands
 from discord.ext.commands import Context
 from discord import Member
 from dotenv import load_dotenv
@@ -10,7 +10,7 @@ BOT_PREFIX = os.getenv('BOT_PREFIX')
 client = Bot(BOT_PREFIX)
 
 if __name__ == '__main__':
-    extensions = ['cmd', 'info', 'fun', 'menu','mod','cc']
+    extensions = ['cmd', 'info', 'fun', 'menu','mod','cc','news']
     for extension in extensions:
         try:
             client.load_extension(extension)

@@ -17,7 +17,7 @@ class CC(commands.Cog):
                 # print("r=")
                 # print(r)
                 # print("====================")
-                myEmbed = Embed(title=f"All Commands Created Since last reset ",description=f"Total of {len(r)+1} Commands")
+                myEmbed = Embed(title=f"All Commands Created Since last reset ",description=f"Total of {len(r)} Commands")
                 j=0
                 for i in r:
                     j+=1
@@ -25,8 +25,8 @@ class CC(commands.Cog):
                     # print("i=")
                     # print(i)
                     # print("====================")
-                    des = i['description'] + "\n**Created At " + i['time-created']+"**"
-                    n=f"{j}."+ i["name"] 
+                    des = i['description'] #+ "\n**Created At " + i["time-created"]+"**"
+                    n=f"{j}) "+ i["name"] 
                     myEmbed.add_field(name=n,value=des,inline=False)
                 return await ctx.channel.send(embed = myEmbed)
         if user.startswith("<@"):

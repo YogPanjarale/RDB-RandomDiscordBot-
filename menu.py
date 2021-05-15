@@ -1,3 +1,4 @@
+from main import BOT_PREFIX
 import discord
 from discord.ext import commands
 from discord.ext.commands.context import Context
@@ -5,7 +6,7 @@ from discord.member import Member
 
 
 class menu(commands.Cog):
-    @commands.command(name='mg')
+    @commands.command(name=BOT_PREFIX.replace(".",""))
     async def mg(self, context):
 
         myEmbed = discord.Embed(

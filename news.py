@@ -9,10 +9,11 @@ class News(commands.Cog):
         r = getAllNews()
         menu = PaginatedMenu(ctx)
         pages=[]
-        for i in r:
-            page = Page(title = i.title,description=i.description)
-            page.add_field(name="Time Created",value=i.time_created)
-            page.add_field(name="Added By",value=i.added_by)
+        for i in range(r):
+            item = r[i]
+            page = Page(title = item.title,description=item.description)
+            page.add_field(name="Time Created",value=item.time_created)
+            page.add_field(name="Added By",value=item.added_by)
             pages.append(page)
         menu.add_pages(pages)
         menu.show_command_message()

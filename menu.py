@@ -29,9 +29,11 @@ class menu(commands.Cog):
             name="1) ver - ", value="tells u about the current version of the bot", inline=True)
         myEmbed.add_field(name="2) who - ",
                           value="tells u about the bot and founders", inline=True)
-        myEmbed.add_field(name="3) ping - ",
+        myEmbed.add_field(name="3) info - ",
+                          value="dpy server , contributers , and dpy docs", inline=True)
+        myEmbed.add_field(name="4) ping - ",
                           value="know your latency with this command", inline=True)
-        myEmbed.add_field(name="4) addnews/news - ",
+        myEmbed.add_field(name="5) addnews/news - ",
                           value="make the bot remember important milestones and news that recently happend in the server", inline=True)
 
         await context.message.reply(embed=myEmbed)
@@ -55,8 +57,7 @@ class menu(commands.Cog):
                           value="puts a person in lockdown , i.e , they cant see or text messages in any channel of the server", inline=True)
         myEmbed.add_field(name="7) dc - ",
                           value="deletes a specific channel of the server - use carefully", inline=True)
-        myEmbed.add_field(name="8) sd/su - ",
-                          value="shutdown and startup any specific cog with these cmds (requires role -'mgsb admin')", inline=True)
+
 
         await context.message.reply(embed=myEmbed)
 
@@ -69,11 +70,10 @@ class menu(commands.Cog):
         myEmbed.add_field(name="2) say - ", value="fun cmd2", inline=True)
         myEmbed.add_field(name="3) how - ", value="fun cmd3", inline=True)
         myEmbed.add_field(name="4) pfp - ", value="fun cmd4", inline=True)
-        myEmbed.add_field(name="5) fight - ", value="fun cmd5", inline=True)
-        myEmbed.add_field(name="6) 8b - ", value="fun cmd6", inline=True)
-        myEmbed.add_field(name="7) spam - ", value="fun cmd7", inline=True)
-        myEmbed.add_field(name="8) count - ", value="fun cmd8", inline=True)
-        myEmbed.add_field(name="9) custom command (cc) - ", value="fun cmd9", inline=True)
+        myEmbed.add_field(name="5) 8b - ", value="fun cmd6", inline=True)
+        myEmbed.add_field(name="6) spam - ", value="fun cmd7", inline=True)
+        myEmbed.add_field(name="7) count - ", value="fun cmd8", inline=True)
+        myEmbed.add_field(name="8) custom command (cc) - ", value="fun cmd9", inline=True)
 
         await context.message.reply(embed=myEmbed)
 

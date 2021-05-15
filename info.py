@@ -29,6 +29,26 @@ class Info(commands.Cog):
                           value="Python", inline=False)
 
         await context.message.reply(embed=myEmbed)
+
+    #info
+
+    @commands.command(name='info')
+    async def info(self, context):
+
+        myEmbed1 = discord.Embed(
+            title="bot,docs and contributors", description=">>>About me part 2", color=0x0000ff)
+        myEmbed1.add_field(name="Created using - ",
+                          value="[Discord.py](https://discordpy.readthedocs.io/en/stable)", inline=False)
+        myEmbed1.add_field(name="DPY server - ",
+                          value="[Discord.py - Discord server](https://discord.gg/dpy)", inline=False)
+        myEmbed1.add_field(name="BOT Repo",
+                          value="[MGSB Repo](https://github.com/YogPanjarale/RDB-RandomDiscordBot-)", inline=False)
+        myEmbed1.add_field(name="Contributers - ",
+                          value="[ZeusAbhijeet](https://github.com/ZeusAbhijeet) \n [its_charmandar](https://github.com/itsCharmander)", inline=False)
+
+        await context.message.reply(embed=myEmbed1)
+
+    
     # ping
 
     @commands.command('ping')

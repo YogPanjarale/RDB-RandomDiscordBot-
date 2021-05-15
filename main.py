@@ -55,4 +55,6 @@ async def reload(ctx, extension):
     except Exception as error:
         await ctx.send(f'Failed to startup Cog {extension}. Reason: {error}')
 
+client.remove_command('help')
+
 client.run(BOT_TOKEN)

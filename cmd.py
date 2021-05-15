@@ -1,3 +1,4 @@
+from main import BOT_PREFIX
 from my_utils.get_covid_data import getCovidData
 from my_utils.my_youtube_search import YoutubeResult, searchYT
 import discord
@@ -124,7 +125,7 @@ class Cmd(commands.Cog):
     async def cmd(self, context):
 
         myEmbed3 = discord.Embed(
-            title="Help", description=">>>these r the search commands , all require u to use prefix 'mg.' to search", color=0xff0000)
+            title="Help", description=f">>>these r the search commands , all require u to use prefix '{BOT_PREFIX}' to search", color=0xff0000)
         myEmbed3.add_field(
             name="insta", value="searches for a particular instagram acc", inline=True)
         #myEmbed3.add_field(

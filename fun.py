@@ -80,7 +80,7 @@ class Fun(commands.Cog):
             await ctx.channel.send(term)
         #8ball cmd
 
-    @commands.command(name='8b', help='Replies to a question')
+    @commands.command(name='8b')
     async def eightball(self, ctx, *, question):
         responses = ['It is certain.',
                      'It is decidedly so.',
@@ -109,6 +109,8 @@ class Fun(commands.Cog):
         embed1.add_field(name=f'Answer:', value=f'{random.choice(responses)}')
         embed1.set_footer(text=f'Requested by {ctx.author}')
         await ctx.send(embed=embed1)   
+
+
 
 
 def setup(client):

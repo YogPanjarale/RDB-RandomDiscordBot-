@@ -55,9 +55,9 @@ class Fun(commands.Cog):
 
         await ctx.message.reply(embed=myEmbed)
 
-    @commands.command(name='h5')
+    @commands.command(name='hf')
     async def hello(self, ctx):
-        h5gifs = ["https://media.giphy.com/media/bp0fLZr8kFz4Bm4kRV/giphy.gif",
+        hfgifs = ["https://media.giphy.com/media/bp0fLZr8kFz4Bm4kRV/giphy.gif",
         "https://media.giphy.com/media/HX3lSnGXZnaWk/giphy.gif",
         "https://media.giphy.com/media/DuWay0MoeQxWM/giphy.gif",
         "https://media.giphy.com/media/3o7TKWuJdNJSt2JHpK/giphy.gif"]
@@ -66,7 +66,7 @@ class Fun(commands.Cog):
             color=discord.Colour.purple()
         )
         myEmbed.set_image(
-            url=random.choice(h5gifs))
+            url=random.choice(hfgifs))
 
         await ctx.message.reply(embed=myEmbed)
 

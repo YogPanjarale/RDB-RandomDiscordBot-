@@ -55,27 +55,26 @@ class Fun(commands.Cog):
 
         await ctx.message.reply(embed=myEmbed)
 
-    @commands.command(name='hf')
-    async def hf(self, ctx):
-        hfgifs = ["https://media.giphy.com/media/bp0fLZr8kFz4Bm4kRV/giphy.gif",
+    @commands.command(name='hifi')
+    async def hifi(self, ctx):
+        hifigifs = ["https://media.giphy.com/media/bp0fLZr8kFz4Bm4kRV/giphy.gif",
         "https://media.giphy.com/media/HX3lSnGXZnaWk/giphy.gif",
         "https://media.giphy.com/media/DuWay0MoeQxWM/giphy.gif",
         "https://media.giphy.com/media/3o7TKWuJdNJSt2JHpK/giphy.gif"]
-        myEmbed = discord.Embed(
+        myEmbed1 = discord.Embed(
             title="",
             color=discord.Colour.purple()
         )
-        myEmbed.set_image(
-            url=random.choice(hfgifs))
+        myEmbed1.set_image(
+            url=random.choice(hifigifs))
 
-        await ctx.message.reply(embed=myEmbed)
+        await ctx.message.reply(embed=myEmbed1)
 
     @commands.command(name='sus')
     async def sus(self, ctx):
-        susgifs = ["https://media.giphy.com/medqj508sE/giphy.gifia/djRJNZ",
+        susgifs = ["https://media.giphy.com/media/cJMlR1SsCSkUjVY3iK/giphy.gif",
         "https://media.giphy.com/media/TPl5N4Ci49ZQY/giphy.gif",
-        "https://media.giphy.com/media/kaq6GnxDlJaBq/giphy.gif",
-        "https://media.giphy.com/media/10ZEx0FoCU2XVm/giphy.gif"]
+        "https://media.giphy.com/media/kaq6GnxDlJaBq/giphy.gif"]
         myEmbed = discord.Embed(
             title="",
             color=discord.Colour.purple()

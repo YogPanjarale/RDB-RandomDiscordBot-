@@ -57,46 +57,46 @@ class Fun(commands.Cog):
 
     @commands.command(name='h5')
     async def hello(self, ctx):
-        hellogifs = ["https://media.giphy.com/media/djRJNZqj508sE/giphy.gif",
-        "https://media.giphy.com/media/Vbtc9VG51NtzT1Qnv1/giphy.gif",
-        "https://media.giphy.com/media/dzaUX7CAG0Ihi/giphy.gif",
+        h5gifs = ["https://media.giphy.com/media/bp0fLZr8kFz4Bm4kRV/giphy.gif",
+        "https://media.giphy.com/media/HX3lSnGXZnaWk/giphy.gif",
+        "https://media.giphy.com/media/DuWay0MoeQxWM/giphy.gif",
         "https://media.giphy.com/media/mW05nwEyXLP0Y/giphy.gif"]
         myEmbed = discord.Embed(
             title="",
             color=discord.Colour.purple()
         )
         myEmbed.set_image(
-            url=random.choice(hellogifs))
+            url=random.choice(h5gifs))
 
         await ctx.message.reply(embed=myEmbed)
 
     @commands.command(name='sus')
-    async def hello(self, ctx):
-        hellogifs = ["https://media.giphy.com/media/djRJNZqj508sE/giphy.gif",
-        "https://media.giphy.com/media/Vbtc9VG51NtzT1Qnv1/giphy.gif",
-        "https://media.giphy.com/media/dzaUX7CAG0Ihi/giphy.gif",
-        "https://media.giphy.com/media/mW05nwEyXLP0Y/giphy.gif"]
+    async def sus(self, ctx):
+        susgifs = ["https://media.giphy.com/medqj508sE/giphy.gifia/djRJNZ",
+        "https://media.giphy.com/media/TPl5N4Ci49ZQY/giphy.gif",
+        "https://media.giphy.com/media/kaq6GnxDlJaBq/giphy.gif",
+        "https://media.giphy.com/media/10ZEx0FoCU2XVm/giphy.gif"]
         myEmbed = discord.Embed(
             title="",
             color=discord.Colour.purple()
         )
         myEmbed.set_image(
-            url=random.choice(hellogifs))
+            url=random.choice(susgifs))
 
         await ctx.message.reply(embed=myEmbed)       
 
     @commands.command(name='bruh')
     async def hello(self, ctx):
-        hellogifs = ["https://media.giphy.com/media/djRJNZqj508sE/giphy.gif",
-        "https://media.giphy.com/media/Vbtc9VG51NtzT1Qnv1/giphy.gif",
-        "https://media.giphy.com/media/dzaUX7CAG0Ihi/giphy.gif",
-        "https://media.giphy.com/media/mW05nwEyXLP0Y/giphy.gif"]
+        bruhgifs = ["https://media.giphy.com/media/VIOkcgpsnA2Zy/giphy.gif",
+        "https://media.giphy.com/media/kWp8QC99Z6xFn8bF0v/giphy.gif",
+        "https://media.giphy.com/media/fm0FiSOfefH5m/giphy.gif",
+        "https://media.giphy.com/media/CxQw7Rc4Fx4OBNBLa8/giphy.gif"]
         myEmbed = discord.Embed(
             title="",
             color=discord.Colour.purple()
         )
         myEmbed.set_image(
-            url=random.choice(hellogifs))
+            url=random.choice(bruhgifs))
 
         await ctx.message.reply(embed=myEmbed)
 

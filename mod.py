@@ -1,13 +1,14 @@
 import discord
 from discord import member
+from discord import message
 from discord.ext import commands ,tasks
 from discord.ext.commands import Context, context
 from discord import Member
 from better_profanity import Profanity
-from discord import Member
 
-#custom_badwords = ['happy', 'jolly', 'merry']
-#Profanity.load_censor_words(custom_badwords)
+
+filtered_words = ['bitch' , 'yo']
+
 
 class Mod(commands.Cog):
     
@@ -20,23 +21,23 @@ class Mod(commands.Cog):
         myEmbed = discord.Embed(title = 'messages deleted succesfully - ',description=amount)
         myEmbed.set_footer(text="asked By ".title(
             )+str(ctx.author), icon_url=str(ctx.message.author.avatar_url))
-        await ctx.message.channel.send(embed=myEmbed,delete_after = 2)
+        await ctx.message.channel.send(embed=myEmbed,delete_after = 0.5)
     
-    #@commands.Cog.listener()
-    #async def on_message(self,message):
-     #   if Profanity.contains_profanity(message.content):
-     #       await message.delete()
-     #       await message.channel.send("<@!839959901413572638> , {user.mention} used a banned word , sending them to lockdown!!")
-            #lockdown = context.guild.get_role(839409585706237973)
-            #await member.add_roles(lockdown)
-                
-    #@commands.Cog.listener()
-    #filtered_words = []
-    #async def on_message(self,msg):
-       #for word in filtered_words:
-            #if word in msg.content:
-                #await msg.delete()
-        
+
+           
+    @commands.Cog.listener()
+    async def on_message(ctx,member : discord.Member):
+
+        for word in filtered_words:
+            if word in message.content:
+                await message.delete()
+                #lockdown = msg.guild.get_role(839409585706237973)
+                #await member.add_roles(lockdown)
+                #await context.send(member.mention+" is going thru a temporary lockdown for using a banned word")
+                await ctx.send("dont use banned words")    
+
+
+
 
     #kick members
     

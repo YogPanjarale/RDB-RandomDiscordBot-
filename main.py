@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 BOT_TOKEN = os.getenv('BOT_TOKEN')
 BOT_PREFIX = os.getenv('BOT_PREFIX')
-
+BOT_NAME = os.getenv("BOT_NAME")
 if __name__ == '__main__':
     client = Bot(BOT_PREFIX)
     extensions = ['cmd', 'info', 'fun', 'menu','mod','cc','news']

@@ -21,10 +21,10 @@ class Fun(commands.Cog):
 
         myEmbed = discord.Embed(
             title="how am i?", description="im doing great , thank u for asking :))", color=0x00ff00)
-        myEmbed.add_field(name="what about you sir/ma'am?",
+        myEmbed.add_field(name="what about you ?",
                            value="how are u today ?", inline=False)
         myEmbed.set_image(
-            url="https://media.giphy.com/media/Xfbugf2U4rC1Db4NSq/giphy.gif")
+            url="https://media.giphy.com/media/Zd5ZqNSI0mfymBRNQc/giphy.gif")
 
         await ctx.message.reply(embed=myEmbed)
     # pfp
@@ -43,9 +43,9 @@ class Fun(commands.Cog):
     @commands.command(name='hello')
     async def hello(self, ctx):
         hellogifs = ["https://media.giphy.com/media/djRJNZqj508sE/giphy.gif",
-        "https://giphy.com/gifs/mW05nwEyXLP0Y",
-        "https://giphy.com/gifs/hello-adam-demamp-television-6yU7IF9L3950A",
-        "https://giphy.com/gifs/hello-hi-dzaUX7CAG0Ihi"]
+        "https://media.giphy.com/media/Vbtc9VG51NtzT1Qnv1/giphy.gif",
+        "https://media.giphy.com/media/dzaUX7CAG0Ihi/giphy.gif",
+        "https://media.giphy.com/media/mW05nwEyXLP0Y/giphy.gif"]
         myEmbed = discord.Embed(
             title="",
             color=discord.Colour.purple()

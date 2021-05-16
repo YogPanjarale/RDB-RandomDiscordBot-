@@ -127,13 +127,13 @@ class Cmd(commands.Cog):
         myEmbed3 = discord.Embed(
             title="Help", description=f">>>these r the search commands , all require u to use prefix '{BOT_PREFIX}' to search", color=0xff0000)
         myEmbed3.add_field(
-            name="insta", value="searches for a particular instagram acc", inline=True)
+            name="insta", value="searches for a particular instagram acc\n(under construction)", inline=True)
         #myEmbed3.add_field(
             #name="fb", value="searches for a particular acc on facebook", inline=True)
         myEmbed3.add_field(
-            name="ggl", value="searches for a specific topic on the google search engine \n(under construction)", inline=True)
+            name="ggl", value="searches for a specific topic on the google search engine\n(under construction)", inline=True)
         myEmbed3.add_field(
-            name="wikp", value="searches for a specific topic on wikipedia", inline=True)
+            name="wikp", value="searches for a specific topic on wikipedia\n(under construction)", inline=True)
         myEmbed3.add_field(
             name="git", value="searches for a specific user on github", inline=True)
         myEmbed3.add_field(
@@ -145,7 +145,7 @@ class Cmd(commands.Cog):
         #myEmbed3.add_field(
             #name="ps", value="searches for a specific application/game on the google playstore", inline=True)
         myEmbed3.add_field(
-            name="twit", value="searches for a particular twitter acc \n(under construction) ", inline=True)
+            name="twit", value="searches for a particular twitter acc\n(under construction) ", inline=True)
 
         await context.message.reply(embed=myEmbed3)
     

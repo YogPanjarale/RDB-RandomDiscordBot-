@@ -4,9 +4,10 @@ from discord.ext import commands ,tasks
 from discord.ext.commands import Context, context
 from discord import Member
 from better_profanity import Profanity
-from discord import message
+from discord.guild import Guild
+from discord.message import Message
 
-filtered_words = ['bad' , 'word']
+filtered_words = ['bad' , 'wordt']
 
 
 class Mod(commands.Cog):
@@ -24,11 +25,16 @@ class Mod(commands.Cog):
 
            
     @commands.Cog.listener()
-    async def on_message(self,msg):
-        for word in filtered_words:
-            if word in msg.content:
-                await msg.delete()
-    
+    async def on_message(self,msg:Message):
+        g:Guild=msg.guild
+        role=g.get_role(839409585706237973)
+        if not msg.author.bot:
+            for word in filtered_words:
+                if word in msg.content:
+                    await msg.channel.send(f"{msg.author.mention}Don't use Swear words")
+                    await msg.author.add_roles(role)
+                    return await msg.delete()
+        
 
 
     #kick members

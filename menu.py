@@ -46,18 +46,9 @@ class menu(commands.Cog):
             title="Creator and moderation commands", description="these r one of the secondary cmds,dont forget to put the prefix before each of them", color=0x00ff00)
         myEmbed.add_field(
             name="1) re - ", value="reloads the files , re fun/mod/cmd/menu/info", inline=True)
-        myEmbed.add_field(name="2) m/um - ",
-                          value="mutes or unmutes someone", inline=True)
-        myEmbed.add_field(name="3) k - ",
-                          value="kicks someone", inline=True)
-        myEmbed.add_field(name="4) d - ",
-                          value="deletes a specific amount of msgs", inline=True)
-        myEmbed.add_field(name="5) b/ub - ",
-                          value="bans or unbans someone", inline=True)
-        myEmbed.add_field(name="6) ld/rld - ",
+        myEmbed.add_field(name="2) ld/rld - ",
                           value="puts a person in lockdown , i.e , they cant see or text messages in any channel of the server", inline=True)
-        myEmbed.add_field(name="7) dc - ",
-                          value="deletes a specific channel of the server - use carefully", inline=True)
+
 
 
         await context.message.reply(embed=myEmbed)

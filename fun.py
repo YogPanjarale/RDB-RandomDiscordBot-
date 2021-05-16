@@ -60,7 +60,7 @@ class Fun(commands.Cog):
         h5gifs = ["https://media.giphy.com/media/bp0fLZr8kFz4Bm4kRV/giphy.gif",
         "https://media.giphy.com/media/HX3lSnGXZnaWk/giphy.gif",
         "https://media.giphy.com/media/DuWay0MoeQxWM/giphy.gif",
-        "https://media.giphy.com/media/mW05nwEyXLP0Y/giphy.gif"]
+        "https://media.giphy.com/media/3o7TKWuJdNJSt2JHpK/giphy.gif"]
         myEmbed = discord.Embed(
             title="",
             color=discord.Colour.purple()

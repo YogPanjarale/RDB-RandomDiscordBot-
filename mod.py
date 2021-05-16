@@ -6,8 +6,8 @@ from discord import Member
 from better_profanity import Profanity
 from discord import Member
 
-custom_badwords = ['happy', 'jolly', 'merry']
-Profanity.load_censor_words(custom_badwords)
+#custom_badwords = ['happy', 'jolly', 'merry']
+#Profanity.load_censor_words(custom_badwords)
 
 class Mod(commands.Cog):
     
@@ -22,11 +22,11 @@ class Mod(commands.Cog):
             )+str(ctx.author), icon_url=str(ctx.message.author.avatar_url))
         await ctx.message.channel.send(embed=myEmbed,delete_after = 2)
     
-    @commands.Cog.listener()
-    async def on_message(self,message):
-        if Profanity.contains_profanity(message.content):
-            await message.delete()
-            await message.channel.send("<@!839959901413572638> , {user.mention} used a banned word , sending them to lockdown!!")
+    #@commands.Cog.listener()
+    #async def on_message(self,message):
+     #   if Profanity.contains_profanity(message.content):
+     #       await message.delete()
+     #       await message.channel.send("<@!839959901413572638> , {user.mention} used a banned word , sending them to lockdown!!")
             #lockdown = context.guild.get_role(839409585706237973)
             #await member.add_roles(lockdown)
                 

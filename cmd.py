@@ -131,7 +131,7 @@ class Cmd(commands.Cog):
         #myEmbed3.add_field(
             #name="fb", value="searches for a particular acc on facebook", inline=True)
         myEmbed3.add_field(
-            name="ggl", value="searches for a specific topic on the google search engine", inline=True)
+            name="ggl", value="searches for a specific topic on the google search engine \n(under construction)", inline=True)
         myEmbed3.add_field(
             name="wikp", value="searches for a specific topic on wikipedia", inline=True)
         myEmbed3.add_field(
@@ -145,7 +145,7 @@ class Cmd(commands.Cog):
         #myEmbed3.add_field(
             #name="ps", value="searches for a specific application/game on the google playstore", inline=True)
         myEmbed3.add_field(
-            name="twit", value="searches for a particular twitter acc", inline=True)
+            name="twit", value="searches for a particular twitter acc \n(under construction) ", inline=True)
 
         await context.message.reply(embed=myEmbed3)
     

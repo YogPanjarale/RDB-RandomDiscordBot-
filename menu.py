@@ -1,4 +1,4 @@
-from main import BOT_PREFIX
+from main import BOT_NAME, BOT_PREFIX
 import discord
 from discord.ext import commands
 from discord.ext.commands.context import Context
@@ -10,7 +10,7 @@ class menu(commands.Cog):
     async def mg(self, context):
 
         myEmbed = discord.Embed(
-            title="mgsb help commands", description="these r the primary cmds,dont forget to put the prefix before each of them", color=0x00ff00)
+            title=f"{BOT_NAME} help commands", description="these r the primary cmds,dont forget to put the prefix before each of them", color=0x00ff00)
         myEmbed.add_field(name="1) mg - ",
                           value="brings up this help page", inline=True)
         myEmbed.add_field(name="2) utils - ", value="Utility cmds", inline=True)

@@ -56,7 +56,7 @@ class Fun(commands.Cog):
         await ctx.message.reply(embed=myEmbed)
 
     @commands.command(name='hf')
-    async def hello(self, ctx):
+    async def hf(self, ctx):
         hfgifs = ["https://media.giphy.com/media/bp0fLZr8kFz4Bm4kRV/giphy.gif",
         "https://media.giphy.com/media/HX3lSnGXZnaWk/giphy.gif",
         "https://media.giphy.com/media/DuWay0MoeQxWM/giphy.gif",

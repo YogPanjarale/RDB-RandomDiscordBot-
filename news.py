@@ -6,17 +6,25 @@ from dpymenus import Page, PaginatedMenu
 class News(commands.Cog):
     @commands.command("news")
     async def getNews(self,ctx):
-        r = getAllNews()
+        result = getAllNews()
         menu = PaginatedMenu(ctx)
         pages=[]
-        for i in range(r):
-            item = r[i]
-            page = Page(title = item.title,description=item.description)
-            page.add_field(name="Time Created",value=item.time_created)
-            page.add_field(name="Added By",value=item.added_by)
+        # item = 
+        n =2
+        r = [result[i:i+n] for i in range(0, len(result), n)]
+        # print(r)
+        for p in range(len(r)):
+            items = r[p]
+            page = Page(title=f"Page {p+1} of {len(r)}")
+            # page = Page()
+            for item in items:
+                page.add_field(name = item.title,value=item.description,inline=False)
+                page.add_field(name="Added By",value=item.added_by)
+                page.add_field(name="Time Created",value=item.time_created)
             pages.append(page)
         menu.add_pages(pages)
         menu.show_command_message()
+        menu.set_timeout(30)
         await menu.open()
         
 

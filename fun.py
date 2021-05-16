@@ -54,6 +54,57 @@ class Fun(commands.Cog):
             url=random.choice(hellogifs))
 
         await ctx.message.reply(embed=myEmbed)
+
+    @commands.command(name='h5')
+    async def hello(self, ctx):
+        hellogifs = ["https://media.giphy.com/media/djRJNZqj508sE/giphy.gif",
+        "https://media.giphy.com/media/Vbtc9VG51NtzT1Qnv1/giphy.gif",
+        "https://media.giphy.com/media/dzaUX7CAG0Ihi/giphy.gif",
+        "https://media.giphy.com/media/mW05nwEyXLP0Y/giphy.gif"]
+        myEmbed = discord.Embed(
+            title="",
+            color=discord.Colour.purple()
+        )
+        myEmbed.set_image(
+            url=random.choice(hellogifs))
+
+        await ctx.message.reply(embed=myEmbed)
+
+    @commands.command(name='sus')
+    async def hello(self, ctx):
+        hellogifs = ["https://media.giphy.com/media/djRJNZqj508sE/giphy.gif",
+        "https://media.giphy.com/media/Vbtc9VG51NtzT1Qnv1/giphy.gif",
+        "https://media.giphy.com/media/dzaUX7CAG0Ihi/giphy.gif",
+        "https://media.giphy.com/media/mW05nwEyXLP0Y/giphy.gif"]
+        myEmbed = discord.Embed(
+            title="",
+            color=discord.Colour.purple()
+        )
+        myEmbed.set_image(
+            url=random.choice(hellogifs))
+
+        await ctx.message.reply(embed=myEmbed)       
+
+    @commands.command(name='bruh')
+    async def hello(self, ctx):
+        hellogifs = ["https://media.giphy.com/media/djRJNZqj508sE/giphy.gif",
+        "https://media.giphy.com/media/Vbtc9VG51NtzT1Qnv1/giphy.gif",
+        "https://media.giphy.com/media/dzaUX7CAG0Ihi/giphy.gif",
+        "https://media.giphy.com/media/mW05nwEyXLP0Y/giphy.gif"]
+        myEmbed = discord.Embed(
+            title="",
+            color=discord.Colour.purple()
+        )
+        myEmbed.set_image(
+            url=random.choice(hellogifs))
+
+        await ctx.message.reply(embed=myEmbed)
+
+
+
+
+
+
     @commands.command("nick",pass_context=True)
     @commands.has_permissions(manage_nicknames=True)
     async def chnick(self,ctx, member: discord.Member, nick):

@@ -6,8 +6,8 @@ from discord import Member
 from better_profanity import Profanity
 from discord.guild import Guild
 from discord.message import Message
-
-filtered_words = ['bad' , 'wordt']
+import pandas as pd
+filtered_words = pd.read_csv('swears.txt')['swears'].to_list()
 
 
 class Mod(commands.Cog):

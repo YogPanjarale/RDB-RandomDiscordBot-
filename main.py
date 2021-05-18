@@ -10,7 +10,7 @@ BOT_PREFIX = os.getenv('BOT_PREFIX')
 BOT_NAME = os.getenv("BOT_NAME")
 if __name__ == '__main__':
     client = Bot(BOT_PREFIX)
-    extensions = ['cmd', 'info', 'fun', 'menu','mod','cc','news']
+    extensions = ['cmd', 'info', 'fun','mod','menu','cc','news']
     for extension in extensions:
         try:
             client.load_extension(extension)

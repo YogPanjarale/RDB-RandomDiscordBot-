@@ -37,8 +37,28 @@ class Fun(commands.Cog):
 
     @commands.command(name='say')
     async def say(self, ctx, *, term: str = ''):
-
         await ctx.message.reply(term)
+
+    @commands.command(name = 'epc')
+    async def epc(ctx, *, term: str=''):
+        y =term.lower()
+        l=list(y)
+        random.shuffle(l)
+        c = ''.join(l)
+        e=''
+        a=['a','c','e','g','i','k','m','o','q','s','u','w','y']
+        b=['b','d','f','h','j','l','n','p','r','t','v','x','z']
+        for i in c:
+            if i in a:
+                e+="I"
+            elif i in b:
+                e+="l"
+            elif i==" ":
+                e+=" "
+        await ctx.message.send("your encrypted password is: " + e)
+
+
+        
 
     @commands.command(name='hello')
     async def hello(self, ctx):

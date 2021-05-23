@@ -1,4 +1,6 @@
-from my_utils.my_news import getAllNews
+from logging import addLevelName
+from discord.ext.commands.context import Context
+from my_utils.my_news import NewsObject, addNews, getAllNews
 from discord.ext import commands
 from dpymenus import Page, PaginatedMenu
 
@@ -26,7 +28,16 @@ class News(commands.Cog):
         menu.show_command_message()
         menu.set_timeout(30)
         await menu.open()
-        
+    # TODO: add hint use `;` as seperator
+    @commands.command('addnews')
+    async def addNews(self,ctx:Context,*text):
+        text:str = " ".join(text)
+        title:str = text.split(';')[0]
+        description:str = text.split(';')[1]
+        author:str = str(ctx.author.mention)
+        news = addNews(NewsObject(title=title,description=description,added_by=author))
+        await ctx.channel.send(f"news with title:`{title}` and description : `{ description}` added by {author}")
+
 
 
 

@@ -29,14 +29,14 @@ class News(commands.Cog):
         menu.set_timeout(30)
         await menu.open()
     # TODO: add hint use `;` as seperator
-    @commands.command('addnews')
+    @commands.command('an')
     async def addNews(self,ctx:Context,*text):
         text:str = " ".join(text)
         title:str = text.split(';')[0]
         description:str = text.split(';',1)[1]
         author:str = str(ctx.author.mention)
         news = addNews(NewsObject(title=title,description=description,added_by=author))
-        await ctx.channel.send(f"news with title:`{title}` and description : `{ description}` added by {author}")
+        await ctx.channel.send(f"news with title : `{title}` and description : `{ description}` added by {author}")
 
 
 

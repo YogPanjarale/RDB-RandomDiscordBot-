@@ -39,9 +39,10 @@ class Fun(commands.Cog):
     async def say(self, ctx, *, term: str = ''):
         await ctx.message.reply(term)
 
-    @commands.command(name = 'epc')
-    async def epc(ctx, *, term: str=''):
-        y =term.lower()
+    @commands.command(name='epc')
+    async def epc(ctx,*, x:str=''):
+        
+        y=x.lower()
         l=list(y)
         random.shuffle(l)
         c = ''.join(l)
@@ -54,11 +55,14 @@ class Fun(commands.Cog):
             elif i in b:
                 e+="l"
             elif i==" ":
-                e+=" "
-        await ctx.message.send("your encrypted password is: " + e)
+                e+=i
+        myEmbed11=discord.Embed(title="Encrypter", description="Bar Encryption",color=0x992d22)
+        myEmbed11.add_field(name="Encrypt", value=x,inline=False)
+        myEmbed11.add_field(name="Encrypted as", value=e,inline=False)
+        await ctx.message.reply(embed=myEmbed11)
 
-    @commands.command(name='hello')
-    async def hello(self, ctx):
+    @commands.command(name='hi')
+    async def hi(self, ctx):
         hellogifs = ["https://media.giphy.com/media/djRJNZqj508sE/giphy.gif",
         "https://media.giphy.com/media/Vbtc9VG51NtzT1Qnv1/giphy.gif",
         "https://media.giphy.com/media/dzaUX7CAG0Ihi/giphy.gif",
@@ -126,11 +130,8 @@ class Fun(commands.Cog):
     async def chnick(self,ctx, member: discord.Member, nick):
         await member.edit(nick=nick)
         await ctx.send(f'Nickname was changed for {member.mention} ')
-    @commands.Cog.listener()
-    async def on_command_error(self,ctx:Context,error):
-        if isinstance(error,MissingPermissions) or isinstance(error,CommandInvokeError) or isinstance(error, CommandNotFound):
-            return await ctx.channel.send("You dont have permissions to do that")
-        raise error
+
+        
     @commands.has_role('mgsb admin')
     @commands.command('spam')
     async def spam(self,ctx:Context,n:str='',*terms):

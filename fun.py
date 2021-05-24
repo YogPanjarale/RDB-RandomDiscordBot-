@@ -8,7 +8,7 @@ import random
 
 class Fun(commands.Cog):
     def __init__(self, bot):
-        self.bot:Bot     = bot      
+        self.bot:Bot  = bot
     @commands.command(name="count")
     async def count(self,ctx:Context,n:str):
         if n.isnumeric():
@@ -56,9 +56,6 @@ class Fun(commands.Cog):
             elif i==" ":
                 e+=" "
         await ctx.message.send("your encrypted password is: " + e)
-
-
-        
 
     @commands.command(name='hello')
     async def hello(self, ctx):

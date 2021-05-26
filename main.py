@@ -3,15 +3,14 @@ import discord
 from discord.ext.commands import Bot
 from discord.ext import commands
 from discord.ext.commands import Context
-from discord import Member
 from dotenv import load_dotenv
 load_dotenv()
-BOT_TOKEN = os.getenv('BOT_TOKEN')
-BOT_PREFIX = os.getenv('BOT_PREFIX')
-BOT_NAME = os.getenv("BOT_NAME")
+bot_prefix = os.getenv('bot_prefix')
+bot_token = os.getenv('bot_token')
+bot_name = os.getenv('bot_name')
 if __name__ == '__main__':
-    client = Bot(BOT_PREFIX)
-    extensions = ['cmd', 'info', 'fun','mod','menu','cc','news']
+    client = Bot(bot_prefix)
+    extensions = ['cmd', 'info', 'fun','mod','cc','news']
     for extension in extensions:
         try:
             client.load_extension(extension)
@@ -58,4 +57,4 @@ if __name__ == '__main__':
 
     client.remove_command('help')
 
-    client.run(BOT_TOKEN)
+    client.run(bot_token)

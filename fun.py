@@ -39,26 +39,26 @@ class Fun(commands.Cog):
     async def say(self, ctx, *, term: str = ''):
         await ctx.message.reply(term)
 
-    @commands.command(name='epc')
-    async def epc(ctx,*, x:str=''):
+    @commands.command(name='e')
+    async def e(self,ctx,*, term:str=''):
         
-        y=x.lower()
+        y=term.lower()
         l=list(y)
         random.shuffle(l)
         c = ''.join(l)
-        e=''
+        f=''
         a=['a','c','e','g','i','k','m','o','q','s','u','w','y']
         b=['b','d','f','h','j','l','n','p','r','t','v','x','z']
         for i in c:
             if i in a:
-                e+="I"
+                f+="I"
             elif i in b:
-                e+="l"
+                f+="l"
             elif i==" ":
-                e+=i
-        myEmbed11=discord.Embed(title="Encrypter", description="Bar Encryption",color=0x992d22)
-        myEmbed11.add_field(name="Encrypt", value=x,inline=False)
-        myEmbed11.add_field(name="Encrypted as", value=e,inline=False)
+                f+=i
+        myEmbed11=discord.Embed(title="Encrypter", description="lithium Encryption",color=0x992d22)
+        myEmbed11.add_field(name="Encrypt", value=term,inline=False)
+        myEmbed11.add_field(name="Encrypted as", value=f,inline=False)
         await ctx.message.reply(embed=myEmbed11)
 
     @commands.command(name='hi')

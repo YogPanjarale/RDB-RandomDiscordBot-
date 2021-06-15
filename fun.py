@@ -1,10 +1,12 @@
 import discord
-from discord.ext import commands
+from discord.ext import commands 
 from discord.ext.commands.bot import Bot
 from discord.ext.commands.context import Context
 from discord.ext.commands.errors import CommandInvokeError, CommandNotFound, MissingPermissions
 from discord.member import Member
 import random
+from discord.ext import buttons
+from discord.message import Message
 
 class Fun(commands.Cog):
     def __init__(self, bot):
@@ -40,8 +42,9 @@ class Fun(commands.Cog):
         await ctx.message.reply(term)
 
     @commands.command(name='e')
-    async def e(self,ctx,*, term:str=''):
-        
+    async def e(self,ctx,*, term:str='',targetMember : discord.Member = None):
+        if targetMember == None:
+            targetMember = ctx.message.author
         y=term.lower()
         l=list(y)
         random.shuffle(l)
@@ -59,7 +62,7 @@ class Fun(commands.Cog):
         myEmbed11=discord.Embed(title="Encrypter", description="lithium Encryption",color=0x992d22)
         myEmbed11.add_field(name="Encrypt", value=term,inline=False)
         myEmbed11.add_field(name="Encrypted as", value=f,inline=False)
-        await ctx.message.reply(embed=myEmbed11)
+        await targetMember.send(embed = myEmbed11)
 
     @commands.command(name='hi')
     async def hi(self, ctx):
@@ -106,7 +109,7 @@ class Fun(commands.Cog):
         await ctx.message.reply(embed=myEmbed)       
 
     @commands.command(name='bruh')
-    async def hello(self, ctx):
+    async def bruh(self, ctx):
         bruhgifs = ["https://media.giphy.com/media/VIOkcgpsnA2Zy/giphy.gif",
         "https://media.giphy.com/media/kWp8QC99Z6xFn8bF0v/giphy.gif",
         "https://media.giphy.com/media/fm0FiSOfefH5m/giphy.gif",
@@ -119,6 +122,15 @@ class Fun(commands.Cog):
             url=random.choice(bruhgifs))
 
         await ctx.message.reply(embed=myEmbed)
+
+    
+    
+    @commands.command(name = 's')
+    async def sp(self, ctx,message = discord.Message, *, term: str = '',member:discord.Member = None):
+        member = ctx.author
+        message = term
+        spoiler=discord.Embed(title="**SPOILER**\n\n", description=f"\n||{member.mention} has put a spoiler :-||\n\n||{term}||",color=discord.Colour.blue())
+        await ctx.send(embed = spoiler)
 
 
 

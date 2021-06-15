@@ -2,7 +2,6 @@ import discord
 from discord.ext import commands
 from discord.ext.commands.context import Context
 
-
 class Info(commands.Cog):
     @commands.command(name='ver')
     async def ver(self, context):
@@ -37,31 +36,17 @@ class Info(commands.Cog):
 
         myEmbed1 = discord.Embed(
             title="bot,docs and contributors", description=">>>About me part 2", color=0x0000ff)
+        myEmbed1.add_field(name="Invite MGSB to your server - ",
+                          value="[Invite Link](https://discord.com/oauth2/authorize?client_id=826067681111310426&scope=bot&permissions=470281334)", inline=False)
         myEmbed1.add_field(name="Created using - ",
                           value="[Discord.py](https://discordpy.readthedocs.io/en/stable)", inline=False)
         myEmbed1.add_field(name="DPY server - ",
                           value="[Discord.py - Discord server](https://discord.gg/dpy)", inline=False)
-        myEmbed1.add_field(name="BOT Repo",
-                          value="[MGSB Repo](https://github.com/YogPanjarale/RDB-RandomDiscordBot-)", inline=False)
         myEmbed1.add_field(name="Contributers - ",
                           value="[ZeusAbhijeet](https://github.com/ZeusAbhijeet) \n [its_charmandar](https://github.com/itsCharmander)", inline=False)
-
+        myEmbed1.add_field(name="top.gg - ",
+                          value="[Bot Profile](https://top.gg/bot/826067681111310426)", inline=False)
         await context.message.reply(embed=myEmbed1)
-
-    
-    # ping
-
-    @commands.command('ping')
-    async def ping(self, context):
-
-        latency = self.client.latency * 1000
-        myEmbed = discord.Embed(
-            title="Ping", description=f'latency : {latency} ms', color=0x00ff00)
-
-        await context.message.reply(embed=myEmbed)
-    # help
-
-
 
 def setup(client):
     client.add_cog(Info(client))

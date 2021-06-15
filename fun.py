@@ -6,7 +6,7 @@ from discord.ext.commands.errors import CommandInvokeError, CommandNotFound, Mis
 from discord.member import Member
 import random
 from discord.ext import buttons
-from discord.message import Message
+from discord.message import Message 
 
 class Fun(commands.Cog):
     def __init__(self, bot):
@@ -132,7 +132,8 @@ class Fun(commands.Cog):
         spoiler=discord.Embed(title="**SPOILER**\n\n", description=f"\n||{member.mention} has put a spoiler :-||\n\n||{term}||",color=discord.Colour.blue())
         await ctx.send(embed = spoiler)
 
-
+    #@commands.command(name = 'hw')
+    #async def hw(self,ctx,)
 
 
 

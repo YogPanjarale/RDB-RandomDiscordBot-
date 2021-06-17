@@ -10,8 +10,9 @@ class CC(commands.Cog):
         self.bot:Bot     = bot
     @commands.command(name="cca")
     async def ccl(self,ctx:Context,user:str=""):
+        serverId = ctx.message.guild.id
         if user =="":
-            r = getAllCC()
+            r = getAllCC(serverID=serverId)
             if r:
                 myEmbed = Embed(title=f"All Commands Created Since last reset ",description=f"Total of {len(r)+1} Commands")
                 j=0
@@ -23,7 +24,7 @@ class CC(commands.Cog):
                 return await ctx.channel.send(embed = myEmbed)
         if user.startswith("<@"):
             name = user
-            r = searchCCByUser(name.replace("!",""))
+            r = searchCCByUser(serverID=serverId,user=name.replace("!",""))
             if r:
                 myEmbed = Embed(name=f"Commands Created By {name}",description=f"{name} has created {len(r)} Commands ")
                 j=0
@@ -40,8 +41,9 @@ class CC(commands.Cog):
 
     @commands.command(name="cc")
     async def cc(self,ctx:Context,name:str=" ",*description):
+        serverId = ctx.message.guild.id        
         if name.startswith("<@"):
-            r = searchCCByUser(name.replace("!",""))
+            r = searchCCByUser(serverID=serverId,user=name.replace("!",""))
             if r:
                 myEmbed = Embed(name=f"Commands Created By {name}",description=f"{name} has created{len(r)+1} Commands ")
                 for i in r:
@@ -57,13 +59,15 @@ class CC(commands.Cog):
         if name in self.bot.all_commands:
             return await ctx.channel.send(f"{name} command already exists!")
         description=' '.join(description)
-        addCC(name=name,description=description,user=ctx.author.mention)
+        addCC(serverID=serverId,name=name,description=description,user=ctx.author.mention)
         await ctx.channel.send(f"Command with name : `{name}` , and description : `{description}` has been added by {ctx.author.mention}")
     #@commands.Cog.listener()
     async def on_command_error(self,ctx:Context,error):
         if isinstance(error, CommandNotFound) or isinstance(error,BotMissingPermissions) or isinstance(error,CommandInvokeError):
             msg:str=ctx.message.content
-            r=searchCC(msg[len(self.bot.command_prefix):])
+            serverId = ctx.message.guild.id
+
+            r=searchCC(serverID=serverId,name=msg[len(self.bot.command_prefix):])
             if r:
                 return await ctx.channel.send(r['description'])
                 

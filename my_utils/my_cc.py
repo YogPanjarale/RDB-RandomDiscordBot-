@@ -1,4 +1,4 @@
-from os import name
+import os
 from typing import List, Union
 from tinydb import TinyDB,Query
 import datetime;
@@ -6,7 +6,13 @@ from dataclasses import dataclass
 # db:TinyDB = TinyDB('./cc_db.json')
 q=Query()
 def serverDb(serverId:str)->TinyDB:
-    return TinyDB(f'./cc_db/{serverId}.json')
+    file_path= f'./cc_db/{serverId}.json'
+    fileExists= os.path.exists(file_path)
+    # print(fileExists)
+    if not fileExists:
+        f= open(file_path,"w")
+        f.close()
+    return TinyDB(file_path)
 @dataclass()
 class ResponseCC():
     name:str

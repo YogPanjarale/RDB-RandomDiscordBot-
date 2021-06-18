@@ -30,7 +30,7 @@ class CC(commands.Cog):
                 j=0
                 for i in r:
                     j+=1
-                    des = i['description'] + "\n**Created At " + i["time-created"]+"**"
+                    des = i['description'] + "\n**Created At " + i["time_created"]+"**"
                     n=f"{j}."+ i["name"] 
                     myEmbed.add_field(name=n,value=des,inline=False)
                 return await ctx.channel.send(embed = myEmbed)
@@ -47,7 +47,7 @@ class CC(commands.Cog):
             if r:
                 myEmbed = Embed(name=f"Commands Created By {name}",description=f"{name} has created{len(r)+1} Commands ")
                 for i in r:
-                    des = i['description'] + "\n**Created At " + i["time-created"]+"**"
+                    des = i['description'] + "\n**Created At " + i["time_created"]+"**"
                     myEmbed.add_field(name=i["name"],value=des,inline=False)
                 return await ctx.channel.send(embed = myEmbed)
             else:

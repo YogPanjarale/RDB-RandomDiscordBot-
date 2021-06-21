@@ -126,9 +126,8 @@ class Fun(commands.Cog):
     
     
     @commands.command(name = 's')
-    async def sp(self, ctx,message = discord.Message, *, term: str = '',member:discord.Member = None):
+    async def sp(self, ctx, *, term: str = '',member:discord.Member = None):
         member = ctx.author
-        message = term
         spoiler=discord.Embed(title="**SPOILER**\n\n", description=f"\n||{member.mention} has put a spoiler :-||\n\n||{term}||",color=discord.Colour.blue())
         await ctx.send(embed = spoiler)
 

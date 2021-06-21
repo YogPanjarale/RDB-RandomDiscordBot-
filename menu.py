@@ -1,4 +1,4 @@
-from main import BOT_NAME, BOT_PREFIX
+from main import bot_name ,bot_prefix
 import discord
 from discord.ext import commands
 from discord.ext.commands.context import Context
@@ -6,11 +6,11 @@ from discord.member import Member
 
 
 class menu(commands.Cog):
-    @commands.command(name=BOT_PREFIX.replace(".",""))
+    @commands.command(name=bot_prefix.replace(".",""))
     async def mg(self, context):
 
         myEmbed = discord.Embed(
-            title=f"{BOT_NAME} help commands", description="these r the primary cmds,dont forget to put the prefix before each of them", color=0x00ff00)
+            title=f"{bot_name} help commands", description="these r the primary cmds,dont forget to put the prefix before each of them", color=0x00ff00)
         myEmbed.add_field(name="1) mg - ",
                           value="brings up this help page", inline=True)
         myEmbed.add_field(name="2) utils - ", value="Utility cmds", inline=True)
@@ -32,9 +32,7 @@ class menu(commands.Cog):
                           value="tells u about the bot and founders", inline=True)
         myEmbed.add_field(name="3) info - ",
                           value="dpy server , contributers , and dpy docs", inline=True)
-        myEmbed.add_field(name="4) ping - ",
-                          value="know your latency with this command", inline=True)
-        myEmbed.add_field(name="5) addnews/news - ",
+        myEmbed.add_field(name="4) addnews/news - ",
                           value="make the bot remember important milestones and news that recently happend in the server", inline=True)
 
         await context.message.reply(embed=myEmbed)
@@ -59,13 +57,13 @@ class menu(commands.Cog):
         myEmbed = discord.Embed(
             title="Fun commands", description="these r one of the secondary cmds,dont forget to put the prefix before each of them", color=0x00ff00)
         myEmbed.add_field(name="1) hello/sus/bruh/hifi - ", value="fun gif cmds", inline=True)
-        myEmbed.add_field(name="2) say - ", value="fun cmd1", inline=True)
-        myEmbed.add_field(name="3) how - ", value="fun cmd2", inline=True)
-        myEmbed.add_field(name="4) pfp - ", value="fun cmd3", inline=True)
-        myEmbed.add_field(name="5) 8b - ", value="fun cmd4", inline=True)
-        myEmbed.add_field(name="6) spam - ", value="fun cmd5", inline=True)
-        myEmbed.add_field(name="7) count - ", value="fun cmd6", inline=True)
-        myEmbed.add_field(name="8) custom command (cc) - ", value="fun cmd7", inline=True)
+        myEmbed.add_field(name="2) say - ", value="repeat cmd", inline=True)
+        myEmbed.add_field(name="3) how - ", value="how are you", inline=True)
+        myEmbed.add_field(name="4) pfp - ", value="view the pfps of members", inline=True)
+        myEmbed.add_field(name="5) 8b - ", value="ask the 8ball a Q", inline=True)
+        myEmbed.add_field(name="6) spam - ", value="spam a message - not for members", inline=True)
+        myEmbed.add_field(name="7) count - ", value="make the bot do a countdown", inline=True)
+        myEmbed.add_field(name="8) custom command (cc) - ", value="create special message commands of your own", inline=True)
 
         await context.message.reply(embed=myEmbed)
 

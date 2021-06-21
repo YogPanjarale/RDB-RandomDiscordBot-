@@ -1,11 +1,18 @@
-from os import name
+import os
 from typing import List, Union
 from tinydb import TinyDB,Query
 import datetime;
 from dataclasses import dataclass
-db:TinyDB = TinyDB('./cc_db.json')
+# db:TinyDB = TinyDB('./cc_db.json')
 q=Query()
-
+def serverDb(serverId:str)->TinyDB:
+    file_path= f'./cc_db/{serverId}.json'
+    fileExists= os.path.exists(file_path)
+    # print(fileExists)
+    if not fileExists:
+        f= open(file_path,"w")
+        f.close()
+    return TinyDB(file_path)
 @dataclass()
 class ResponseCC():
     name:str
@@ -14,14 +21,16 @@ class ResponseCC():
     time_created:str
 
 listOfResponse = [ResponseCC(name="",description="",user="",time_created="")]
-def addCC(name:str,description:str,user:str):
+def addCC(serverID:str,name:str,description:str,user:str):
+    db = serverDb(serverId=serverID)
     d = datetime.datetime.now()
     timeCreated = d.ctime()
     db.insert({"name":name,"description":description,"user":user,"time_created":timeCreated})
     # print(db.all())
     print(f"Command with name : {name}, and description : {description} Added, by user {user}")
     pass
-def searchCC(name:str)->Union[ResponseCC,None]:
+def searchCC(serverID:str,name:str)->Union[ResponseCC,None]:
+    db = serverDb(serverId=serverID)
     print(f"Searching for {name}")
     result=db.search(q.name ==name)
     # print(result)
@@ -29,13 +38,15 @@ def searchCC(name:str)->Union[ResponseCC,None]:
         return result[0]
     pass
 # v = list[dict]
-def searchCCByUser(user:str)->listOfResponse:
+def searchCCByUser(serverID:str,user:str)->listOfResponse:
+    db = serverDb(serverId=serverID)
     print(f"Searching for CC made by user {user}")
     result=db.search(q.user ==user)
     # print(result)
     return result
-def deleteCCbyName(name:str,user:str)->str:
-    r= searchCC(name)
+def deleteCCbyName(serverID:str,name:str,user:str)->str:
+    db = serverDb(serverId=serverID)
+    r= searchCC(serverId=serverID,name=name)
     if(r):
         if r.user == user:
             db.remove(q.name==name)
@@ -43,8 +54,9 @@ def deleteCCbyName(name:str,user:str)->str:
             return "Done"
         return f"CC {name} was not created by {user} not same"
     return "CC not found"
-def updateCCnameByName(name:str,newName:str,user:str)->str:
-    r= searchCC(name)
+def updateCCnameByName(serverID:str,name:str,newName:str,user:str)->str:
+    db = serverDb(serverId=serverID)
+    r= searchCC(serverId=serverID,name=name)
     if(r):
         if r.user == user:
             #TODO check if new name already exists
@@ -53,8 +65,9 @@ def updateCCnameByName(name:str,newName:str,user:str)->str:
             return "Done"
         return f"CC {name} was not created by {user} not same"
     return "CC not found"
-def updateCCdescriptionByName(name:str,newDescription:str,user:str)->str:
-    r= searchCC(name)
+def updateCCdescriptionByName(serverID:str,name:str,newDescription:str,user:str)->str:
+    db = serverDb(serverId=serverID)
+    r= searchCC(serverId=serverID,name=name)
     if(r):
         if r.user == user:
             db.update({"description":newDescription},q.name == name)
@@ -64,7 +77,8 @@ def updateCCdescriptionByName(name:str,newDescription:str,user:str)->str:
     return "CC not found"
     # if ( )
 
-def getAllCC()->listOfResponse:
+def getAllCC(serverID:str)->listOfResponse:
+    db = serverDb(serverId=serverID)
     result = db.all()
     print(f"Getting all CC ", f"total {len(result)+1}")
     return result

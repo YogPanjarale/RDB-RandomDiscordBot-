@@ -9,11 +9,7 @@ load_dotenv()
 bot_prefix = os.getenv('bot_prefix')
 bot_token = os.getenv('bot_token')
 bot_name = os.getenv('bot_name')
-os.system('sudo systemctl stop bot')
-sleep(1)
 os.system('sudo systemctl daemon-reload')
-sleep(1)
-os.system("sudo systemctl start bot")
 my = [518118892317442059 , 705463601011490907]
 le = ['cmd', 'info','menu','fun','mod','cc','news']
 def sec(ctx):

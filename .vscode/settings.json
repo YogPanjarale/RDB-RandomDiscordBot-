@@ -1,5 +1,6 @@
 {
     "cSpell.ignoreWords": [
         "bruh"
-    ]
+    ],
+    "python.pythonPath": "/bin/python3.7"
 }

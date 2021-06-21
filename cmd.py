@@ -4,7 +4,7 @@ from my_utils.my_youtube_search import YoutubeResult, searchYT
 import discord
 from discord.ext import commands
 from discord.ext.commands.context import Context
-
+from googlesearch import search
 from dpymenus import Page, PaginatedMenu
 import requests
 from googlesearch.googlesearch import GoogleSearch, SearchResponse, SearchResult
@@ -43,21 +43,16 @@ class Cmd(commands.Cog):
             myEmbed = discord.Embed(
                 title="Not Found !", description="I cound not find that user")
             await ctx.message.channel.send(embed=myEmbed)
-
     @commands.command('ggl')
     async def ggl(self, ctx, *, term: str = ''):
-        result = SearchResult(query=term,num_results=10)
-        result: SearchResponse = GoogleSearch().search(query=term, num_results=5)
-        print(term)
-        myEmbed = discord.Embed(title="Google search", description=">>>this is     what i found",
-                                color=0x00ff00, url='https://google.com/?q='+quote(term))
-        # myEmbed.set_image(pictureUrl)
-        r: SearchResult
-        for r in result.results:
-            myEmbed.add_field(name=r.title, inline=False, value=r.url)
-        if len(result.results) <= 0:
-            myEmbed.set_footer(text="Nothing Found from the search")
-        await ctx.message.channel.send(embed=myEmbed)
+
+        
+        for i in search(term, tld="com", num=5, stop=10, pause=2):
+            
+            myEmbed1 = discord.Embed()
+            msg = await ctx.send(embed=myEmbed1)
+            myEmbed1.add_field(name = '**Here\'s what i found**', description = i)
+            await msg.edit(embed = myEmbed1)
 
     @commands.command('insta')
     async def insta(self, ctx, *, term: str = ''):

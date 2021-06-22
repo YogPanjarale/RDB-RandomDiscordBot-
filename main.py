@@ -12,11 +12,13 @@ bot_name = os.getenv('bot_name')
 os.system('sudo systemctl daemon-reload')
 my = [518118892317442059 , 705463601011490907]
 le = ['cmd', 'info','menu','fun','mod','cc','news']
-def sec(ctx):
+def sec(ctx)->bool:
     if ctx.author.id in my:
-        return 'access granted'
+        # return 'access granted'
+        return True
     else:
-        return 'access denied , this is a creator command only'
+        return False
+        # return 'access denied , this is a creator command only'
 if __name__ == '__main__':
     client = Bot(bot_prefix)
     extensions = ['cmd', 'info','menu','fun','mod','cc','news']

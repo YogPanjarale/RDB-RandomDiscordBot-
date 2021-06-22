@@ -5,7 +5,6 @@ from discord.ext.commands.context import Context
 from discord.ext.commands.errors import CommandInvokeError, CommandNotFound, MissingPermissions
 from discord.member import Member
 import random
-from discord.ext import buttons
 from discord.message import Message 
 
 class Fun(commands.Cog):

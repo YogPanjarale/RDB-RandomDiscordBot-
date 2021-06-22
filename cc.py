@@ -13,15 +13,19 @@ class CC(commands.Cog):
         serverId = ctx.message.guild.id
         if user =="":
             r = getAllCC(serverID=serverId)
-            if r:
-                myEmbed = Embed(title=f"All Commands Created Since last reset ",description=f"Total of {len(r)} Commands")
+            print(len(r))
+            myEmbed = Embed(title=f"All Commands Created Since last reset ",description=f"Total of {len(r)} Commands")
+            
+            if len(r)==0:
+                myEmbed.add_field(name="No Commands found for this server",value="______")
+            elif len(r)>=1:
                 j=0
                 for i in r:
                     j+=1
-                    des = i['description'] + "\n**Created At " + i['time_created']+"**"
+                    des = i['description'] + "\n**Created At " + i['time_created']   +"**"
                     n=f"{j}."+ i["name"] 
                     myEmbed.add_field(name=n,value=des,inline=False)
-                return await ctx.channel.send(embed = myEmbed)
+            return await ctx.channel.send(embed = myEmbed)
         if user.startswith("<@"):
             name = user
             r = searchCCByUser(serverID=serverId,user=name.replace("!",""))
@@ -63,15 +67,17 @@ class CC(commands.Cog):
         await ctx.channel.send(f"Command with name : `{name}` , and description : `{description}` has been added by {ctx.author.mention}")
     @commands.Cog.listener()
     async def on_command_error(self,ctx:Context,error):
-        if isinstance(error, CommandNotFound) or isinstance(error,BotMissingPermissions) or isinstance(error,CommandInvokeError):
+        if isinstance(error, CommandNotFound):
             msg:str=ctx.message.content
             serverId = ctx.message.guild.id
-
+            print(error)
             r=searchCC(serverID=serverId,name=msg[len(self.bot.command_prefix):])
             if r:
                 return await ctx.channel.send(r['description'])
                 
             return await ctx.channel.send("sorry , an error occured , contact Mg or Yog")
+        elif isinstance(error,BotMissingPermissions) or isinstance(error,CommandInvokeError):
+            raise error
         raise error
 def setup(client):
     client.add_cog(CC(client))

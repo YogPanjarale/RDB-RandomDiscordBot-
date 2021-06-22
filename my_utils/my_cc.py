@@ -80,5 +80,5 @@ def updateCCdescriptionByName(serverID:str,name:str,newDescription:str,user:str)
 def getAllCC(serverID:str)->listOfResponse:
     db = serverDb(serverId=serverID)
     result = db.all()
-    print(f"Getting all CC ", f"total {len(result)+1}")
+    print(f"Getting all CC ", f"total {len(result)}")
     return result

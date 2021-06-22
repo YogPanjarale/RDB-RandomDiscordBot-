@@ -4,13 +4,12 @@ from my_utils.my_youtube_search import YoutubeResult, searchYT
 import discord
 from discord.ext import commands
 from discord.ext.commands.context import Context
-from googlesearch import search
 from dpymenus import Page, PaginatedMenu
 import requests
 from googlesearch.googlesearch import GoogleSearch, SearchResponse, SearchResult
+search = GoogleSearch().search
 from urllib.parse import quote
 import instatools3
-
 class Cmd(commands.Cog):
 
     @commands.command('cov')

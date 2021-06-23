@@ -136,7 +136,7 @@ class Fun(commands.Cog):
     
     @commands.command('whoismg')
     async def whoismg(self,ctx):
-        wimg = ["cant say , he could be lying abt his name for all yk" , 'dont ask a man his salary , a woman her age and mg is name' ,'he\'ll reveal that on his bday , i.e if u remember it' , 'even yog , the co founder of mgsb doesnt know','stop asking that','not telling','shoo','idk okay?','why do u wanna know?','hint : its related to a gods name','do i look like google to u?' , '>:((']
+        wimg = ["cant say , he could be lying abt his name for all yk" , 'dont ask a man his salary , a woman her age and mg his name' ,'he\'ll reveal that on his bday , i.e if u remember it' , 'even yog , the co founder of mgsb doesnt know','stop asking that','not telling','shoo','idk okay?','why do u wanna know?','hint : its related to a gods name','do i look like google to u?' , '>:((','smh','bruh stop already with this Q','dont ask']
         hdp = random.choice(wimg)
         wmg = discord.Embed(name = '',description=hdp)
         await ctx.send(embed = wmg)

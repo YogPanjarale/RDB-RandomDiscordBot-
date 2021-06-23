@@ -360,7 +360,7 @@ def bots():
             hey(f"the number is {s}")
 
 if __name__ == "__main__":
-    alpha("ready for your commands")  
+    talk("ready for your commands")  
     while True:
         start = mc()
         if "wake up" in start:

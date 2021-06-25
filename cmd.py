@@ -7,9 +7,9 @@ from discord.ext.commands.context import Context
 from dpymenus import Page, PaginatedMenu
 import requests
 from googlesearch.googlesearch import GoogleSearch, SearchResponse, SearchResult
-search = GoogleSearch().search
+from googlesearch import search
 from urllib.parse import quote
-import instatools3
+from time import sleep
 class Cmd(commands.Cog):
 
     @commands.command('cov')
@@ -44,49 +44,12 @@ class Cmd(commands.Cog):
             await ctx.message.channel.send(embed=myEmbed)
     @commands.command('ggl')
     async def ggl(self, ctx, *, term: str = ''):
+        ggl = search(term,num_results=5,lang='en',proxy=None)
+        sleep(1)        
+        myEmbed1 = discord.Embed(name = '**Here\'s what i found**', description = ggl)
+        sleep(1)
+        await ctx.send(embed = myEmbed1)
 
-        
-        for i in search(term, tld="com", num=5, stop=10, pause=2):
-            
-            myEmbed1 = discord.Embed()
-            msg = await ctx.send(embed=myEmbed1)
-            myEmbed1.add_field(name = '**Here\'s what i found**', description = i)
-            await msg.edit(embed = myEmbed1)
-
-    @commands.command('insta')
-    async def insta(self, ctx, *, term: str = ''):
-        u = instatools3.igstalker(term)
-        if u:
-            print(u)
-            follower = u['follower']
-            following = u['following']
-            bio = u['bio']
-            if bio == '':
-                bio = '__'
-            username = u['username']
-            pictureUrl = u['pic']
-            profilelink = f'https://instagram.com/{username}'
-            print(pictureUrl)
-            myEmbed = discord.Embed(
-                title="IG acc search", description=">>>this is what i found", color=0x00ff00)
-            # myEmbed.set_image(pictureUrl)
-            myEmbed.add_field(name="name of account : ",
-                              value=username, inline=False)
-            myEmbed.add_field(name="no. of followers : ",
-                              value=follower, inline=False)
-            myEmbed.add_field(name="following : ",
-                              value=following, inline=False)
-            myEmbed.add_field(name="bio : ", value=bio, inline=False)
-            myEmbed.add_field(name="link to profile : ",
-                              value=profilelink, inline=False)
-
-            await ctx.message.channel.send(embed=myEmbed)
-
-        if not u:
-            myEmbed8 = discord.Embed(
-                title="IG acc search", description="IG acc not found :(( ,retry", color=0x00ff00)
-
-            await ctx.message.channel.send(embed=myEmbed8)
 
     @commands.command('yt')
     async def youtube(self, ctx, *, term: str = ''):

@@ -15,9 +15,7 @@ import RPi.GPIO as gpio
 from time import sleep
 import sys
 import pyautogui as pag
-from pynput.keyboard import Controller 
 import wikipedia
-import keyboard
 
 name =  'MG'
 gpio.setwarnings(False)

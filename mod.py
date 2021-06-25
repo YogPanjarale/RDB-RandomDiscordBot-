@@ -7,10 +7,11 @@ from discord import Member
 from better_profanity import Profanity
 from discord.guild import Guild
 from discord.message import Message
+import numpy
 import pandas as pd
 import json
 import os
-
+from time import sleep
 filtered_words = pd.read_csv('swears.txt')['swears'].to_list()
 fw = ['mg.s','m.sp']
 class Mod(commands.Cog):
@@ -22,15 +23,17 @@ class Mod(commands.Cog):
                     await msg.delete()
             await commands.process_commands(msg)
     @commands.Cog.listener()
-    async def on_message(self,msg:Message):
-        g:Guild=msg.guild
-        role=g.get_role(839409585706237973)
+    async def on_message(self,msg):
+        g:discord.Guild=msg.guild
+        role=discord.utils.get(g.roles,name='ld')
         if not msg.author.bot:
             for word in filtered_words:
                 if word in msg.content:
-                    await msg.delete()
-                    await msg.channel.send(f"{msg.author.mention} has used a banned word , sending them to lockdown")
+                    sleep(1)
+                    await msg.channel.purge(limit = 3)
                     await msg.author.add_roles(role)
+                    await msg.channel.send(f"{msg.author.mention} has used a banned word , sending them to lockdown")
+                    
                     
        
     #lockdown cmd

@@ -6,6 +6,7 @@ from discord.ext import commands
 from discord.ext.commands import Context
 from dotenv import load_dotenv
 load_dotenv()
+from itertools import cycle
 bot_prefix = os.getenv('bot_prefix')
 bot_token = os.getenv('bot_token')
 bot_name = os.getenv('bot_name')
@@ -26,6 +27,10 @@ def sec(ctx)->bool:
 
 if __name__ == '__main__':
     client = Bot(bot_prefix)
+    @client.event
+    async def on_ready():
+        activity = discord.Game(name="mg.help / mg.mg", type=20)
+        await client.change_presence(status=discord.Status.dnd, activity=activity)
     extensions = ['cmd', 'info','menu','fun','mod','cc','news']
     for extension in extensions:
         try:

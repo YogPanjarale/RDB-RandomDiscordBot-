@@ -1,4 +1,5 @@
 from main import bot_prefix
+from mod import br
 from my_utils.get_covid_data import getCovidData
 from my_utils.my_youtube_search import YoutubeResult, searchYT
 import discord
@@ -44,14 +45,13 @@ class Cmd(commands.Cog):
             await ctx.message.channel.send(embed=myEmbed)
     @commands.command('ggl')
     async def ggl(self, ctx, *, term: str = ''):
-        ggl = search(term,num_results=5,lang='en',proxy=None)
-        sleep(1)        
+        ggl = search(term,num_results=5,lang='en',proxy=None)      
         myEmbed1 = discord.Embed(name = '**Here\'s what i found**', description = ggl)
-        sleep(1)
         await ctx.send(embed = myEmbed1)
 
 
     @commands.command('yt')
+
     async def youtube(self, ctx, *, term: str = ''):
         l = searchYT(term)
         # print(l)

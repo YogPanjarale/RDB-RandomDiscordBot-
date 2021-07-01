@@ -18,6 +18,7 @@ def mgsec(ctx)->bool:
     if ctx.author.id in mg:
         return True
     else:
+        print('no')
         return False
 def sec(ctx)->bool:
     if ctx.author.id in my:

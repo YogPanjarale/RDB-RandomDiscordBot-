@@ -1,4 +1,5 @@
-from main import bot_name ,bot_prefix
+from dotenv import main
+from main import bot_name 
 import discord
 from discord.ext import commands
 from discord.ext.commands.context import Context
@@ -6,12 +7,21 @@ from discord.member import Member
 
 
 class menu(commands.Cog):
-    @commands.command(name=bot_prefix.replace(".",""))
-    async def mg(self, context):
+    @commands.has_permissions(ban_members=True)
+    @commands.command(name = 'mg')
+    async def mg(self,ctx):
+        mge = discord.Embed(title='MGSB Bot setup',description='to setup MGSB in your server , do the following steps - ')
+        mge.add_field(name = "1) ld role -",value="create a role called 'ld' where the role can't view see any channels (text, voice or even stage) , the perm to view channel should be crossed out in the channel settings")
+        mge.add_field(name = "2) Appeal channel - ",value="this should be the only channel that the ld role can view and text in , also , dont allow everyone to view this channel")
+        mge.add_field(name = "3) mm role - ",value="create a role called 'mm', this will be used for people who shouldnt be allowed to use the bot")
+        mge.add_field(name = '4) Main cmd - ',value = "Use this command to bring up the main menu , it contains 5 commands that bring up the sub-menus")
+        await ctx.send(embed=mge)
+    @commands.command(name='main')
+    async def mai(self, context):
 
         myEmbed = discord.Embed(
             title=f"{bot_name} help commands", description="these r the primary cmds,dont forget to put the prefix before each of them", color=0x00ff00)
-        myEmbed.add_field(name="1) mg - ",
+        myEmbed.add_field(name="1) main - ",
                           value="brings up this help page", inline=True)
         myEmbed.add_field(name="2) utils - ", value="Utility cmds", inline=True)
         myEmbed.add_field(name="3) fun - ", value="Fun cmds", inline=True)

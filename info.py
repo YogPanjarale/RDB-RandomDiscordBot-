@@ -43,7 +43,7 @@ class Info(commands.Cog):
         myEmbed1.add_field(name="DPY server - ",
                           value="[Discord.py - Discord server](https://discord.gg/dpy)", inline=False)
         myEmbed1.add_field(name="Contributers - ",
-                          value="[ZeusAbhijeet](https://github.com/ZeusAbhijeet) \n [its_charmandar](https://github.com/itsCharmander)", inline=False)
+                          value="[ZeusAbhijeet](https://github.com/ZeusAbhijeet)", inline=False)
         myEmbed1.add_field(name="top.gg - ",
                           value="[Bot Profile](https://top.gg/bot/826067681111310426)", inline=False)
         await context.message.reply(embed=myEmbed1)

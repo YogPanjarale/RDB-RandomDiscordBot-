@@ -6,6 +6,7 @@ from discord.ext.commands.errors import CommandInvokeError, CommandNotFound, Mis
 from discord.member import Member
 import random
 from discord.message import Message 
+from time import sleep
 
 class Fun(commands.Cog):
     def __init__(self, bot):
@@ -36,7 +37,10 @@ class Fun(commands.Cog):
 
         await ctx.send(member.avatar_url)
 
+
+
     @commands.command(name='say')
+
     async def say(self, ctx, *, term: str = ''):
         await ctx.message.reply(term)
 
@@ -63,7 +67,7 @@ class Fun(commands.Cog):
         myEmbed11.add_field(name="Encrypted as", value=f,inline=False)
         await targetMember.send(embed = myEmbed11)
 
-    @commands.command(name='hi')
+    @commands.command(name='hello')
     async def hi(self, ctx):
         hellogifs = ["https://media.giphy.com/media/djRJNZqj508sE/giphy.gif",
         "https://media.giphy.com/media/Vbtc9VG51NtzT1Qnv1/giphy.gif",
@@ -128,10 +132,13 @@ class Fun(commands.Cog):
     async def sp(self, ctx, *, term: str = '',member:discord.Member = None):
         member = ctx.author
         spoiler=discord.Embed(title="**SPOILER**\n\n", description=f"\n||{member.mention} has put a spoiler :-||\n\n||{term}||",color=discord.Colour.blue())
+        await ctx.channel.purge(limit=1)
+        sleep(1)
         await ctx.send(embed = spoiler)
 
     #@commands.command(name = 'hw')
     #async def hw(self,ctx,)
+
 
     
     @commands.command('whoismg')
@@ -148,22 +155,6 @@ class Fun(commands.Cog):
         await member.edit(nick=nick)
         await ctx.send(f'Nickname was changed for {member.mention} ')
 
-        
-    @commands.has_role('mgsb admin')
-    @commands.command('spam')
-    async def spam(self,ctx:Context,n:str='',*terms):
-        term =''
-        if not( n.isnumeric()):
-            await ctx.channel.send("You did not provide the number")
-            term+=n
-            n=1
-        for t in terms:
-            term+=' '+str(t)
-        n:int=int(n)
-        for i in range(n):
-            # await ctx.channel.send(f"{int(n)-i} remain")
-            await ctx.channel.send(term)
-        #8ball cmd
 
     @commands.command(name='8b')
     async def eightball(self, ctx, *, question):

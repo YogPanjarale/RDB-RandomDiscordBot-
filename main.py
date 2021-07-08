@@ -10,12 +10,15 @@ from itertools import cycle
 bot_prefix = os.getenv('bot_prefix')
 bot_token = os.getenv('bot_token')
 bot_name = os.getenv('bot_name')
+# os.system('git init')
+# os.system('git pull')
 my = [518118892317442059 , 705463601011490907]
 mg = [518118892317442059]
 def mgsec(ctx)->bool:
     if ctx.author.id in mg:
         return True
     else:
+        print('no')
         return False
 def sec(ctx)->bool:
     if ctx.author.id in my:

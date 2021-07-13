@@ -8,7 +8,7 @@ from discord.ext import commands
 from discord.ext.commands.context import Context
 from dpymenus import Page, PaginatedMenu
 import requests
-from googlesearch.googlesearch import GoogleSearch, SearchResponse, SearchResult
+# from googlesearch.googlesearch import GoogleSearch, SearchResponse, SearchResult
 from googlesearch import search
 from urllib.parse import quote
 from time import sleep

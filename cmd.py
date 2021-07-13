@@ -1,3 +1,4 @@
+from os import name
 from main import bot_prefix
 from mod import br
 from my_utils.get_covid_data import getCovidData
@@ -45,8 +46,14 @@ class Cmd(commands.Cog):
             await ctx.message.channel.send(embed=myEmbed)
     @commands.command('ggl')
     async def ggl(self, ctx, *, term: str = ''):
-        ggl = search(term,num_results=5,lang='en',proxy=None)      
-        myEmbed1 = discord.Embed(name = '**Here\'s what i found**', description = ggl)
+        l = search(term,num_results=10,lang='en',proxy=None)  
+        b = str(l).replace("'",'') 
+        c = str(b).replace('[','')
+        d = str(c).replace(']','')
+        f = str(d).replace(',','\n')
+        j = str(term).replace(" ",'+') 
+        myEmbed1 = discord.Embed(title = '**Here\'s what i found**', description = f)
+        myEmbed1.add_field(name= '**For more results** - ' , value = f'[Browser redirect Link](https://www.google.com/search?q={j})')
         await ctx.send(embed = myEmbed1)
 
 

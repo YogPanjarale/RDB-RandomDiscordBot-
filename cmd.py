@@ -51,8 +51,9 @@ class Cmd(commands.Cog):
         c = str(b).replace('[','')
         d = str(c).replace(']','')
         f = str(d).replace(',','\n')
+        g = str(f).replace("/search",'https://google.com/search')
         j = str(term).replace(" ",'+') 
-        myEmbed1 = discord.Embed(title = '**Here\'s what i found**', description = f)
+        myEmbed1 = discord.Embed(title = '**Here\'s what i found**', description = g)
         myEmbed1.add_field(name= '**For more results** - ' , value = f'[Browser redirect Link](https://www.google.com/search?q={j})')
         await ctx.send(embed = myEmbed1)
 

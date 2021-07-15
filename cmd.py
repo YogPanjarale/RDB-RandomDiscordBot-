@@ -13,9 +13,9 @@ from googlesearch import search
 from urllib.parse import quote
 from time import sleep
 class Cmd(commands.Cog):
-
+    help='search commands'
     @commands.command(name='covin',help ='command used to see current covid status in india') 
-    @commands.cooldown(1,30,commands.BucketType.guild)
+    @commands.cooldown(1,20,commands.BucketType.guild)
     async def covid(self,ctx:Context,*,term:str=""):
         r = getCovidData()
         if "india" in term:
@@ -28,7 +28,7 @@ class Cmd(commands.Cog):
         await ctx.message.channel.send(embed=myEmbed)
 
     @commands.command(name='git',help ='github profile command - view profiles') 
-    @commands.cooldown(1,30,commands.BucketType.guild)
+    @commands.cooldown(1,20,commands.BucketType.guild)
     async def github(self, ctx: Context, *, term: str = ''):
         r = requests.get(f'https://api.github.com/users/{term}').json()
         try:
@@ -47,7 +47,7 @@ class Cmd(commands.Cog):
                 title="Not Found !", description="I cound not find that user")
             await ctx.message.channel.send(embed=myEmbed)
     @commands.command(name='ggl',help ='google search command - provides upto 10 results along with redirect link') 
-    @commands.cooldown(1,30,commands.BucketType.guild)
+    @commands.cooldown(1,20,commands.BucketType.guild)
     async def ggl(self, ctx, *, term: str = ''):
         l = search(term,num_results=10,lang='en',proxy=None)  
         b = str(l).replace("'",'') 
@@ -61,7 +61,7 @@ class Cmd(commands.Cog):
         await ctx.send(embed = myEmbed1)
 
     @commands.command(name='yt',help ='youtube search command - paginated results') 
-    @commands.cooldown(1,30,commands.BucketType.guild)
+    @commands.cooldown(1,20,commands.BucketType.guild)
 
     async def youtube(self, ctx, *, term: str = ''):
         l = searchYT(term)
@@ -89,7 +89,7 @@ class Cmd(commands.Cog):
         await menu.open()
     # 
     @commands.command(name='uu',help ='upcoming updates') 
-    @commands.cooldown(1,30,commands.BucketType.guild)
+    @commands.cooldown(1,20,commands.BucketType.guild)
     async def uu(self, context):
 
         myEmbed3 = discord.Embed(
@@ -105,7 +105,7 @@ class Cmd(commands.Cog):
 
         await context.message.reply(embed=myEmbed3)
     @commands.command(name='',help ='') 
-    @commands.cooldown(1,30,commands.BucketType.guild)
+    @commands.cooldown(1,20,commands.BucketType.guild)
     async def corona(self,ctx:Context):
         await ctx.channel.send("WIP")
 

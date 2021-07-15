@@ -23,6 +23,7 @@ def br(ctx)->bool:
         return False
         
 class Mod(commands.Cog):
+    help='moderation commands and automod'
     @commands.Cog.listener()
     async def on_message(msg:Message):
         if not msg.author.bot:
@@ -42,7 +43,7 @@ class Mod(commands.Cog):
                       
     #lockdown cmd
     @commands.command(name='br',help ='Bot Restrict - this is a permamant deal which makes members mentioned not allowed to use the bot anymore (under contruction)') 
-    @commands.cooldown(1,30,commands.BucketType.guild)
+    @commands.cooldown(1,20,commands.BucketType.guild)
     @commands.check(sec)
     async def br(ctx,member : discord.Member):
         a = ctx.member.id

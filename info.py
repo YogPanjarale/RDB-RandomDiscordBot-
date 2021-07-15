@@ -3,8 +3,9 @@ from discord.ext import commands
 from discord.ext.commands.context import Context
 
 class Info(commands.Cog):
+    help='who,when,what and where'
     @commands.command(name='ver',help ='current version of the bot') 
-    @commands.cooldown(1,30,commands.BucketType.guild)
+    @commands.cooldown(1,20,commands.BucketType.guild)
     async def ver(self, context):
         myEmbed = discord.Embed(
             title="Current Version", description="Version 1.8", color=0x00ff00)
@@ -15,7 +16,7 @@ class Info(commands.Cog):
     # info abt the bot
 
     @commands.command(name='who',help ='info about the bot and owners - part 1') 
-    @commands.cooldown(1,30,commands.BucketType.guild)
+    @commands.cooldown(1,20,commands.BucketType.guild)
     async def who(self, context):
 
         myEmbed = discord.Embed(
@@ -34,7 +35,7 @@ class Info(commands.Cog):
     #info
 
     @commands.command(name='info',help ='info about the bot and developers - part 2') 
-    @commands.cooldown(1,30,commands.BucketType.guild)
+    @commands.cooldown(1,20,commands.BucketType.guild)
     async def info(self, context):
 
         myEmbed1 = discord.Embed(

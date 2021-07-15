@@ -6,8 +6,9 @@ from dpymenus import Page, PaginatedMenu
 
 
 class News(commands.Cog):
+    help='inbuilt starboard'
     @commands.command(name='news',help ='this is the inbuilt starboard feature of the bot , use this command to view all the news and milestones done so far in the server') 
-    @commands.cooldown(1,30,commands.BucketType.guild)
+    @commands.cooldown(1,20,commands.BucketType.guild)
     async def getNews(self,ctx):
         result = getAllNews()
         menu = PaginatedMenu(ctx)
@@ -27,11 +28,12 @@ class News(commands.Cog):
             pages.append(page)
         menu.add_pages(pages)
         menu.show_command_message()
-        menu.set_timeout(30)
+        menu.set_timeout(20)
         await menu.open()
     # TODO: add hint use `;` as seperator
     @commands.command(name='an',help ="this command is used to add news - use ';' between the name and description , this command requires members to staff") 
-    @commands.cooldown(1,30,commands.BucketType.guild)
+    @commands.has_permissions(ban_members=True,manage_server=True)
+    @commands.cooldown(1,20,commands.BucketType.guild)
     async def addNews(self,ctx:Context,*text):
         text:str = " ".join(text)
         title:str = text.split(';')[0]

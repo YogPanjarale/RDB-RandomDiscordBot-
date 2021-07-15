@@ -78,7 +78,7 @@ class CC(commands.Cog):
             if r:
                 return await ctx.channel.send(r['description'])
                 
-            return await ctx.channel.send("sorry , an error occured , contact Mg or Yog")
+            return await ctx.channel.send("sorry , an error occured ,try contacting the owners")
         elif isinstance(error,BotMissingPermissions) or isinstance(error,CommandInvokeError):
             raise error
         raise error

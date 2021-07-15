@@ -32,7 +32,7 @@ class News(commands.Cog):
         await menu.open()
     # TODO: add hint use `;` as seperator
     @commands.command(name='an',help ="this command is used to add news - use ';' between the name and description , this command requires members to staff") 
-    @commands.has_permissions(ban_members=True,manage_server=True)
+    @commands.has_permissions(ban_members=True,manage_roles=True)
     @commands.cooldown(1,20,commands.BucketType.guild)
     async def addNews(self,ctx:Context,*text):
         text:str = " ".join(text)

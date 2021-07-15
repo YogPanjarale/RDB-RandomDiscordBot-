@@ -8,7 +8,7 @@ from discord.ext import commands
 from discord.ext.commands.context import Context
 from dpymenus import Page, PaginatedMenu
 import requests
-from googlesearch.googlesearch import GoogleSearch, SearchResponse, SearchResult
+# from googlesearch.googlesearch import GoogleSearch, SearchResponse, SearchResult
 from googlesearch import search
 from urllib.parse import quote
 from time import sleep
@@ -54,8 +54,9 @@ class Cmd(commands.Cog):
         c = str(b).replace('[','')
         d = str(c).replace(']','')
         f = str(d).replace(',','\n')
+        g = str(f).replace("/search",'https://google.com/search')
         j = str(term).replace(" ",'+') 
-        myEmbed1 = discord.Embed(title = ':mag: **Here\'s what i found** :mag:', description = f)
+        myEmbed1 = discord.Embed(title = ':mag: **Here\'s what i found** :mag:', description = g)
         myEmbed1.add_field(name= '**For more results** - ' , value = f'[Browser redirect Link](https://www.google.com/search?q={j})')
         await ctx.send(embed = myEmbed1)
 

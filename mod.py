@@ -32,44 +32,23 @@ class Mod(commands.Cog):
             await commands.process_commands(msg)
     @commands.Cog.listener()
     async def on_message(self,msg):
-        g:discord.Guild=msg.guild
-        role=discord.utils.get(g.roles,name='ld')
         if not msg.author.bot:
             for word in filtered_words:
                 if word in msg.content:
                     await sleep(1)
                     await msg.channel.purge(limit = 3)
-                    await msg.author.add_roles(role)
                     await sleep(1)
                     await msg.channel.send(f"{msg.author.mention} has used a banned word")
-                    
-                    
-       
+                      
     #lockdown cmd
-    @commands.command('br')
+    @commands.command(name='br',help ='Bot Restrict - this is a permamant deal which makes members mentioned not allowed to use the bot anymore (under contruction)') 
+    @commands.cooldown(1,30,commands.BucketType.guild)
     @commands.check(sec)
     async def br(ctx,member : discord.Member):
         a = ctx.member.id
         print(a)
         br.append(a)
         await ctx.send()
-    @commands.command('ld')
-    @commands.has_permissions(kick_members = True)
-    async def ld(self,ctx,member : discord.Member):
-        g:discord.Guild=ctx.guild
-        lockdown = discord.utils.get(g.roles,name='ld')
-        await member.add_roles(lockdown)
-        await ctx.send(member.mention+" is going thru a temporary lockdown")
-
-    #remove lockdown
-
-    @commands.command('rld')
-    @commands.has_permissions(kick_members = True)
-    async def rld(self,ctx,member : discord.Member):
-        g:discord.Guild=ctx.guild
-        rlockdown = discord.utils.get(g.roles,name='ld')
-        await member.remove_roles(rlockdown)
-        await ctx.send(member.mention+" the lockdown is over , sorry for the inconvenience")
 
 def setup(client):
     client.add_cog(Mod(client))

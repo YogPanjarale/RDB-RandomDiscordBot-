@@ -8,7 +8,8 @@ from discord import Embed
 class CC(commands.Cog):
     def __init__(self, bot):
         self.bot:Bot     = bot
-    @commands.command(name="cca")
+    @commands.command(name='cc',help ='custom command - this command can be used by members to create simple message commands , use command names to make the bot print your messages') 
+    @commands.cooldown(1,30,commands.BucketType.guild)
     async def ccl(self,ctx:Context,user:str=""):
         serverId = ctx.message.guild.id
         if user =="":
@@ -43,7 +44,8 @@ class CC(commands.Cog):
                 return await ctx.channel.send(embed = myEmbed)
             pass
 
-    @commands.command(name="cc")
+    @commands.command(name='cca',help ='view all custom commands made a member') 
+    @commands.cooldown(1,30,commands.BucketType.guild)
     async def cc(self,ctx:Context,name:str=" ",*description):
         serverId = ctx.message.guild.id        
         if name.startswith("<@"):

@@ -11,26 +11,17 @@ from time import sleep
 class Fun(commands.Cog):
     def __init__(self, bot):
         self.bot:Bot  = bot
-    @commands.command(name="count")
+    @commands.command(name='count',help ='make the bot do a countdown using this command') 
+    @commands.cooldown(1,30,commands.BucketType.guild)
     async def count(self,ctx:Context,n:str):
         if n.isnumeric():
             for i in range(int(n)):
                 await ctx.channel.send(str(i+1))
         else:
             await ctx.channel.send("Not a valid number to count")
-    @commands.command(name='how')
-    async def how(self, ctx):
-
-        myEmbed = discord.Embed(
-            title="how am i?", description="im doing great , thank u for asking :))", color=0x00ff00)
-        myEmbed.add_field(name="what about you ?",
-                           value="how are u today ?", inline=False)
-        myEmbed.set_image(
-            url="https://media.giphy.com/media/Zd5ZqNSI0mfymBRNQc/giphy.gif")
-
-        await ctx.message.reply(embed=myEmbed)
     # pfp
-    @commands.command('pfp')
+    @commands.command(name='pfp',help ='view the members profile image') 
+    @commands.cooldown(1,30,commands.BucketType.guild)
     async def pfp(self, ctx, member: Member = None):
         if not member:
             member = ctx.author
@@ -39,15 +30,16 @@ class Fun(commands.Cog):
 
 
 
-    @commands.command(name='say')
+    @commands.command(name='say',help ='make the bot repeat after you for extra emphasis') 
+    @commands.cooldown(1,30,commands.BucketType.guild)
 
     async def say(self, ctx, *, term: str = ''):
         await ctx.message.reply(term)
 
-    @commands.command(name='e')
-    async def e(self,ctx,*, term:str='',targetMember : discord.Member = None):
-        if targetMember == None:
-            targetMember = ctx.message.author
+    @commands.command(name='enc',help ='use this command to create passwords with lithium encryption , the bot sends u the messaage privately') 
+    @commands.cooldown(1,30,commands.BucketType.guild)
+    async def e(self,ctx,*, term:str=''):
+        targetMember = ctx.message.author
         y=term.lower()
         l=list(y)
         random.shuffle(l)
@@ -67,14 +59,17 @@ class Fun(commands.Cog):
         myEmbed11.add_field(name="Encrypted as", value=f,inline=False)
         await targetMember.send(embed = myEmbed11)
 
-    @commands.command(name='hello')
-    async def hi(self, ctx):
+    @commands.command(name='hello',help ='hello gifs') 
+    @commands.cooldown(1,30,commands.BucketType.guild)
+    async def hi(self, ctx,member:discord.Member):
+        if member==None:
+            member==ctx.message.author
         hellogifs = ["https://media.giphy.com/media/djRJNZqj508sE/giphy.gif",
         "https://media.giphy.com/media/Vbtc9VG51NtzT1Qnv1/giphy.gif",
         "https://media.giphy.com/media/dzaUX7CAG0Ihi/giphy.gif",
         "https://media.giphy.com/media/mW05nwEyXLP0Y/giphy.gif"]
         myEmbed = discord.Embed(
-            title="",
+            title="{ctx.message.author} is saying hello to {member.mention}",
             color=discord.Colour.purple()
         )
         myEmbed.set_image(
@@ -82,14 +77,17 @@ class Fun(commands.Cog):
 
         await ctx.message.reply(embed=myEmbed)
 
-    @commands.command(name='hifi')
-    async def hifi(self, ctx):
+    @commands.command(name='h5',help ='high five gifs') 
+    @commands.cooldown(1,30,commands.BucketType.guild)
+    async def hifi(self, ctx,member:discord.Member):
+        if member==None:
+            member==ctx.message.author
         hifigifs = ["https://media.giphy.com/media/bp0fLZr8kFz4Bm4kRV/giphy.gif",
         "https://media.giphy.com/media/HX3lSnGXZnaWk/giphy.gif",
         "https://media.giphy.com/media/DuWay0MoeQxWM/giphy.gif",
         "https://media.giphy.com/media/3o7TKWuJdNJSt2JHpK/giphy.gif"]
         myEmbed1 = discord.Embed(
-            title="",
+            title="{ctx.message.author} is giving a high five to {member.mention}",
             color=discord.Colour.purple()
         )
         myEmbed1.set_image(
@@ -97,7 +95,8 @@ class Fun(commands.Cog):
 
         await ctx.message.reply(embed=myEmbed1)
 
-    @commands.command(name='sus')
+    @commands.command(name='',help ='') 
+    @commands.cooldown(1,30,commands.BucketType.guild)
     async def sus(self, ctx):
         susgifs = ["https://media.giphy.com/media/cJMlR1SsCSkUjVY3iK/giphy.gif",
         "https://media.giphy.com/media/TPl5N4Ci49ZQY/giphy.gif",
@@ -111,7 +110,8 @@ class Fun(commands.Cog):
 
         await ctx.message.reply(embed=myEmbed)       
 
-    @commands.command(name='bruh')
+    @commands.command(name='',help ='') 
+    @commands.cooldown(1,30,commands.BucketType.guild)
     async def bruh(self, ctx):
         bruhgifs = ["https://media.giphy.com/media/VIOkcgpsnA2Zy/giphy.gif",
         "https://media.giphy.com/media/kWp8QC99Z6xFn8bF0v/giphy.gif",
@@ -128,20 +128,18 @@ class Fun(commands.Cog):
 
     
     
-    @commands.command(name = 's')
-    async def sp(self, ctx, *, term: str = '',member:discord.Member = None):
+    @commands.command(name='s',help ='spoiler command - replaces your message with a spoiler') 
+    @commands.cooldown(1,30,commands.BucketType.guild)
+    async def sp(self, ctx, *, term: str = ''):
         member = ctx.author
-        spoiler=discord.Embed(title="**SPOILER**\n\n", description=f"\n||{member.mention} has put a spoiler :-||\n\n||{term}||",color=discord.Colour.blue())
+        spoiler=discord.Embed(title="**SPOILER**\n\n", description=f"\n{member.mention} has put a spoiler :-\n\n||{term}||",color=discord.Colour.blue())
         await ctx.channel.purge(limit=1)
         sleep(1)
         await ctx.send(embed = spoiler)
 
-    #@commands.command(name = 'hw')
-    #async def hw(self,ctx,)
-
-
     
-    @commands.command('whoismg')
+    @commands.command(name='whoismg',help ='who is the creator of this bot? - use this to find out') 
+    @commands.cooldown(1,30,commands.BucketType.guild)
     async def whoismg(self,ctx):
         wimg = ["cant say , he could be lying abt his name for all yk" , 'dont ask a man his salary , a woman her age and mg his name' ,'he\'ll reveal that on his bday , i.e if u remember it' , 'even yog , the co founder of mgsb doesnt know','stop asking that','not telling','shoo','idk okay?','why do u wanna know?','hint : its related to a gods name','do i look like google to u?' , '>:((','smh','bruh stop already with this Q','dont ask']
         hdp = random.choice(wimg)
@@ -149,14 +147,16 @@ class Fun(commands.Cog):
         await ctx.send(embed = wmg)
 
 
-    @commands.command("nick",pass_context=True)
+    @commands.command(name='nick',pass_context=True,help ="change nicknames of members - requires 'manage messages' permission") 
+    @commands.cooldown(1,30,commands.BucketType.guild)
     @commands.has_permissions(manage_nicknames=True)
     async def chnick(self,ctx, member: discord.Member, nick):
         await member.edit(nick=nick)
         await ctx.send(f'Nickname was changed for {member.mention} ')
 
 
-    @commands.command(name='8b')
+    @commands.command(name='askbot',help ='ask the bot important life questions - (the ones that can be answered with yes and no , hes not einstien)') 
+    @commands.cooldown(1,30,commands.BucketType.guild)
     async def eightball(self, ctx, *, question):
         responses = ['It is certain.',
                      'It is decidedly so.',
@@ -178,8 +178,8 @@ class Fun(commands.Cog):
                      'My sources say no.',
                      'Outlook not so good.',
                      'Very doubtful.']
-        embed1=discord.Embed(title=f'8ball', 
-            description=f'Get your questions answered by 8ball',
+        embed1=discord.Embed(title=f'AskBot', 
+            description=f'Get your questions answered by the bot',
             colour=discord.Colour.red())
         embed1.add_field(name=f'Question:', value=f'{question}')
         embed1.add_field(name=f'Answer:', value=f'{random.choice(responses)}')

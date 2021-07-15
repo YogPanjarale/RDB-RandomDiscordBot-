@@ -14,7 +14,8 @@ from urllib.parse import quote
 from time import sleep
 class Cmd(commands.Cog):
 
-    @commands.command('cov')
+    @commands.command(name='covin',help ='command used to see current covid status in india') 
+    @commands.cooldown(1,30,commands.BucketType.guild)
     async def covid(self,ctx:Context,*,term:str=""):
         r = getCovidData()
         if "india" in term:
@@ -26,7 +27,8 @@ class Cmd(commands.Cog):
         myEmbed.add_field(name="Total Deaths",value=r.deaths)
         await ctx.message.channel.send(embed=myEmbed)
 
-    @commands.command('git')
+    @commands.command(name='git',help ='github profile command - view profiles') 
+    @commands.cooldown(1,30,commands.BucketType.guild)
     async def github(self, ctx: Context, *, term: str = ''):
         r = requests.get(f'https://api.github.com/users/{term}').json()
         try:
@@ -44,7 +46,8 @@ class Cmd(commands.Cog):
             myEmbed = discord.Embed(
                 title="Not Found !", description="I cound not find that user")
             await ctx.message.channel.send(embed=myEmbed)
-    @commands.command('ggl')
+    @commands.command(name='ggl',help ='google search command - provides upto 10 results along with redirect link') 
+    @commands.cooldown(1,30,commands.BucketType.guild)
     async def ggl(self, ctx, *, term: str = ''):
         l = search(term,num_results=10,lang='en',proxy=None)  
         b = str(l).replace("'",'') 
@@ -52,12 +55,12 @@ class Cmd(commands.Cog):
         d = str(c).replace(']','')
         f = str(d).replace(',','\n')
         j = str(term).replace(" ",'+') 
-        myEmbed1 = discord.Embed(title = '**Here\'s what i found**', description = f)
+        myEmbed1 = discord.Embed(title = ':mag: **Here\'s what i found** :mag:', description = f)
         myEmbed1.add_field(name= '**For more results** - ' , value = f'[Browser redirect Link](https://www.google.com/search?q={j})')
         await ctx.send(embed = myEmbed1)
 
-
-    @commands.command('yt')
+    @commands.command(name='yt',help ='youtube search command - paginated results') 
+    @commands.cooldown(1,30,commands.BucketType.guild)
 
     async def youtube(self, ctx, *, term: str = ''):
         l = searchYT(term)
@@ -73,47 +76,19 @@ class Cmd(commands.Cog):
             # embed.add_field(name="Views",value=i.views)
             page = Page(
                 title=i.title[0], description=i.description[0], color=0x00ff00, url=i.url[0])
-            page.set_image(url=i.thumbnail[0])
-            page.add_field(name="Views", value=i.views)
-            page.add_field(name="duration", value=i.duration)
-            page.add_field(name="channel", value=i.channel)
-            page.add_field(name="publish time", value=i.publish_time)
+            page.set_thumbnail(url=i.thumbnail[0])
+            page.add_field(name="Views", value=i.views,inline=True)
+            page.add_field(name="duration", value=i.duration,inline=True)
+            page.add_field(name="channel", value=i.channel,inline=True)
+            page.add_field(name="publish time", value=i.publish_time,inline=True)
             pages.append(page)
             # await ctx.message.channel.send(embed=embed)
         menu.add_pages(pages)
         menu.show_command_message()
         await menu.open()
-    # commands to use
-
-    @commands.command(name='cmd')
-    async def cmd(self, context):
-
-        myEmbed3 = discord.Embed(
-            title="Help", description=f">>>these r the search commands , all require u to use prefix '{bot_prefix}' to search", color=0xff0000)
-        myEmbed3.add_field(
-            name="insta", value="searches for a particular instagram acc\n(under construction)", inline=True)
-        #myEmbed3.add_field(
-            #name="fb", value="searches for a particular acc on facebook", inline=True)
-        myEmbed3.add_field(
-            name="ggl", value="searches for a specific topic on the google search engine\n(under construction)", inline=True)
-        myEmbed3.add_field(
-            name="wikp", value="searches for a specific topic on wikipedia\n(under construction)", inline=True)
-        myEmbed3.add_field(
-            name="git", value="searches for a specific user on github", inline=True)
-        myEmbed3.add_field(
-            name="yt", value="searches for a specific video on youtube", inline=True)
-        #myEmbed3.add_field(
-            #name="spotify", value="searches for a specific song on spotify", inline=True)
-        #myEmbed3.add_field(
-            #name="amzn", value="searches for a specific item on amazon", inline=True)
-        #myEmbed3.add_field(
-            #name="ps", value="searches for a specific application/game on the google playstore", inline=True)
-        myEmbed3.add_field(
-            name="twit", value="searches for a particular twitter acc\n(under construction) ", inline=True)
-
-        await context.message.reply(embed=myEmbed3)
-    
-    @commands.command(name='uu')
+    # 
+    @commands.command(name='uu',help ='upcoming updates') 
+    @commands.cooldown(1,30,commands.BucketType.guild)
     async def uu(self, context):
 
         myEmbed3 = discord.Embed(
@@ -128,7 +103,8 @@ class Cmd(commands.Cog):
             name="amzn", value="searches for a specific item on amazon", inline=True)
 
         await context.message.reply(embed=myEmbed3)
-    @commands.command(name="corona")
+    @commands.command(name='',help ='') 
+    @commands.cooldown(1,30,commands.BucketType.guild)
     async def corona(self,ctx:Context):
         await ctx.channel.send("WIP")
 

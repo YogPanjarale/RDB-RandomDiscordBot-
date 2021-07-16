@@ -44,7 +44,7 @@ if __name__ == '__main__':
         except Exception as error:
             print(f'Failed to load Cog {extension}. Reason: {error}')
     print('Bot ready')
-    @commands.command(name='re',help ='reloads a particular bot cog') 
+    @client.command(name='re',help ='reloads a particular bot cog') 
     @commands.cooldown(1,20,commands.BucketType.guild)
     @commands.check(sec) 
     async def reload(ctx, extension):
@@ -57,26 +57,26 @@ if __name__ == '__main__':
             await ctx.send(f'Reloaded {extension}.py!')
         except Exception as error:
             await ctx.send(f'Failed to reload Cog {extension}. Reason: {error}')
-    @commands.command(name='a',help ='command used by mg to see if the bot is still alive after a change in code') 
+    @client.command(name='a',help ='command used by mg to see if the bot is still alive after a change in code') 
     @commands.cooldown(1,20,commands.BucketType.guild)
     @commands.check(mgsec)
     async def rs(ctx):
         await ctx.send('alive and working , checking for errors')
         sleep(5)
         await ctx.send('no errors found :))')
-    @commands.command(name='tsh',help ='shutdown command for test bot') 
+    @client.command(name='tsh',help ='shutdown command for test bot') 
     @commands.cooldown(1,20,commands.BucketType.guild)
     @commands.check(mgsec)
     async def rs(ctx):
         os.system('sudo systemctl stop bot')
         await ctx.send('terminal on boot service has been put on hold')
-    @commands.command(name='trs',help ='startup command for test bot') 
+    @client.command(name='trs',help ='startup command for test bot') 
     @commands.cooldown(1,20,commands.BucketType.guild)
     @commands.check(mgsec)
     async def rs(ctx):
         os.system('sudo systemctl start bot')
         await ctx.send('terminal on boot service has been restarted')
-    @commands.command(name='rs',help ='bot restart command - owners only') 
+    @client.command(name='rs',help ='bot restart command - owners only') 
     @commands.cooldown(1,20,commands.BucketType.guild)
     @commands.check(sec)
     async def rs(ctx):
@@ -89,7 +89,7 @@ if __name__ == '__main__':
                 return await ctx.send('Restarted Bot')
             except Exception as error:
                 await ctx.send('couldnt reload bot :\'((')            
-    @commands.command(name='sd',help ='cog shutdown command') 
+    @client.command(name='sd',help ='cog shutdown command') 
     @commands.cooldown(1,20,commands.BucketType.guild)
     @commands.check(sec)
     async def reload(ctx, extension):
@@ -101,7 +101,7 @@ if __name__ == '__main__':
         except Exception as error:
             await ctx.send(f'Failed to shutdown Cog {extension}. Reason: {error}')
 
-    @commands.command(name='su',help ='cog startup command') 
+    @client.command(name='su',help ='cog startup command') 
     @commands.cooldown(1,20,commands.BucketType.guild)
     @commands.check(sec)
     async def reload(ctx, extension):

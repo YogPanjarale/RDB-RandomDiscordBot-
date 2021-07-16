@@ -34,7 +34,7 @@ if __name__ == '__main__':
     client = commands.Bot(command_prefix=bot_prefix,case_insensitive=False,help_command=PrettyHelp(active=10,ending_note=ending_note))
     @client.event
     async def on_ready():
-        activity = discord.Game(name="m.help / m.mg", type=20)
+        activity = discord.Game(name="mg.help", type=20)
         await client.change_presence(status=discord.Status.idle, activity=activity)
     extensions = ['cmd', 'info','fun','mod','news']
     for extension in extensions:

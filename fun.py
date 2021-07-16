@@ -70,7 +70,7 @@ class Fun(commands.Cog):
         "https://media.giphy.com/media/dzaUX7CAG0Ihi/giphy.gif",
         "https://media.giphy.com/media/mW05nwEyXLP0Y/giphy.gif"]
         myEmbed = discord.Embed(
-            title=f"{ctx.message.author} is saying hello to {member.mention}",
+            title=f"{ctx.message.author.name} is saying hello to {member.name}",
             color=discord.Colour.purple()
         )
         myEmbed.set_image(
@@ -88,7 +88,7 @@ class Fun(commands.Cog):
         "https://media.giphy.com/media/DuWay0MoeQxWM/giphy.gif",
         "https://media.giphy.com/media/3o7TKWuJdNJSt2JHpK/giphy.gif"]
         myEmbed1 = discord.Embed(
-            title=f"{ctx.message.author} is giving a high five to {member.mention}",
+            title=f"{ctx.message.author.name} is giving a high five to {member.name}",
             color=discord.Colour.purple()
         )
         myEmbed1.set_image(

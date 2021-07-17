@@ -42,10 +42,10 @@ class Mod(commands.Cog):
                     await msg.channel.send(f"{msg.author.mention} has used a banned word")
                       
     #lockdown cmd
-    @commands.command(name='br',help ='Bot Restrict - this is a permamant deal which makes members mentioned not allowed to use the bot anymore (under contruction)') 
+    @commands.command(aliases=['br','botrestrict','restrict'],help ='Bot Restrict - this is a permamant deal which makes members mentioned not allowed to use the bot anymore (under contruction)') 
     @commands.cooldown(1,20,commands.BucketType.guild)
     @commands.check(sec)
-    async def br(ctx,member : discord.Member):
+    async def botrestricts(ctx,member : discord.Member):
         a = ctx.member.id
         print(a)
         br.append(a)

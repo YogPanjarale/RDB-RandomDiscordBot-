@@ -9,7 +9,7 @@ class CC(commands.Cog):
     help='custom commands'
     def __init__(self, bot):
         self.bot:Bot     = bot
-    @commands.command(name='cc',help ='custom command - this command can be used by members to create simple message commands , use command names to make the bot print your messages') 
+    @commands.command(aliases=['cca','showcc','servercc'],help ='view all the custom commands made in the server or by a member') 
     @commands.cooldown(1,20,commands.BucketType.guild)
     async def ccl(self,ctx:Context,user:str=""):
         serverId = ctx.message.guild.id
@@ -45,9 +45,9 @@ class CC(commands.Cog):
                 return await ctx.channel.send(embed = myEmbed)
             pass
 
-    @commands.command(name='cca',help ='view all custom commands made a member') 
+    @commands.command(aliases=['cc','customcommands','makecommands'],help ='custom command - this command can be used by members to create simple message commands , use command names to make the bot print your messages') 
     @commands.cooldown(1,20,commands.BucketType.guild)
-    async def cc(self,ctx:Context,name:str=" ",*description):
+    async def ccd(self,ctx:Context,name:str=" ",*description):
         serverId = ctx.message.guild.id        
         if name.startswith("<@"):
             r = searchCCByUser(serverID=serverId,user=name.replace("!",""))

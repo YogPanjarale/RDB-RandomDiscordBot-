@@ -14,9 +14,9 @@ from urllib.parse import quote
 from time import sleep
 class Cmd(commands.Cog):
     help='search commands'
-    @commands.command(name='covin',help ='command used to see current covid status in india') 
+    @commands.command(aliases=['cov','covid','corona'],help ='command used to see current covid status in india') 
     @commands.cooldown(1,20,commands.BucketType.guild)
-    async def covid(self,ctx:Context,*,term:str=""):
+    async def covids(self,ctx:Context,*,term:str=""):
         r = getCovidData()
         if "india" in term:
             r = getCovidData("india")
@@ -27,9 +27,9 @@ class Cmd(commands.Cog):
         myEmbed.add_field(name="Total Deaths",value=r.deaths)
         await ctx.message.channel.send(embed=myEmbed)
 
-    @commands.command(name='git',help ='github profile command - view profiles') 
+    @commands.command(aliases=['git','github','gh'],help ='github profile command - view profiles') 
     @commands.cooldown(1,20,commands.BucketType.guild)
-    async def github(self, ctx: Context, *, term: str = ''):
+    async def githubs(self, ctx: Context, *, term: str = ''):
         r = requests.get(f'https://api.github.com/users/{term}').json()
         try:
             myEmbed = discord.Embed(
@@ -46,9 +46,9 @@ class Cmd(commands.Cog):
             myEmbed = discord.Embed(
                 title="Not Found !", description="I cound not find that user")
             await ctx.message.channel.send(embed=myEmbed)
-    @commands.command(name='ggl',help ='google search command - provides upto 10 results along with redirect link') 
+    @commands.command(aliases=['ggl','google','g'],help ='google search command - provides upto 10 results along with redirect link') 
     @commands.cooldown(1,20,commands.BucketType.guild)
-    async def ggl(self, ctx, *, term: str = ''):
+    async def ggls(self, ctx, *, term: str = ''):
         l = search(term,num_results=10,lang='en',proxy=None)  
         b = str(l).replace("'",'') 
         c = str(b).replace('[','')
@@ -60,10 +60,10 @@ class Cmd(commands.Cog):
         myEmbed1.add_field(name= '**For more results** - ' , value = f'[Browser redirect Link](https://www.google.com/search?q={j})')
         await ctx.send(embed = myEmbed1)
 
-    @commands.command(name='yt',help ='youtube search command - paginated results') 
+    @commands.command(aliases=['yt','youtube','ytsearch'],help ='youtube search command - paginated results') 
     @commands.cooldown(1,20,commands.BucketType.guild)
 
-    async def youtube(self, ctx, *, term: str = ''):
+    async def youtubes(self, ctx, *, term: str = ''):
         l = searchYT(term)
         # print(l)
         l = l[:5]
@@ -88,9 +88,9 @@ class Cmd(commands.Cog):
         menu.show_command_message()
         await menu.open()
     # 
-    @commands.command(name='uu',help ='upcoming updates') 
+    @commands.command(aliases=['uu','updating'],help ='upcoming updates') 
     @commands.cooldown(1,20,commands.BucketType.guild)
-    async def uu(self, context):
+    async def uues(self, context):
 
         myEmbed3 = discord.Embed(
             title="Upcoming Updates", description=">>>these r the upcoming updates , coming as update 1.5 ", color=0xff0000)
@@ -104,10 +104,6 @@ class Cmd(commands.Cog):
             name="amzn", value="searches for a specific item on amazon", inline=True)
 
         await context.message.reply(embed=myEmbed3)
-    @commands.command(name='',help ='') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
-    async def corona(self,ctx:Context):
-        await ctx.channel.send("WIP")
 
 def setup(client):
     client.add_cog(Cmd(client))

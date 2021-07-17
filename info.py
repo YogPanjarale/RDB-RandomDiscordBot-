@@ -4,9 +4,9 @@ from discord.ext.commands.context import Context
 
 class Info(commands.Cog):
     help='who,when,what and where'
-    @commands.command(name='ver',help ='current version of the bot') 
+    @commands.command(aliases=['version','ver','v'],help ='current version of the bot') 
     @commands.cooldown(1,20,commands.BucketType.guild)
-    async def ver(self, context):
+    async def vers(self, context):
         myEmbed = discord.Embed(
             title="Current Version", description="Version 1.8", color=0x00ff00)
         myEmbed.add_field(name="Version Code", value="v1.8.5", inline=False)
@@ -15,9 +15,9 @@ class Info(commands.Cog):
         await context.message.reply(embed=myEmbed)
     # info abt the bot
 
-    @commands.command(name='who',help ='info about the bot and owners - part 1') 
+    @commands.command(aliases=['who','whom','about'],help ='info about the bot and owners - part 1') 
     @commands.cooldown(1,20,commands.BucketType.guild)
-    async def who(self, context):
+    async def whois(self, context):
 
         myEmbed = discord.Embed(
             title="who am i", description=">>>About me", color=0x0000ff)
@@ -34,9 +34,9 @@ class Info(commands.Cog):
 
     #info
 
-    @commands.command(name='info',help ='info about the bot and developers - part 2') 
+    @commands.command(aliases=['info','information','doc'],help ='info about the bot and developers - part 2') 
     @commands.cooldown(1,20,commands.BucketType.guild)
-    async def info(self, context):
+    async def inform(self, context):
 
         myEmbed1 = discord.Embed(
             title="bot,docs and contributors", description=">>>About me part 2", color=0x0000ff)

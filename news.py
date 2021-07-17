@@ -7,9 +7,9 @@ from dpymenus import Page, PaginatedMenu
 
 class News(commands.Cog):
     help='inbuilt starboard'
-    @commands.command(aliases=['news','shownews','starboard'],help ='this is the inbuilt starboard feature of the bot , use this command to view all the news and milestones done so far in the server') 
+    @commands.command(aliases=['shownews','starboard'],help ='this is the inbuilt starboard feature of the bot , use this command to view all the news and milestones done so far in the server') 
     @commands.cooldown(1,20,commands.BucketType.guild)
-    async def getNews(self,ctx):
+    async def news(self,ctx):
         result = getAllNews()
         menu = PaginatedMenu(ctx)
         pages=[]

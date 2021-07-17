@@ -1,4 +1,5 @@
 from os import name
+import wolframalpha
 from main import bot_prefix
 from mod import br
 from my_utils.get_covid_data import getCovidData
@@ -8,6 +9,7 @@ from discord.ext import commands
 from discord.ext.commands.context import Context
 from dpymenus import Page, PaginatedMenu
 import requests
+import json
 # from googlesearch.googlesearch import GoogleSearch, SearchResponse, SearchResult
 from googlesearch import search
 from urllib.parse import quote
@@ -26,6 +28,50 @@ class Cmd(commands.Cog):
         myEmbed.add_field(name="Total Recovered",value=r.recovered)
         myEmbed.add_field(name="Total Deaths",value=r.deaths)
         await ctx.message.channel.send(embed=myEmbed)
+
+    @commands.command(aliases=["w"],help='know the current weather of your city using this')
+    @commands.cooldown(1,5,commands.BucketType.guild)
+    async def weather(self,ctx,*,city:str=''):
+        api_key='9cd52d092a8769367d256b35c44d477f'
+        base_url = "https://api.openweathermap.org/data/2.5/weather?"
+        city_name = city
+        complete_url = base_url + "appid=" + api_key + "&q=" + city_name
+        response = requests.get(complete_url)
+        x = response.json()
+        if x["cod"] != "404":        
+            y = x["main"]       
+            current_temperature = y["temp"]       
+            current_pressure = y["pressure"]        
+            current_humidity = y["humidity"]
+            z = x["weather"]
+            efg=str(current_temperature - 273) 
+            dfg = str(current_pressure//100)
+            weather_description = z[0]["description"]
+            weather = discord.Embed(title='Weather',description=f'weather report for city : {city}')
+            weather.add_field(name='Temperature (Celsius)',value =efg,inline=True)
+            weather.add_field(name='Pressure (Pascals)',value =dfg,inline=True)
+            weather.add_field(name='Humidity (%)',value =current_humidity,inline=True)
+            weather.add_field(name='Weather statement',value =weather_description,inline=True)
+            await ctx.send(embed=weather)
+        else:
+            await ctx.send("city name not found")
+
+    @commands.command(aliases=["wa"],help='know the answer to any math question using this command')
+    @commands.cooldown(1,10,commands.BucketType.guild)
+    async def answer(self,ctx,*,term:str=''):
+        question = term
+
+        app_id = "7QRP2U-V7HJ37TL46"
+
+        client = wolframalpha.Client(app_id)
+
+        res = client.query(question)
+
+        ans = next(res.results).text
+        
+        answer = discord.Embed(title="WolframAlpha answers",description='Get your Math questions answered using WolframAlpha')
+        answer.add_field(name='Answer',value=ans)
+        await ctx.send(embed=answer)
 
     @commands.command(aliases=['git','gh'],help ='github profile command - view profiles') 
     @commands.cooldown(1,20,commands.BucketType.guild)

@@ -71,7 +71,6 @@ if __name__ == '__main__':
         os.system('sudo systemctl stop bot')
         await ctx.send('terminal on boot service has been put on hold')
 
-
     @client.command(aliases=['startbot','rtb'],help ='startup command for test bot') 
     @commands.cooldown(1,20,commands.BucketType.guild)
     @commands.check(mgsec)
@@ -85,7 +84,7 @@ if __name__ == '__main__':
     async def gitpull(ctx):
         os.system('git pull')
         await ctx.send('pulling from the repo....')
-        sleep(10)
+        sleep(5)
         await ctx.send("git pull succesfull , bot has been updated")
 
     @client.command(aliases=['restart','reload'],help ='bot restart command - owners only') 

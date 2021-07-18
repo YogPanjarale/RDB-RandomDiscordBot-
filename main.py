@@ -82,7 +82,7 @@ if __name__ == '__main__':
     @client.command(aliases=['gpar'],help ='Bot update command') 
     @commands.cooldown(1,100,commands.BucketType.guild)
     @commands.check(sec)
-    async def git(ctx):
+    async def gitp(ctx):
         os.system('git pull')
         await ctx.send('pulling from the repo....')
         sleep(10)

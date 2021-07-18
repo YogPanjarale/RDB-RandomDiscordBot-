@@ -35,7 +35,7 @@ if __name__ == '__main__':
     @client.event
     async def on_ready():
         activity = discord.Game(name="mg.help", type=20)
-        await client.change_presence(status=discord.Status.dnd, activity=activity)
+        await client.change_presence(status=discord.Status.do_not_disturb, activity=activity)
     extensions = ['cmd','cc','info','fun','mod','news']
     for extension in extensions:
         try:

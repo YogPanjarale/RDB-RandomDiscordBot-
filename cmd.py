@@ -1,6 +1,6 @@
 from os import name
 import wolframalpha
-from main import bot_prefix
+from main import bot_prefix,owak,waak
 from mod import br
 from my_utils.get_covid_data import getCovidData
 from my_utils.my_youtube_search import YoutubeResult, searchYT
@@ -32,7 +32,7 @@ class Cmd(commands.Cog):
     @commands.command(aliases=["w"],help='know the current weather of your city using this')
     @commands.cooldown(1,5,commands.BucketType.guild)
     async def weather(self,ctx,*,city:str=''):
-        api_key='9cd52d092a8769367d256b35c44d477f'
+        api_key= owak
         base_url = "https://api.openweathermap.org/data/2.5/weather?"
         city_name = city
         complete_url = base_url + "appid=" + api_key + "&q=" + city_name
@@ -61,7 +61,7 @@ class Cmd(commands.Cog):
     async def answer(self,ctx,*,term:str=''):
         question = term
 
-        app_id = "7QRP2U-V7HJ37TL46"
+        app_id = waak
 
         client = wolframalpha.Client(app_id)
 

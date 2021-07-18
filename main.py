@@ -35,7 +35,7 @@ if __name__ == '__main__':
     @client.event
     async def on_ready():
         activity = discord.Game(name="mg.help", type=20)
-        await client.change_presence(status=discord.Status.idle, activity=activity)
+        await client.change_presence(status=discord.Status.dnd, activity=activity)
     extensions = ['cmd','cc','info','fun','mod','news']
     for extension in extensions:
         try:
@@ -82,7 +82,7 @@ if __name__ == '__main__':
     @client.command(aliases=['gpar'],help ='Bot update command') 
     @commands.cooldown(1,100,commands.BucketType.guild)
     @commands.check(sec)
-    async def gitp(ctx):
+    async def gitpull(ctx):
         os.system('git pull')
         await ctx.send('pulling from the repo....')
         sleep(10)

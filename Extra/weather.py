@@ -17,3 +17,4 @@ def getweather(apikey,b):
     wind = response['wind']['speed']
     print(temp,statement,mintemp,maxtemp,pressure,humidity,visibility,wind)
 getweather(apikey,a)
+

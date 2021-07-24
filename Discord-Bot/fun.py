@@ -6,7 +6,7 @@ from discord.ext.commands.errors import CommandInvokeError, CommandNotFound, Mis
 from discord.member import Member
 import random
 from discord.message import Message 
-from time import sleep
+from asyncio import sleep
 
 class Fun(commands.Cog):
     help='Fun commands'
@@ -135,7 +135,7 @@ class Fun(commands.Cog):
         member = ctx.author
         spoiler=discord.Embed(title="**SPOILER**\n\n", description=f"\n{member.mention} has put a spoiler :-\n\n||{term}||",color=discord.Colour.blue())
         await ctx.channel.purge(limit=1)
-        sleep(1)
+        await sleep(1)
         await ctx.send(embed = spoiler)
 
     

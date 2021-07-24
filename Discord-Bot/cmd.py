@@ -1,6 +1,6 @@
 from os import name
 import w as wolframalpha
-from main import bot_prefix,owak,waak
+from main import bot_prefix,owak,waak,mgsec,sec
 from mod import br
 import math
 from my_utils.get_covid_data import getCovidData
@@ -29,33 +29,41 @@ class Cmd(commands.Cog):
         myEmbed.add_field(name="Total Recovered",value=r.recovered)
         myEmbed.add_field(name="Total Deaths",value=r.deaths)
         await ctx.message.channel.send(embed=myEmbed)
-
+    @commands.command(aliases=['showfile'],help ='command used by mg to send files in the bot folder to the chat') 
+    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.check(sec)
+    async def showf(self, ctx, *, term: str = ''):
+        f = open(f'/home/pi/rdb/r/Discord-Bot/{term}')
+        a = f.read()
+        await ctx.send(f'```py\n{a}\n```')
     @commands.command(aliases=["w"],help='know the current weather of your city using this')
     @commands.cooldown(1,5,commands.BucketType.guild)
     async def weather(self,ctx,*,city:str=''):
-        url=f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={owak}'
-        response = requests.get(url).json()
-        x=response['main']
-        a = x['temp']
-        temp = math.floor((a-273))
-        statement1=response['weather'][1]['main']
-        statement2 = response['weather'][1]['description']
-        mt=x['feels_like']
-        mintemp=math.floor((mt-273))
-        p=x['pressure']
-        pressure = math.floor((p//100))
-        humidity = x['humidity']
-        visibility=response['visibility']
-        wind = response['wind']['speed']
-        weather = discord.Embed(title='Weather',description=f'weather report for city : {city}')
-        weather.add_field(name='Temperature (Celsius)',value =temp,inline=True)
-        weather.add_field(name='Pressure (Pascals)',value =pressure,inline=True)
-        weather.add_field(name='Humidity (%)',value =humidity,inline=True)
-        weather.add_field(name='Feels Like',value =mintemp,inline=True)
-        weather.add_field(name='Visibility (metres)',value =visibility,inline=True)
-        weather.add_field(name='Wind (m/s)',value =wind,inline=True)
-        weather.add_field(name='Weather statement',value =statement1+statement2,inline=True)
-        await ctx.send(embed=weather)
+        url=str(f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={owak}')
+        response = requests.get(url)
+        x=response.json()
+        if x["cod"] != "404":
+            y=x['main']
+            a = y['temp']
+            temp = math.floor((a-273))
+            statement1=y['weather'][1]['main']
+            statement2 = y['weather'][1]['description']
+            mt=y['feels_like']
+            mintemp=math.floor((mt-273))
+            p=y['pressure']
+            pressure = math.floor((p//100))
+            humidity = y['humidity']
+            visibility=y['visibility']
+            wind = y['wind']['speed']
+            weather = discord.Embed(title='Weather',description=f'weather report for city : {city}')
+            weather.add_field(name='Temperature (Celsius)',value =temp,inline=True)
+            weather.add_field(name='Pressure (Pascals)',value =pressure,inline=True)
+            weather.add_field(name='Humidity (%)',value =humidity,inline=True)
+            weather.add_field(name='Feels Like',value =mintemp,inline=True)
+            weather.add_field(name='Visibility (metres)',value =visibility,inline=True)
+            weather.add_field(name='Wind (m/s)',value =wind,inline=True)
+            weather.add_field(name='Weather statement',value =statement1+statement2,inline=True)
+            await ctx.send(embed=weather)
 
     @commands.command(aliases=["wa"],help='know the answer to any math question using this command')
     @commands.cooldown(1,10,commands.BucketType.guild)

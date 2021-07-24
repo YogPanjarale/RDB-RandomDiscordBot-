@@ -1,9 +1,9 @@
 import discord
 from main import mgsec, sec
-from discord import member
+from discord import member 
 from discord import channel
-from discord.ext import commands ,tasks
-from discord.ext.commands import Context, context
+from discord.ext import commands ,tasks 
+from discord.ext.commands import Context, context ,Bot
 from discord import Member
 from better_profanity import Profanity
 from discord.guild import Guild
@@ -13,7 +13,7 @@ import pandas as pd
 import json
 import os
 from asyncio import sleep
-filtered_words = pd.read_csv('swears.txt')['swears'].to_list()
+filtered_words = pd.read_csv('/home/pi/rdb/r/Discord-Bot/swears.txt')['swears'].to_list()
 fw = ['mg.s','m.sp']
 br = []
 def br(ctx)->bool:
@@ -23,7 +23,7 @@ def br(ctx)->bool:
         return False
         
 class Mod(commands.Cog):
-    help='moderation commands and automod'
+    
     @commands.Cog.listener()
     async def on_message(msg:Message):
         if not msg.author.bot:
@@ -40,6 +40,15 @@ class Mod(commands.Cog):
                     await msg.channel.purge(limit = 3)
                     await sleep(1)
                     await msg.channel.send(f"{msg.author.mention} has used a banned word")
+    
+    @commands.Cog.listener()
+    async def on_message(self,msg):   
+        mgsb=commands.Bot(command_prefix='m.')    
+        word=['mg.','m.']
+        for wor in word:
+            if wor in msg.content:
+                a = msg.author.id
+                await mgsb.get_channel(860430202017808405).send("User used a command")
                       
     #lockdown cmd
     @commands.command(aliases=['br','restrict'],help ='Bot Restrict - this is a permamant deal which makes members mentioned not allowed to use the bot anymore (under contruction)') 

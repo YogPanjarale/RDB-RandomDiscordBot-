@@ -1,7 +1,5 @@
 from tkinter import *
 from functools import partial
-
-
 import mysql.connector as msc
 cool = msc.connect(host='localhost',database='mgsb',user='MG',password='mg@123')
 elic = cool.cursor()
@@ -12,9 +10,9 @@ log = elic.fetchall()
 print(log)
 tkWindow = Tk()  
 def validateLogin(username, password):
-    print("username entered :", username.get())
-    print("password entered :", password.get())
-    tkWindow.mainloop()
+    username.get()
+    password.get()
+    tkWindow.destroy()
     return
 logins = input("would you like to login or create a new user?:\nUse 'login' for logging in a user or use 'new' for adding yourself as a new user\n")
 for i in logins:
@@ -38,7 +36,6 @@ for i in logins:
 
         #login button
         loginButton = Button(tkWindow, text="Login", command=validateLogin).grid(row=4, column=0)  
-
         tkWindow.mainloop()
         names = f'''select name from admin where name = "{username.get()}";'''
         elic.execute(names)
@@ -77,4 +74,6 @@ for i in logins:
         cool.commit()
         print(f"new user {newname} has been created")
         break
+    '''name,password,nameid,phoneno,email,hobbies,city name'''
+    '''enc,email,phoneno,reminder,extra,hobbies'''
 cool.close()

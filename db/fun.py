@@ -43,6 +43,10 @@ class Fun(commands.Cog):
         targetMember = ctx.message.author
         y=term.lower()
         l=list(y)
+        k= ['f','g','h','j','k','l','a','s']
+        m = ['q','w','e','r','t','y','u','i']
+        dd = random.choice(k)
+        mm = random.choice(m)
         random.shuffle(l)
         c = ''.join(l)
         f=''
@@ -50,15 +54,16 @@ class Fun(commands.Cog):
         b=['b','d','f','h','j','l','n','p','r','t','v','x','z']
         for i in c:
             if i in a:
-                f+="I"
+                f+=f"{dd}"
             elif i in b:
-                f+="l"
+                f+=f"{mm}"
             elif i==" ":
-                f+=i
+                f+='-'
         myEmbed11=discord.Embed(title="Encrypter", description="lithium Encryption",color=0x992d22)
         myEmbed11.add_field(name="Encrypt", value=term,inline=False)
         myEmbed11.add_field(name="Encrypted as", value=f,inline=False)
         await targetMember.send(embed = myEmbed11)
+        await ctx.send("Encrypted password has been sent to the user")
 
     @commands.command(aliases=['hello','hey'],help ='hello gifs') 
     @commands.cooldown(1,20,commands.BucketType.guild)

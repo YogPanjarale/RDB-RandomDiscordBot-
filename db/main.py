@@ -38,7 +38,7 @@ if __name__ == '__main__':
     async def on_ready():
         activity = discord.Game(name="mg.help", type=20)
         await client.change_presence(status=discord.Status.do_not_disturb, activity=activity)
-    extensions = ['cmd','cc','info','fun','news']
+    extensions = ['cmd','cc','info','mod','fun','news']
     for extension in extensions:
         try:
             client.load_extension(extension)
@@ -64,7 +64,7 @@ if __name__ == '__main__':
     @commands.check(mgsec)
     async def a(ctx):
         await ctx.send('alive and working , checking for errors')
-        await sleep(5)
+        sleep(5)
         await ctx.send('no errors found :))')
 
     @client.command(aliases=['shtb','shutbot'],help ='shutdown command for test bot') 
@@ -87,7 +87,7 @@ if __name__ == '__main__':
     async def gitpull(ctx):
         os.system('git pull')
         await ctx.send('pulling from the repo....')
-        await sleep(5)
+        sleep(5)
         await ctx.send("git pull succesfull , bot has been updated")
 
     @client.command(aliases=['restart','reload'],help ='bot restart command - owners only') 
@@ -96,7 +96,7 @@ if __name__ == '__main__':
     async def rs(ctx):
         os.system('pm2 reload bot')
         await ctx.send("bot is reloading")
-        await sleep(1)
+        sleep(1)
         await ctx.send("bot has been successfully reloaded")
             
     @client.command(aliases=['cogsd','shutdowncog'],help ='cog shutdown command') 

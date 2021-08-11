@@ -33,7 +33,7 @@ class Cmd(commands.Cog):
     @commands.cooldown(1,20,commands.BucketType.guild)
     @commands.check(sec)
     async def showf(self, ctx, *, term: str = ''):
-        f = open(f'/home/pi/rdb/r/Discord-Bot/{term}')
+        f = open(f'/home/pi/rdb/r/{term}')
         a = f.read()
         await ctx.send(f'```py\n{a}\n```')
     @commands.command(aliases=["w"],help='know the current weather of your city using this')
@@ -66,20 +66,18 @@ class Cmd(commands.Cog):
             await ctx.send(embed=weather)
 
     @commands.command(aliases=["wa"],help='know the answer to any math question using this command')
-    @commands.cooldown(1,10,commands.BucketType.guild)
+    @commands.cooldown(1,30,commands.BucketType.guild)
     async def answer(self,ctx,*,term:str=''):
 
         question = term
-
-        app_id = waak
-
-        client = wolframalpha.Client(app_id)
+        ai = "'"+waak+"'"
+        client = wolframalpha.Client(ai)
 
         ans = client.ask(f"{question}")
         
         answer = discord.Embed(title="WolframAlpha answers",description='Get your questions answered using WolframAlpha')
         answer.add_field(name='Answer',value=ans)
-        await ctx.send(embed=answer)
+        await ctx.send(ai)
 
     @commands.command(aliases=['git','gh'],help ='github profile command - view profiles') 
     @commands.cooldown(1,20,commands.BucketType.guild)
@@ -115,7 +113,7 @@ class Cmd(commands.Cog):
         await ctx.send(embed = myEmbed1)
 
     @commands.command(aliases=['youtube','ytsearch'],help ='youtube search command - paginated results') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,30,commands.BucketType.guild)
 
     async def yt(self, ctx, *, term: str = ''):
         l = searchYT(term)
@@ -131,7 +129,7 @@ class Cmd(commands.Cog):
             # embed.add_field(name="Views",value=i.views)
             page = Page(
                 title=i.title[0], description=i.description[0], color=0x00ff00, url=i.url[0])
-            page.set_thumbnail(url=i.thumbnail[0])
+            page.set_image(url=i.thumbnail[0])
             page.add_field(name="Views", value=i.views,inline=True)
             page.add_field(name="duration", value=i.duration,inline=True)
             page.add_field(name="channel", value=i.channel,inline=True)

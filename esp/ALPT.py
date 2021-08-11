@@ -10,7 +10,7 @@ from tkinter import *
 import tkinter as tk
 import time 
 import datetime
-import pywhatkit as k
+
 import RPi.GPIO as gpio
 from time import sleep
 import sys
@@ -68,9 +68,9 @@ def logic(audio1):
 def talk(audio1):
     for line in audio1.splitlines():
         text_to_speech = gTTS(text=audio1, lang='en-uk')
-        text_to_speech.save('audio1.mp3')
+        text_to_speech.save('audio.mp3')
         mixer.init()
-        mixer.music.load("audio1.mp3")
+        mixer.music.load("audio.mp3")
         mixer.music.play()
     print(audio1)
 
@@ -79,9 +79,9 @@ def talk(audio1):
 def hey(audio):
     for line in audio.splitlines():
         text_to_speech = gTTS(text=audio, lang='en-uk')
-        text_to_speech.save('audio.mp3')
+        text_to_speech.save('audio1.mp3')
         mixer.init()
-        mixer.music.load("audio.mp3")
+        mixer.music.load("audio1.mp3")
         mixer.music.play()
     print(audio)
 
@@ -287,7 +287,7 @@ def bots():
         elif 'google' in command:
             talk("what should i search?")
             google = mc()
-            k.search(google)
+            #k.search(google)
 
         elif 'search youtube' in command:
             talk("what should i search?")
@@ -301,8 +301,8 @@ def bots():
             mainloop()
             a = yt.get()
             y = mc().lower()
-            k.playonyt(y)
-            k.playonyt(a)
+            #k.playonyt(y)
+            #k.playonyt(a)
 
         elif "website" in command:
             talk("which website?")
@@ -315,7 +315,7 @@ def bots():
         elif 'search wikipedia' in command:
             talk("what should i search for?")
             wiki = mc().lower()
-            b = k.info(wiki,2)
+            #b = k.info(wiki,2)
             talk('this is what i found')
  
         elif 'tools' in command:
@@ -358,7 +358,7 @@ def bots():
             hey(f"the number is {s}")
 
 if __name__ == "__main__":
-    talk("ready for your commands")  
+    talk("welcome back , starting up the PC")  
     while True:
         start = mc()
         if "wake up" in start:

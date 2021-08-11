@@ -1,3 +1,4 @@
+from logging import exception
 import os
 import discord
 from time import sleep
@@ -30,22 +31,20 @@ def sec(ctx)->bool:
         return True
     else:
         return False
-
 if __name__ == '__main__':
-    ending_note ="Use mg.help for more info on a command , for categories - use mg.help Category\nAlso , {ctx.bot.user.name}, all commands have a 20 secs server cooldown,so dont go thinking that the bot doesnt work if it doesnt respond"
+    ending_note ="Use mg.help for more info on a command , for categories - use mg.help Category\nAlso , {ctx.author.name}, all commands have a 20 secs server cooldown,so dont go thinking that the bot doesnt work if it doesnt respond"
     client = commands.Bot(command_prefix=bot_prefix,case_insensitive=False,help_command=PrettyHelp(active=10,ending_note=ending_note))
     @client.event
     async def on_ready():
         activity = discord.Game(name="mg.help", type=20)
         await client.change_presence(status=discord.Status.do_not_disturb, activity=activity)
-    extensions = ['cmd','cc','info','mod','fun','news']
+    extensions = ['cmd','finder','cc','info','mod','fun','news']
     for extension in extensions:
         try:
             client.load_extension(extension)
-            print(f'Loaded Cog {extension} successfully')
+            print(f'Cog {extension} has loaded successfully')
         except Exception as error:
             print(f'Failed to load Cog {extension}. Reason: {error}')
-    print('Bot ready')
     @client.command(aliases=['recog','restartcog'],help ='reloads a particular bot cog') 
     @commands.cooldown(1,20,commands.BucketType.guild)
     @commands.check(sec) 
@@ -66,6 +65,18 @@ if __name__ == '__main__':
         await ctx.send('alive and working , checking for errors')
         sleep(5)
         await ctx.send('no errors found :))')
+
+    @client.command(aliases=['system'],help ='command used by mg to control his pc') 
+    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.check(mgsec)
+    async def scmd(ctx,cmd:str=''):
+        try:
+            await ctx.send('Running os command')
+            os.system(f"{cmd}")
+            sleep(1)
+            await ctx.send('Command run successfully')
+        except Exception as e:
+            await ctx.send("Error:"+e)
 
     @client.command(aliases=['shtb','shutbot'],help ='shutdown command for test bot') 
     @commands.cooldown(1,20,commands.BucketType.guild)

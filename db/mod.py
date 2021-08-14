@@ -32,7 +32,6 @@ class Mod(commands.Cog):
         delete = discord.Embed(title = '',description=f'messages deleted = {term}')
         await ctx.channel.purge(limit=term+1)
         await ctx.send(embed = delete,delete_after=0.1)
-
     @commands.Cog.listener()
     async def on_message(self,msg):
         if not msg.author.bot:

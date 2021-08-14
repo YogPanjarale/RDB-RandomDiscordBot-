@@ -15,7 +15,7 @@ import random
 import json
 import os
 from asyncio import sleep
-filtered_words = pd.read_csv('/home/pi/rdb/r/db/swears.txt')['swears'].to_list()
+filtered_words = pd.read_csv('./swears.txt')['swears'].to_list()
 fw = ['mg.s','m.sp']
 br = []
 def br(ctx)->bool:

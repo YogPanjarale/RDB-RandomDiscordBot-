@@ -1,31 +1,30 @@
 import random as r
 import mysql.connector as m
 #create table new user function
+
 def create(name):
     cur = m.connect(host='localhost',database='mgsb',user='MG',password='mg@123')
     game = cur.cursor()
-    new =f'''insert into player(name,coins,cash,army,pets,food,logs,metals) values("{name}",0,0,0,0,0,0,0)
+    new =f'''insert into player(name,coins,cash,army,pets,food,logs,metals,xp) values("{name}",0,0,0,0,0,0,0,0)
         ;'''
+    new2 =f'''insert into pets(name,w1,w1l,w2,w2l,p1,p1l,p2,p2l,d1,d1l,d2,d2l,b1,b1l,b2,b2l,s1,s1l,s2,s2l,e1,e1l,e2,e2l) values("{name}",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
+        ;'''   
     game.execute(new)
+    game.execute(new2)
     cur.commit()
     game.close()
 #add values accordingly in the player table 
-def add(name,coins,cash,army,pets,food,logs,metals):
+def add(name,resource,newnum,xp):
     cur = m.connect(host='localhost',database='mgsb',user='MG',password='mg@123')
     game = cur.cursor()        
     a = '''update player
     set 
-    coins=coins+%s,
-    cash=cash+%s,
-    army=army+%s,
-    pets=pets+%s,
-    food=food+%s,
-    logs=logs+%s,
-    metals=metals+%s
+    %s=%s+%s,
+    xp=xp+%s
     where 
-    name ="%s";
+    name="%s";
     '''
-    params=(coins,cash,army,pets,food,logs,metals,name)
+    params=(resource,resource,newnum,xp,name)
     b = a%params
     game.execute(b)
     cur.commit()

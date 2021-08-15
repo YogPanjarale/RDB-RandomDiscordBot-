@@ -47,9 +47,11 @@ class Info(commands.Cog):
         myEmbed1.add_field(name="DPY server - ",
                           value="[Discord.py - Discord server](https://discord.gg/dpy)", inline=False)
         myEmbed1.add_field(name="Contributers - ",
-                          value="[ZeusAbhijeet](https://github.com/ZeusAbhijeet)", inline=False)
+                          value="[ZeusAbhijeet](https://github.com/ZeusAbhijeet)\n➥[SleepBot](https://github.com/Clinify-Open-Sauce/SleepBot)", inline=False)
         myEmbed1.add_field(name="top.gg - ",
                           value="[Bot Profile](https://top.gg/bot/826067681111310426)", inline=False)
+        myEmbed1.add_field(name="Profile Picture - ",
+                          value="[Mahaprasad Mohanty](https://twitter.com/mahaprasad_?s=09)", inline=False)
         await context.message.reply(embed=myEmbed1)
 
 def setup(client):

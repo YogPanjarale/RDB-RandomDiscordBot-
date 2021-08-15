@@ -31,7 +31,7 @@ class News(commands.Cog):
         menu.set_timeout(20)
         await menu.open()
     # TODO: add hint use `;` as seperator
-    @commands.command(aliases=['an','anews','addnews'],help ="this command is used to add news - use ';' between the name and description , this command requires members to staff") 
+    @commands.command(aliases=['an','anews','addnews'],help ="this command is used to add news - use ';' between the name and description , this command requires members to be in staff") 
     @commands.has_permissions(ban_members=True,manage_roles=True)
     @commands.cooldown(1,20,commands.BucketType.guild)
     async def addNews(self,ctx:Context,*text):

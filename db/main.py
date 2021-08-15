@@ -32,8 +32,9 @@ def sec(ctx)->bool:
     else:
         return False
 if __name__ == '__main__':
+    intents = discord.Intents.all()
     ending_note ="Use mg.help for more info on a command , for categories - use mg.help Category\nAlso , {ctx.author.name}, all commands have a 20 secs server cooldown,so dont go thinking that the bot doesnt work if it doesnt respond"
-    client = commands.Bot(command_prefix=bot_prefix,case_insensitive=False,help_command=PrettyHelp(active=10,ending_note=ending_note))
+    client = commands.Bot(command_prefix=bot_prefix,case_insensitive=False,help_command=PrettyHelp(active=10,ending_note=ending_note),intents=intents)
     @client.event
     async def on_ready():
         activity = discord.Game(name="mg.help", type=20)

@@ -37,7 +37,7 @@ class Fun(commands.Cog):
     async def say(self, ctx, *, term: str = ''):
         await ctx.message.reply(term)
 
-    @commands.command(aliases=['encrypt','enc'],help ='use this command to create passwords with lithium encryption , the bot sends u the messaage privately') 
+    @commands.command(aliases=['encrypt','enc'],help ='use this command to create passwords with lithium encryption , the bot sends u the message privately') 
     @commands.cooldown(1,20,commands.BucketType.guild)
     async def e(self,ctx,*, term:str=''):
         targetMember = ctx.message.author

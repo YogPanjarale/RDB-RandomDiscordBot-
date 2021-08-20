@@ -141,7 +141,7 @@ class Finder(commands.Cog):
     async def pet(self, ctx,member: Member = None):
         cur = m.connect(host='localhost',database='mgsb',user='MG',password='mg@123')
         game = cur.cursor()
-        users = '''select * from pets where name="%s"'''
+        users = '''select * from pets where name="%s";'''
         if not member:
             s = ctx.author.id
         else:

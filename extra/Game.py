@@ -1,3 +1,4 @@
+
 import mysql.connector as m
 import random as r
 from datetime import *
@@ -76,7 +77,9 @@ else:
             userdata(playername)
             continue
 
-        
+        elif wtd =='pets':
+            pets(playername)
+            continue
         
 
 

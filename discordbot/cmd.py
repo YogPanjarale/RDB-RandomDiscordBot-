@@ -1,3 +1,4 @@
+from logging import disable
 from os import name
 import w as wolframalpha
 from main import bot_prefix,owak,waak,mgsec,sec
@@ -156,6 +157,14 @@ class Cmd(commands.Cog):
             name="amzn", value="searches for a specific item on amazon", inline=True)
 
         await context.message.reply(embed=myEmbed3)
-
+    @commands.command(aliases=["ttt","iao"],help='play a game of tictactoe against a player or the Bot itself')
+    @commands.cooldown(2,1,commands.BucketType.guild)
+    async def tictactoe(self ,ctx,member:discord.Member=None):
+        # :negative_squared_cross_mark: , :o: , :white_square_button: , :pause_button: , :information_source: 
+        a = ":negative_squared_cross_mark:"
+        b = ":o:"
+        c = ":white_square_button:"
+        ttt1 = discord.Embed(title="Tictactoe",description="{}{}{}\n{}{}{}\n{}{}{}".format(a,a,b,b,b,a,a,c,c))
+        await ctx.send(embed=ttt1)
 def setup(client):
     client.add_cog(Cmd(client))

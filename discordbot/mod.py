@@ -1,6 +1,8 @@
+from logging import exception
 import discord
 from main import mgsec, sec
 from discord import member 
+import mysql.connector as m
 from discord import channel
 from discord.ext import commands ,tasks 
 from discord.ext.commands import Context, bot, context ,Bot
@@ -16,7 +18,7 @@ import json
 import os
 from asyncio import sleep
 br = []
-def br(ctx)->bool:
+def br(ctx):
     if ctx.author.id in br:
         return True
     else:
@@ -35,11 +37,18 @@ class Mod(commands.Cog):
     @commands.command(aliases=['br','restrict'],help ='Bot Restrict - this is a permament deal which makes members mentioned not allowed to use the bot anymore (under contruction)') 
     @commands.cooldown(1,20,commands.BucketType.guild)
     @commands.check(sec)
-    async def botrestrict(ctx,member : discord.Member):
+    async def botrestrict(ctx,member:discord.Member):
+        member=member
+        cur = m.connect(host='localhost',database='mgsb',user='MG',password='mg@123')
+        game = cur.cursor()
+        users = '''insert into admin(name,nameid) values("%s","%s");'''
         a = ctx.member.id
-        print(a)
-        br.append(a)
-        await ctx.send('you cant use the bot , sorry')
+        b = ctx.member.name
+        params = a,b
+        await ctx.send("user has been restricted to bot use")
+        game.execute(users%params)
+        game.close()
+
     @commands.command(aliases=['roles','role'],help="Get the amount of members that have a particular role")
     @commands.cooldown(1,1,commands.BucketType.guild)
     @commands.check(sec)    

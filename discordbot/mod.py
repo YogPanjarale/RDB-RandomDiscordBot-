@@ -46,7 +46,7 @@ class Mod(commands.Cog):
     async def r(self,ctx,role:discord.Role):               
         b=len([m for m in ctx.guild.members if role in m.roles])
         await ctx.send(f"Number of members that have the role are {b}")
-    @commands.command(aliases=['logs'],help="shows console logs for the bot")
+    @commands.command(aliases=['log'],help="shows console logs for the bot")
     async def logs(self,ctx):
         await ctx.send(file=discord.File(r'/home/ec2-user/.pm2/logs/bot-out.log'))
 def setup(client):

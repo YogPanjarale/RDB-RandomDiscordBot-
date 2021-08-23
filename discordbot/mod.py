@@ -56,6 +56,16 @@ class Mod(commands.Cog):
         b=len([m for m in ctx.guild.members if role in m.roles])
         await ctx.send(f"Number of members that have the role are {b}")
 
+    @commands.command(aliases=['whois','perms'],help ='under constr') 
+    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.check(sec)
+    async def perm(ctx,member:discord.Member=None):
+        if not member:
+            member = ctx.author
+        for perm in ctx.author.guild_permissions:
+            await ctx.send(perm)
+            
+
 def setup(client):
     client.add_cog(Mod(client))
 

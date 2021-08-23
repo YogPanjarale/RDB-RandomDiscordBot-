@@ -1,4 +1,3 @@
-from logging import exception
 import discord
 from main import mgsec, sec
 from discord import member 
@@ -65,7 +64,6 @@ class Mod(commands.Cog):
         for perm in ctx.author.guild_permissions:
             await ctx.send(perm)
             
-
     @commands.command(aliases=['log'],help="shows console logs for the bot")
     async def logs(self,ctx):
         await ctx.send(embed=discord.Embed(title='',description=r'/home/ec2-user/.pm2/logs/bot-out.log'))

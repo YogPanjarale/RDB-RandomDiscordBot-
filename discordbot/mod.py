@@ -65,6 +65,8 @@ class Mod(commands.Cog):
             await ctx.send(perm)
             
     @commands.command(aliases=['log'],help="shows console logs for the bot")
+    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.check(sec)
     async def logs(self,ctx):
         await ctx.send(embed=discord.Embed(title='',description=r'/home/ec2-user/.pm2/logs/bot-out.log'))
 def setup(client):

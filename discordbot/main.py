@@ -39,7 +39,7 @@ if __name__ == '__main__':
     async def on_ready():
         activity = discord.Game(name="mg.help", type=20)
         await client.change_presence(status=discord.Status.do_not_disturb, activity=activity)
-    extensions = ['cmd','finder','cc','info','mod','fun','news']
+    extensions = ['cmd','Finder','cc','info','mod','fun','news']
     for extension in extensions:
         try:
             client.load_extension(extension)

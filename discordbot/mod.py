@@ -68,7 +68,7 @@ class Mod(commands.Cog):
     @commands.cooldown(1,20,commands.BucketType.guild)
     @commands.check(sec)
     async def logs(self,ctx):
-        await ctx.send(embed=discord.Embed(title='',description=r'/home/ec2-user/.pm2/logs/bot-out.log'))
+        await ctx.send(file=discord.File(r'/home/ec2-user/.pm2/logs/bot-out.log'))
 def setup(client):
     client.add_cog(Mod(client))
 

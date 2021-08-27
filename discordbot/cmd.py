@@ -34,9 +34,7 @@ class Cmd(commands.Cog):
     @commands.cooldown(1,20,commands.BucketType.guild)
     @commands.check(sec)
     async def showf(self, ctx, *, term: str = ''):
-        f = open(f'/home/pi/rdb/r/{term}')
-        a = f.read()
-        await ctx.send(f'```py\n{a}\n```')
+        await ctx.send(file=discord.File(r'/home/pi/rdb/{}'.format(term)))
     @commands.command(aliases=["w"],help='know the current weather of your city using this')
     @commands.cooldown(1,5,commands.BucketType.guild)
     async def weather(self,ctx,*,city:str=''):

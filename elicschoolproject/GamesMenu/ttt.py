@@ -1,6 +1,7 @@
 import random
 def tictactoe():
     print("Let's play Tic-Tac-Toe!!!")
+
     tl=' '
     tm=' '
     tr=' '
@@ -10,9 +11,11 @@ def tictactoe():
     bl=' '
     bm=' '
     br=' '
+
     l=[[tl,tm,tr],[ml,mm,mr],[bl,bm,br]]
     l1=[['tl','tm','tr'],['ml','mm','mr'],['bl','bm','br']]
     l2=['tl','tm','tr','ml','mm','mr','bl','bm','br']
+
     def check_1():
         for i in range(3):
             if l[i][0]==l[i][1] and l[i][0]==l[i][2] and l[i][0]!=' ':
@@ -25,6 +28,7 @@ def tictactoe():
                 return l[0][2]
         else:
             return ''
+
     def check_2():
         if l[0][0]==l[1][1] and l[2][2]==' ' and l[0][0]==p:
             return l1[2][2]
@@ -85,6 +89,15 @@ def tictactoe():
             else:
                 return ''
 
+    def grid():
+        print()
+        print(l[0][0]," | ",l[0][1]," | ",l[0][2])
+        print("-------------")
+        print(l[1][0]," | ",l[1][1]," | ",l[1][2])
+        print("-------------")
+        print(l[2][0]," | ",l[2][1]," | ",l[2][2])
+        print()
+
     while True:
         n=input("How many player/s are playing?")
         if n=='1':
@@ -109,7 +122,7 @@ def tictactoe():
 
             if c=='x':
                 print("I will start!")
-                r=random.choice(['t1'])
+                r=random.choice(['t1','t2'])
                 if r=='t1':
                     z=[]
                     i=0
@@ -167,10 +180,23 @@ def tictactoe():
                                                         continue
                                                     else:
                                                         break
+                                                l3.remove(x)
                                             else:
-                                                x=random.choice(l3)
+                                                while True:
+                                                    x=random.choice(l3)
+                                                    if x[0]!=e[0] and x[1]!=e[1]:
+                                                        continue
+                                                    else:
+                                                        break
+                                                l3.remove(x)
                                         else:
-                                            x='mm'
+                                            while True:
+                                                x=random.choice(l3)
+                                                if x[0]==e[0] or x[1]==e[1]:
+                                                    continue
+                                                else:
+                                                    break
+                                            l3.remove(x)
                                         
                                         if x in l2:
                                             l2.remove(x)
@@ -197,13 +223,7 @@ def tictactoe():
                                 if l1[i][j]==x:
                                     l[i][j]='x'
                                     
-                        print()
-                        print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                        print("-------------")
-                        print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                        print("-------------")
-                        print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                        print()
+                        grid()
 
                         print(f"I have put x at {x}")
 
@@ -236,13 +256,7 @@ def tictactoe():
                                 if l1[i][j]==x1:
                                     l[i][j]='o'
 
-                        print()
-                        print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                        print("-------------")
-                        print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                        print("-------------")
-                        print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                        print()
+                        grid()
 
                         k=check_1()
                         if k=='o':
@@ -263,13 +277,7 @@ def tictactoe():
                                 l[i][j]='x'
                                 l2.remove('mm')
 
-                    print()
-                    print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                    print("-------------")
-                    print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                    print("-------------")
-                    print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                    print()
+                    grid()
 
                     print("I have put x at mm")
 
@@ -287,13 +295,7 @@ def tictactoe():
                                 l[i][j]='o'
                                 l2.remove(x)
                     
-                    print()
-                    print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                    print("-------------")
-                    print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                    print("-------------")
-                    print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                    print()
+                    grid()
 
                     if x in ['tm','ml','mr','bm']:
                         if x=='tm':
@@ -304,13 +306,7 @@ def tictactoe():
                                         l[i][j]='x'
                                         l2.remove(y)
                             
-                            print()
-                            print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                            print("-------------")
-                            print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                            print("-------------")
-                            print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                            print()
+                            grid()
 
                             print(f"I have put x at {y}")
 
@@ -328,13 +324,7 @@ def tictactoe():
                                     if l1[i][j]==x1:
                                         l[i][j]='o'
 
-                            print()
-                            print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                            print("-------------")
-                            print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                            print("-------------")
-                            print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                            print()
+                            grid()
 
                             c2=check_3()
                             if c2=='':
@@ -355,13 +345,7 @@ def tictactoe():
                                         l[i][j]='x'
                             l2.remove(x)
                             
-                            print()
-                            print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                            print("-------------")
-                            print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                            print("-------------")
-                            print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                            print()
+                            grid()
 
                             print(f"I have put x at {x}")
 
@@ -379,13 +363,7 @@ def tictactoe():
                                         l[i][j]='o'
                             l2.remove(x1)
 
-                            print()
-                            print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                            print("-------------")
-                            print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                            print("-------------")
-                            print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                            print()
+                            grid()
 
                             c=check_3()
                             if c=='':
@@ -396,13 +374,7 @@ def tictactoe():
                                         l[i][j]='x'
                             l2.remove(c)
 
-                            print()
-                            print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                            print("-------------")
-                            print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                            print("-------------")
-                            print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                            print()
+                            grid()
 
                             print(f"I have put x at {c}")
 
@@ -426,13 +398,7 @@ def tictactoe():
                                         l[i][j]='x'
                                         l2.remove(y)
                             
-                            print()
-                            print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                            print("-------------")
-                            print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                            print("-------------")
-                            print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                            print()
+                            grid()
 
                             print(f"I have put x at {y}")
 
@@ -450,13 +416,7 @@ def tictactoe():
                                     if l1[i][j]==x1:
                                         l[i][j]='o'
 
-                            print()
-                            print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                            print("-------------")
-                            print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                            print("-------------")
-                            print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                            print()
+                            grid()
 
                             c2=check_3()
                             if c2=='':
@@ -477,13 +437,7 @@ def tictactoe():
                                         l[i][j]='x'
                             l2.remove(x)
                             
-                            print()
-                            print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                            print("-------------")
-                            print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                            print("-------------")
-                            print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                            print()
+                            grid()
 
                             print(f"I have put x at {x}")
 
@@ -501,13 +455,7 @@ def tictactoe():
                                         l[i][j]='o'
                             l2.remove(x1)
 
-                            print()
-                            print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                            print("-------------")
-                            print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                            print("-------------")
-                            print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                            print()
+                            grid()
 
                             c=check_3()
                             if c=='':
@@ -518,13 +466,7 @@ def tictactoe():
                                         l[i][j]='x'
                             l2.remove(c)
 
-                            print()
-                            print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                            print("-------------")
-                            print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                            print("-------------")
-                            print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                            print()
+                            grid()
                             
                             print(f"I have put x at {c}")
                             
@@ -548,13 +490,7 @@ def tictactoe():
                                         l[i][j]='x'
                                         l2.remove(y)
                             
-                            print()
-                            print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                            print("-------------")
-                            print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                            print("-------------")
-                            print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                            print()
+                            grid()
 
                             print(f"I have put x at {y}")
 
@@ -572,13 +508,7 @@ def tictactoe():
                                     if l1[i][j]==x1:
                                         l[i][j]='o'
 
-                            print()
-                            print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                            print("-------------")
-                            print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                            print("-------------")
-                            print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                            print()
+                            grid()
 
                             c2=check_3()
                             if c2=='':
@@ -599,13 +529,7 @@ def tictactoe():
                                         l[i][j]='x'
                             l2.remove(x)
                             
-                            print()
-                            print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                            print("-------------")
-                            print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                            print("-------------")
-                            print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                            print()
+                            grid()
 
                             print(f"I have put x at {x}")
 
@@ -623,13 +547,7 @@ def tictactoe():
                                         l[i][j]='o'
                             l2.remove(x1)
 
-                            print()
-                            print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                            print("-------------")
-                            print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                            print("-------------")
-                            print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                            print()
+                            grid()
 
                             c=check_3()
                             if c=='':
@@ -640,13 +558,7 @@ def tictactoe():
                                         l[i][j]='x'
                             l2.remove(c)
 
-                            print()
-                            print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                            print("-------------")
-                            print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                            print("-------------")
-                            print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                            print()
+                            grid()
 
                             print(f"I have put x at {c}")
 
@@ -670,13 +582,7 @@ def tictactoe():
                                         l[i][j]='x'
                                         l2.remove(y)
                             
-                            print()
-                            print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                            print("-------------")
-                            print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                            print("-------------")
-                            print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                            print()
+                            grid()
 
                             print(f"I have put x at {y}")
 
@@ -694,13 +600,7 @@ def tictactoe():
                                     if l1[i][j]==x1:
                                         l[i][j]='o'
 
-                            print()
-                            print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                            print("-------------")
-                            print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                            print("-------------")
-                            print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                            print()
+                            grid()
 
                             c2=check_3()
                             if c2=='':
@@ -721,13 +621,7 @@ def tictactoe():
                                         l[i][j]='x'
                             l2.remove(x)
                             
-                            print()
-                            print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                            print("-------------")
-                            print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                            print("-------------")
-                            print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                            print()
+                            grid()
 
                             print(f"I have put x at {x}")
 
@@ -746,13 +640,7 @@ def tictactoe():
                             print(l2)
                             l2.remove(x1)
 
-                            print()
-                            print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                            print("-------------")
-                            print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                            print("-------------")
-                            print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                            print()
+                            grid()
 
                             c=check_3()
                             if c=='':
@@ -763,13 +651,7 @@ def tictactoe():
                                         l[i][j]='x'
                             l2.remove(c)
 
-                            print()
-                            print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                            print("-------------")
-                            print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                            print("-------------")
-                            print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                            print()
+                            grid()
 
                             print(f"I have put x at {c}")
 
@@ -802,13 +684,7 @@ def tictactoe():
                                         l[i][j]='x'
                             l2.remove(x)
 
-                            print()
-                            print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                            print("-------------")
-                            print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                            print("-------------")
-                            print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                            print()
+                            grid()
 
                             print(f"I have put x at {x}")
 
@@ -838,13 +714,7 @@ def tictactoe():
                                     if l1[i][j]==x1:
                                         l[i][j]='o'
                             
-                            print()
-                            print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                            print("-------------")
-                            print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                            print("-------------")
-                            print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                            print()
+                            grid()
 
                             k=check_1()
                             if k=='o':
@@ -880,13 +750,7 @@ def tictactoe():
                             if l1[i][j]==x1:
                                 l[i][j]='x'      
 
-                    print()
-                    print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                    print("-------------")
-                    print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                    print("-------------")
-                    print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                    print()
+                    grid()
 
                     k=check_1()
                     if k=='x':
@@ -912,6 +776,7 @@ def tictactoe():
                                             continue
                                         else:
                                             break
+                                    l2.remove(x)
                             else:
                                 if 'mm' not in l2:
                                     if l3!=[]:
@@ -926,9 +791,12 @@ def tictactoe():
                                                 else:
                                                     break
                                         l2.remove(x)
+
                                     else:
                                         x=random.choice(l2)
                                         l2.remove(x)
+                                        if x in l3:
+                                            l3.remove(x)
 
                                 else:
                                     x='mm'
@@ -950,14 +818,7 @@ def tictactoe():
                             if l1[i][j]==x:
                                 l[i][j]='o'
 
-                    print()
-                    print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                    print("-------------")
-                    print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                    print("-------------")
-                    print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                    print()
-
+                    grid()
 
                     print(f"I have put o at {x}")
 
@@ -992,13 +853,7 @@ def tictactoe():
                         print("Invalid Input!")
                         continue
 
-                print()
-                print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                print("-------------")
-                print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                print("-------------")
-                print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                print()
+                grid()
 
                 k=check_1()
                 if k=='o':
@@ -1025,13 +880,7 @@ def tictactoe():
                         print("Invalid Input!")
                         continue
                 
-                print()
-                print(l[0][0]," | ",l[0][1]," | ",l[0][2])
-                print("-------------")
-                print(l[1][0]," | ",l[1][1]," | ",l[1][2])
-                print("-------------")
-                print(l[2][0]," | ",l[2][1]," | ",l[2][2])
-                print()
+                grid()
                 
                 k=check_1()
                 if k=='o':

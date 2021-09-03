@@ -34,7 +34,7 @@ class Mod(commands.Cog):
  
     #lockdown cmd
     @commands.command(aliases=['br','restrict'],help ='Bot Restrict - this is a permament deal which makes members mentioned not allowed to use the bot anymore (under contruction)') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     @commands.check(sec)
     async def botrestrict(ctx,member:discord.Member):
         member=member
@@ -56,7 +56,7 @@ class Mod(commands.Cog):
         await ctx.send(f"Number of members that have the role are {b}")
 
     @commands.command(aliases=['whois','perms'],help ='under constr') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     @commands.check(sec)
     async def perm(ctx,member:discord.Member=None):
         if not member:
@@ -65,7 +65,7 @@ class Mod(commands.Cog):
             await ctx.send(perm)
             
     @commands.command(aliases=['log'],help="shows console logs for the bot")
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     @commands.check(sec)
     async def logs(self,ctx):
         await ctx.send(file=discord.File(r'/home/ec2-user/.pm2/logs/bot-out.log'))

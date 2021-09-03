@@ -33,7 +33,7 @@ def sec(ctx)->bool:
         return False
 if __name__ == '__main__':
     intents = discord.Intents.all()
-    ending_note ="Use mg.help for more info on a command , for categories - use mg.help Category\nAlso , {ctx.author.name}, all commands have a 20 secs server cooldown,so dont go thinking that the bot doesnt work if it doesnt respond"
+    ending_note ="Use mg.help for more info on a command , for categories - use mg.help Category\nAlso , {ctx.author.name}, all commands have a 5 secs server cooldown,so dont go thinking that the bot doesnt work if it doesnt respond"
     client = commands.Bot(command_prefix=bot_prefix,case_insensitive=False,help_command=PrettyHelp(active=10,ending_note=ending_note),intents=intents)
     @client.event
     async def on_ready():
@@ -47,7 +47,7 @@ if __name__ == '__main__':
         except Exception as error:
             print(f'Failed to load Cog {extension}. Reason: {error}')
     @client.command(aliases=['recog','restartcog'],help ='reloads a particular bot cog') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     @commands.check(sec) 
     async def re(ctx, extension):
 
@@ -60,7 +60,7 @@ if __name__ == '__main__':
         except Exception as error:
             await ctx.send(f'Failed to reload Cog {extension}. Reason: {error}')
     @client.command(aliases=['alive'],help ='command used by mg to see if the bot is still alive after a change in code') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     @commands.check(mgsec)
     async def a(ctx):
         await ctx.send('alive and working , checking for errors')
@@ -68,7 +68,7 @@ if __name__ == '__main__':
         await ctx.send('no errors found :))')
 
     @client.command(aliases=['system'],help ='command used by mg to control his pc') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     @commands.check(mgsec)
     async def scmd(ctx,cmd:str=''):
         try:
@@ -80,14 +80,14 @@ if __name__ == '__main__':
             await ctx.send("Error:"+e)
 
     @client.command(aliases=['shtb','shutbot'],help ='shutdown command for test bot') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     @commands.check(mgsec)
     async def tsh(ctx):
         os.system('sudo systemctl stop bot')
         await ctx.send('terminal on boot service has been put on hold')
 
     @client.command(aliases=['startbot','rtb'],help ='startup command for test bot') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     @commands.check(mgsec)
     async def trs(ctx):
         os.system('sudo systemctl start bot')
@@ -103,7 +103,7 @@ if __name__ == '__main__':
         await ctx.send("git pull succesfull , bot has been updated")
 
     @client.command(aliases=['restart','reload'],help ='bot restart command - owners only') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     @commands.check(sec)
     async def rs(ctx):
         os.system('pm2 reload bot')
@@ -112,7 +112,7 @@ if __name__ == '__main__':
         await ctx.send("bot has been successfully reloaded")
             
     @client.command(aliases=['cogsd','shutdowncog'],help ='cog shutdown command') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     @commands.check(sec)
     async def sd(ctx, extension):
         if extension == '':
@@ -124,7 +124,7 @@ if __name__ == '__main__':
             await ctx.send(f'Failed to shutdown Cog {extension}. Reason: {error}')
 
     @client.command(aliases=['cogstart','startcog'],help ='cog startup command') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     @commands.check(sec)
     async def su(ctx, extension):
         if extension == '':

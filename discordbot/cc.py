@@ -10,7 +10,7 @@ class CC(commands.Cog):
     def __init__(self, bot):
         self.bot:Bot     = bot
     @commands.command(aliases=['showcc','servercc'],help ='view all the custom commands made in the server or by a member') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     async def cca(self,ctx:Context,user:str=""):
         serverId = ctx.message.guild.id
         if user =="":
@@ -46,7 +46,7 @@ class CC(commands.Cog):
             pass
 
     @commands.command(aliases=['customcommands','makecommands'],help ='custom command - this command can be used by members to create simple message commands , use command names to make the bot print your messages') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     async def cc(self,ctx:Context,name:str=" ",*description):
         serverId = ctx.message.guild.id        
         if name.startswith("<@"):

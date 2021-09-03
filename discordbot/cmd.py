@@ -1,5 +1,7 @@
 from logging import disable
-from os import name
+import os
+
+from discord import colour
 import w as wolframalpha
 from main import bot_prefix,owak,waak,mgsec,sec
 from mod import br
@@ -19,7 +21,7 @@ class Cmd(commands.Cog):
 
     help='search commands'
     @commands.command(aliases=['cov','corona'],help ='command used to see current covid status in india') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     async def covid(self,ctx:Context,*,term:str=""):
         r = getCovidData()
         if "india" in term:
@@ -31,10 +33,27 @@ class Cmd(commands.Cog):
         myEmbed.add_field(name="Total Deaths",value=r.deaths)
         await ctx.message.channel.send(embed=myEmbed)
     @commands.command(aliases=['showfile'],help ='command used by mg to send files in the bot folder to the chat') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     @commands.check(sec)
     async def showf(self, ctx, *, term: str = ''):
         await ctx.send(file=discord.File(r'/home/pi/rdb/{}'.format(term)))
+    
+    @commands.command(aliases=['dir'],help ='command used by mg to see file and folder directories') 
+    @commands.cooldown(1,5,commands.BucketType.guild)
+    @commands.check(mgsec)
+    async def direc(self, ctx, *, term: str = ''):
+        dd = os.listdir(f"/home/pi/rdb/{term}")
+        directory = discord.Embed(title=f'Files and folders under {term}',description='',colour=discord.Colour.purple())
+        msg = await ctx.send(embed = directory)
+        files =[]
+        for i in dd:
+            files.append(i)
+            b = str(files).replace("'",'') 
+            c = str(b).replace('[','')
+            d = str(c).replace(']','')
+        directory.add_field(name = 'Files',value = d)
+        await msg.edit(embed = directory)
+    
     @commands.command(aliases=["w"],help='know the current weather of your city using this')
     @commands.cooldown(1,5,commands.BucketType.guild)
     async def weather(self,ctx,*,city:str=''):
@@ -79,7 +98,7 @@ class Cmd(commands.Cog):
         await ctx.send(ai)
 
     @commands.command(aliases=['git','gh'],help ='github profile command - view profiles') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     async def github(self, ctx: Context, *, term: str = ''):
         r = requests.get(f'https://api.github.com/users/{term}').json()
         try:
@@ -98,7 +117,7 @@ class Cmd(commands.Cog):
                 title="Not Found !", description="I cound not find that user")
             await ctx.message.channel.send(embed=myEmbed)
     @commands.command(aliases=['google','g'],help ='google search command - provides upto 10 results along with redirect link') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     async def ggl(self, ctx, *, term: str = ''):
         l = search(term,num_results=10,lang='en',proxy=None)  
         b = str(l).replace("'",'') 
@@ -140,7 +159,7 @@ class Cmd(commands.Cog):
         await menu.open()
     # 
     @commands.command(aliases=['updates'],help ='upcoming updates') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     async def uu(self, context):
 
         myEmbed3 = discord.Embed(

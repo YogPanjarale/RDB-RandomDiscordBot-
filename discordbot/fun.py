@@ -13,7 +13,7 @@ class Fun(commands.Cog):
     def __init__(self, bot):
         self.bot:Bot  = bot
     @commands.command(aliases=['c','countdown'],help ='make the bot do a countdown using this command') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     async def count(self,ctx:Context,n:str):
         if n.isnumeric():
             for i in range(int(n)):
@@ -22,7 +22,7 @@ class Fun(commands.Cog):
             await ctx.channel.send("Not a valid number to count")
     # pfp
     @commands.command(aliases=['dp','photo'],help ='view the members profile image') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     async def pfp(self, ctx, member: Member = None):
         if not member:
             member = ctx.author
@@ -32,13 +32,13 @@ class Fun(commands.Cog):
 
 
     @commands.command(aliases=['repeat','talk'],help ='make the bot repeat after you for extra emphasis or validation') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
 
     async def say(self, ctx, *, term: str = ''):
         await ctx.message.reply(term)
 
     @commands.command(aliases=['encrypt','enc'],help ='use this command to create passwords with lithium encryption , the bot sends u the message privately') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     async def e(self,ctx,*, term:str=''):
         targetMember = ctx.message.author
         y=term.lower()
@@ -66,7 +66,7 @@ class Fun(commands.Cog):
         await ctx.send("Encrypted password has been sent to the user")
 
     @commands.command(aliases=['hello','hey'],help ='hello gifs') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     async def hi(self, ctx,member:discord.Member):
         if member==None:
             member==ctx.message.author
@@ -84,7 +84,7 @@ class Fun(commands.Cog):
         await ctx.message.reply(embed=myEmbed)
 
     @commands.command(aliases=['highfive','h5','high5'],help ='high five gifs') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     async def hifi(self, ctx,member:discord.Member):
         if member==None:
             member==ctx.message.author
@@ -102,7 +102,7 @@ class Fun(commands.Cog):
         await ctx.message.reply(embed=myEmbed1)
 
     @commands.command(aliases=['suspicious','susy'],help ='') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     async def sus(self, ctx):
         susgifs = ["https://media.giphy.com/media/cJMlR1SsCSkUjVY3iK/giphy.gif",
         "https://media.giphy.com/media/TPl5N4Ci49ZQY/giphy.gif",
@@ -117,7 +117,7 @@ class Fun(commands.Cog):
         await ctx.message.reply(embed=myEmbed)       
 
     @commands.command(aliases=['bro','bruhh'],help ='') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     async def bruh(self, ctx):
         bruhgifs = ["https://media.giphy.com/media/VIOkcgpsnA2Zy/giphy.gif",
         "https://media.giphy.com/media/kWp8QC99Z6xFn8bF0v/giphy.gif",
@@ -135,7 +135,7 @@ class Fun(commands.Cog):
     
     
     @commands.command(aliases=['s','spoiler','hide'],help ='spoiler command - replaces your message with a spoiler') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     async def sp(self, ctx, *, term: str = ''):
         member = ctx.author
         spoiler=discord.Embed(title="**SPOILER**\n\n", description=f"\n{member.mention} has put a spoiler :-\n\n||{term}||",color=discord.Colour.blue())
@@ -145,7 +145,7 @@ class Fun(commands.Cog):
 
     
     @commands.command(aliases=['whotfismg'],help ='who is the creator of this bot? - use this to find out') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     async def whoismg(self,ctx):
         wimg = ["cant say , he could be lying abt his name for all yk" , 'dont ask a man his salary , a woman her age and mg his name' ,'he\'ll reveal that on his bday , i.e if u remember it' , 'even yog , the co founder of mgsb doesnt know','stop asking that','not telling','shoo','idk okay?','why do u wanna know?','hint : its related to a gods name','do i look like google to u?' , '>:((','smh','bruh stop already with this Q','dont ask']
         hdp = random.choice(wimg)
@@ -154,7 +154,7 @@ class Fun(commands.Cog):
 
 
     @commands.command(aliases=['cnick','chnick'],pass_context=True,help ="change nicknames of members - requires 'manage messages' permission") 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     @commands.has_permissions(manage_nicknames=True)
     async def nick(self,ctx, member: discord.Member, nick):
         await member.edit(nick=nick)
@@ -162,7 +162,7 @@ class Fun(commands.Cog):
 
 
     @commands.command(aliases=['8b','askme'],help ='ask the bot important life questions - (the ones that can be answered with yes and no , hes not einstien)') 
-    @commands.cooldown(1,20,commands.BucketType.guild)
+    @commands.cooldown(1,5,commands.BucketType.guild)
     async def askbot(self, ctx, *, question):
         responses = ['It is certain.',
                      'It is decidedly so.',

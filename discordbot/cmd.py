@@ -37,21 +37,40 @@ class Cmd(commands.Cog):
     @commands.check(sec)
     async def showf(self, ctx, *, term: str = ''):
         await ctx.send(file=discord.File(r'/home/pi/rdb/{}'.format(term)))
-    
+    @commands.command(aliases=['em'],help ="Use this command to create and send a customized heading and description embed from the bot , separate the heading and message using ';'") 
+    @commands.cooldown(1,5,commands.BucketType.guild)
+    async def embedmessage(self, ctx, *, term: str = ''):
+        handd = term.split(";")
+        heading = handd[0]
+        msg = handd[1]
+        custom = discord.Embed(title='__'+heading+'__',description=msg)
+        await ctx.send(embed = custom)
     @commands.command(aliases=['dir'],help ='command used by mg to see file and folder directories') 
     @commands.cooldown(1,5,commands.BucketType.guild)
-    @commands.check(mgsec)
+    @commands.check(sec)
     async def direc(self, ctx, *, term: str = ''):
         dd = os.listdir(f"/home/pi/rdb/{term}")
         directory = discord.Embed(title=f'Files and folders under {term}',description='',colour=discord.Colour.purple())
         msg = await ctx.send(embed = directory)
         files =[]
+        folders = []
         for i in dd:
-            files.append(i)
-            b = str(files).replace("'",'') 
-            c = str(b).replace('[','')
-            d = str(c).replace(']','')
-        directory.add_field(name = 'Files',value = d)
+            if '.' in i:
+                files.append(i)
+                continue
+            else:
+                folders.append(i)
+                continue
+        b = str(files).replace("'",'') 
+        c = str(b).replace('[','')
+        d = str(c).replace(']','')
+        j = str(folders).replace("'",'') 
+        k = str(j).replace('[','')
+        l = str(k).replace(']','')
+        abc = len(folders)
+        defg  = len(files)
+        directory.add_field(name = f'Folders - {abc} :file_folder:',value = l)
+        directory.add_field(name = f'Files - {defg} :page_facing_up:',value = d)
         await msg.edit(embed = directory)
     
     @commands.command(aliases=["w"],help='know the current weather of your city using this')
